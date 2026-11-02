@@ -1,0 +1,850 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Andy Noroña · Jobs to be Done en banca y fintech</title>
+<meta name="description" content="Jobs to be Done aplicado a banca y fintech, en español, desde LATAM. Artículos y un handbook por semana.">
+<link rel="canonical" href="https://andynz.com/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://andynz.com/">
+<meta property="og:title" content="Andy Noroña">
+<meta property="og:description" content="Jobs to be Done aplicado a banca y fintech, en español, desde LATAM. Artículos y un handbook por semana.">
+<meta property="og:image" content="https://andynz.com/fotos/andy-sobre-mi.jpg">
+<meta property="og:locale" content="es_LA">
+<meta name="twitter:card" content="summary_large_image">
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: sitio de una página con vistas por #ancla (inicio y cada ensayo). Contenido sobre superficie sólida; vidrio solo en la interfaz que flota. Dark es el tema principal. */
+:root {
+  --surface: #0a0a0b;
+  --surface-raised: #151517;
+  --ink: #f4f1ec;
+  --ink-muted: #8c8780;
+  --hairline: #2c2b2e;
+  --naranja: #f35f1f;
+  --naranja-text: #f35f1f;
+  --dorado: #fcae31;
+  --aqua: #0babcf;
+  --grid-line: #4a2410;
+  --cover-bg: #0d0d0f;
+  --glow-a: .5;
+  --glow-b: .32;
+  --glass-tint: rgba(24, 24, 27, .5);
+  --glass-tint-strong: rgba(24, 24, 27, .7);
+  --glass-edge: rgba(255, 255, 255, .10);
+  --glass-hi: rgba(255, 255, 255, .22);
+  --glass-lo: rgba(0, 0, 0, .35);
+  --glass-spec: rgba(255, 255, 255, .38);
+  --glass-shadow: rgba(0, 0, 0, .45);
+  --glass-press: rgba(255, 255, 255, .10);
+  --glass-on: rgba(244, 241, 236, .94);
+  color-scheme: dark;
+
+  --font-sans: "Geist", "SF Pro Display", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+  --f8: 8px; --f13: 13px; --f21: 21px; --f34: 34px; --f55: 55px; --f89: 89px;
+  --body-size: 17px;
+  --body-leading: 1.6;
+  --measure: 680px;
+  --page: 1180px;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --surface: #f5f4f1; --surface-raised: #ffffff; --ink: #121212; --ink-muted: #6a665f;
+    --hairline: #d8d4cc; --naranja: #d9501a; --naranja-text: #b83a00; --dorado: #b87a0c; --aqua: #08829e;
+    --grid-line: #efc3a9; --cover-bg: #f1ece4; --glow-a: .4; --glow-b: .26;
+    --glass-tint: rgba(255, 255, 255, .55); --glass-tint-strong: rgba(255, 255, 255, .74);
+    --glass-edge: rgba(255, 255, 255, .7); --glass-hi: rgba(255, 255, 255, .95); --glass-lo: rgba(18, 18, 18, .06);
+    --glass-spec: rgba(255, 255, 255, .95); --glass-shadow: rgba(60, 40, 20, .16); --glass-press: rgba(18, 18, 18, .06);
+    --glass-on: rgba(18, 18, 18, .94);
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --surface: #f5f4f1; --surface-raised: #ffffff; --ink: #121212; --ink-muted: #6a665f;
+  --hairline: #d8d4cc; --naranja: #d9501a; --naranja-text: #b83a00; --dorado: #b87a0c; --aqua: #08829e;
+  --grid-line: #efc3a9; --cover-bg: #f1ece4; --glow-a: .4; --glow-b: .26;
+  --glass-tint: rgba(255, 255, 255, .55); --glass-tint-strong: rgba(255, 255, 255, .74);
+  --glass-edge: rgba(255, 255, 255, .7); --glass-hi: rgba(255, 255, 255, .95); --glass-lo: rgba(18, 18, 18, .06);
+  --glass-spec: rgba(255, 255, 255, .95); --glass-shadow: rgba(60, 40, 20, .16); --glass-press: rgba(18, 18, 18, .06);
+  --glass-on: rgba(18, 18, 18, .94);
+  color-scheme: light;
+}
+:root[data-lectura="cafe"] {
+  --surface: #ede2cf; --surface-raised: #f5ecdd; --ink: #2b1d12; --ink-muted: #6b5644;
+  --hairline: #d4c1a3; --naranja: #b9501c; --naranja-text: #a3400c; --dorado: #a8721a; --aqua: #3f7f86;
+  --grid-line: #d9c2a0; --cover-bg: #e6d8c0; --glow-a: .28; --glow-b: .16;
+  --glass-tint: rgba(245, 236, 221, .58); --glass-tint-strong: rgba(245, 236, 221, .8);
+  --glass-edge: rgba(255, 250, 240, .65); --glass-hi: rgba(255, 252, 245, .9); --glass-lo: rgba(43, 29, 18, .07);
+  --glass-spec: rgba(255, 252, 245, .9); --glass-shadow: rgba(60, 35, 15, .16); --glass-press: rgba(43, 29, 18, .07);
+  --glass-on: rgba(43, 29, 18, .94);
+  color-scheme: light;
+  --body-size: 19px; --body-leading: 1.72; --measure: 620px;
+}
+:root[data-size="1"] { --body-size: 19px; }
+:root[data-size="2"] { --body-size: 21px; }
+:root[data-lectura="cafe"][data-size="1"] { --body-size: 21px; }
+:root[data-lectura="cafe"][data-size="2"] { --body-size: 23px; }
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-padding-top: 96px; }
+body {
+  background: var(--surface); color: var(--ink);
+  font-family: var(--font-sans); font-size: 17px; line-height: 1.55;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  transition: background-color .35s ease, color .35s ease;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 40; background: var(--surface); }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--naranja); outline-offset: 3px; border-radius: 6px; }
+.label { font-family: var(--font-mono); font-weight: 500; font-size: 12px; line-height: 16px; letter-spacing: .14em; text-transform: uppercase; }
+.muted { color: var(--ink-muted); }
+.wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.inner { max-width: var(--page); margin: 0 auto; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.two { color: var(--ink-muted); }
+.two b { color: var(--ink); font-weight: inherit; }
+.dot { color: var(--naranja); }
+
+/* ===== Liquid glass ===== */
+.glass {
+  position: relative; isolation: isolate;
+  background: var(--glass-tint);
+  -webkit-backdrop-filter: blur(21px) saturate(180%);
+  backdrop-filter: blur(21px) saturate(180%);
+  border: 1px solid var(--glass-edge);
+  box-shadow: inset 0 1px 0 var(--glass-hi), inset 0 -1px 0 var(--glass-lo), 0 13px 34px -8px var(--glass-shadow);
+  color: var(--glass-on);
+}
+.glass::before {
+  content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; pointer-events: none; z-index: -1;
+  background: linear-gradient(135deg, var(--glass-spec), transparent 32%, transparent 68%, var(--glass-spec));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; opacity: .55;
+}
+.glass::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1; background: linear-gradient(180deg, var(--glass-press), transparent 55%); }
+.glass.thick { background: var(--glass-tint-strong); -webkit-backdrop-filter: blur(34px) saturate(190%); backdrop-filter: blur(34px) saturate(190%); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .glass { background: var(--glass-tint-strong); } }
+@media (prefers-reduced-transparency: reduce) { .glass, .glass.thick { background: var(--surface-raised); -webkit-backdrop-filter: none; backdrop-filter: none; border-color: var(--hairline); } }
+@media (prefers-contrast: more) { .glass { background: var(--surface-raised); border-color: var(--ink-muted); } }
+
+/* ===== Barra superior ===== */
+.topbar-wrap { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 13px); z-index: 30; padding-top: 13px; pointer-events: none; }
+.topbar { pointer-events: auto; max-width: var(--page); margin: 0 auto; border-radius: 999px; display: flex; align-items: center; gap: var(--f21); padding: 6px 6px 6px 18px; min-height: 52px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--naranja); font-weight: 500; font-size: 16px; letter-spacing: -0.01em; white-space: nowrap; }
+.brand svg { width: 21px; height: auto; flex: none; }
+.nav { display: flex; gap: 2px; margin-right: auto; }
+.nav a { text-decoration: none; color: var(--ink-muted); font-size: 15px; padding: 7px 13px; border-radius: 999px; transition: background-color .2s ease, color .2s ease; }
+.nav a:hover { color: var(--glass-on); background: var(--glass-press); }
+.seg { display: inline-flex; border-radius: 999px; padding: 3px; gap: 2px; background: var(--glass-press); margin-left: auto; }
+.seg button { appearance: none; border: 0; background: transparent; color: var(--ink-muted); font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; padding: 7px 12px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; min-height: 34px; transition: color .2s ease, background-color .25s ease, box-shadow .25s ease, transform .1s ease-out; }
+.seg button:hover { color: var(--glass-on); }
+.seg button:active { transform: scale(.95); }
+.seg button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 0 var(--glass-hi) inset, 0 4px 13px -4px var(--glass-shadow); }
+.seg svg { width: 13px; height: 13px; flex: none; }
+@media (max-width: 820px) {
+  .nav { display: none; }
+  .seg button .txt { display: none; }
+  .seg button { padding: 7px 10px; }
+  .topbar { padding-left: 14px; gap: var(--f13); }
+}
+
+/* ===== Portadas dibujadas con primitivas ===== */
+.cover { position: relative; overflow: hidden; background: var(--cover-bg); border: 1px solid var(--hairline); max-width: 100%; }
+.cover .grid { position: absolute; inset: 0; background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px); background-size: 34px 34px; background-position: -1px -1px; opacity: .5; }
+.cover .glow { position: absolute; width: 110%; aspect-ratio: 1; border-radius: 50%; left: var(--gx, 20%); top: var(--gy, 100%); transform: translate(-50%, -50%); background: radial-gradient(closest-side, var(--naranja), transparent); opacity: var(--glow-a); }
+.cover .glow.cool { background: radial-gradient(closest-side, var(--aqua), transparent); opacity: var(--glow-b); width: 80%; }
+.cover > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.art .ln { fill: none; stroke: var(--ink); stroke-width: 3; }
+.art .ln.bold { stroke-width: 6; }
+.art .ln.dash { stroke: var(--ink-muted); stroke-width: 2; stroke-dasharray: 6 8; }
+.art .hole { fill: var(--cover-bg); }
+.art .acc { fill: var(--naranja); }
+.art .ink { fill: var(--ink); }
+.art .t { font-family: var(--font-mono); font-weight: 500; font-size: 17px; letter-spacing: .1em; fill: var(--ink-muted); }
+.art .t.strong { fill: var(--ink); }
+.chip { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 8px 14px; font-family: var(--font-mono); font-weight: 500; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; line-height: 1; }
+
+/* ===== Inicio ===== */
+.hero { position: relative; overflow: hidden; margin-top: -78px; padding-top: 78px; border-bottom: 1px solid var(--hairline); }
+.hero .grid { position: absolute; inset: 0; background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px); background-size: 89px 89px; opacity: .45; -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent); mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent); }
+.hero .glow { position: absolute; width: 1100px; max-width: 160%; aspect-ratio: 1; right: -380px; bottom: -620px; border-radius: 50%; background: radial-gradient(closest-side, var(--naranja), transparent); opacity: var(--glow-a); }
+.hero .glow.cool { right: auto; left: -480px; top: -620px; bottom: auto; background: radial-gradient(closest-side, var(--aqua), transparent); opacity: var(--glow-b); width: 900px; }
+.hero-in { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--f55); align-items: center; padding-block: var(--f89); }
+@media (min-width: 960px) { .hero-in { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); padding-block: 120px var(--f89); } }
+.hero h1 { font-weight: 500; font-size: clamp(40px, 4.6vw + 16px, 76px); line-height: .98; letter-spacing: -0.035em; margin: var(--f21) 0; text-wrap: balance; max-width: 15ch; }
+.hero .lead { font-size: clamp(19px, .8vw + 15px, 22px); line-height: 1.45; letter-spacing: -0.01em; color: var(--ink-muted); margin: 0 0 var(--f34); max-width: 34ch; text-wrap: pretty; }
+.actions { display: flex; flex-wrap: wrap; gap: var(--f8); }
+.btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-size: 15px; font-weight: 500; border-radius: 999px; padding: 13px 22px; transition: transform .1s ease-out, opacity .2s ease; border: 0; cursor: pointer; }
+.btn:active { transform: scale(.96); }
+.btn.solid { background: var(--ink); color: var(--surface); }
+.btn.solid:hover { opacity: .88; }
+.btn.glass:hover { background: var(--glass-tint-strong); }
+.btn svg { width: 14px; height: 14px; }
+
+/* Firma visual: el estado de cuenta y la línea que falta */
+.statement { border-radius: 21px; padding: var(--f34) var(--f34) var(--f21); font-family: var(--font-mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; max-width: 460px; width: 100%; justify-self: center; }
+.statement header { display: flex; justify-content: space-between; gap: var(--f13); padding-bottom: var(--f13); border-bottom: 1px solid var(--glass-edge); margin-bottom: var(--f8); font-weight: 500; letter-spacing: .14em; font-size: 11px; color: var(--ink-muted); }
+.statement ol { list-style: none; margin: 0; padding: 0; display: grid; }
+.statement li { display: flex; align-items: baseline; gap: var(--f8); padding-block: 11px; border-bottom: 1px dashed var(--glass-edge); }
+.statement li .lead-dots { flex: 1; border-bottom: 1px dotted var(--ink-muted); opacity: .5; transform: translateY(-4px); min-width: 13px; }
+.statement li .amt { color: var(--ink-muted); }
+.statement li.missing { color: var(--naranja-text); border-bottom: 0; }
+.statement li.missing .lead-dots { border-color: var(--naranja); opacity: .9; }
+.statement li.missing .amt { color: var(--naranja-text); font-weight: 500; }
+.statement footer { padding-top: var(--f13); border-top: 1px solid var(--glass-edge); margin-top: var(--f8); font-size: 11px; color: var(--ink-muted); letter-spacing: .14em; }
+
+.section { padding-block: var(--f89); border-bottom: 1px solid var(--hairline); }
+.section-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--f13); margin-bottom: var(--f34); }
+.section-head h2 { margin: 0; font-weight: 500; font-size: clamp(30px, 2vw + 20px, 44px); line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance; }
+.section-head .label { color: var(--ink-muted); }
+
+.insight { padding-block: var(--f89); border-bottom: 1px solid var(--hairline); }
+.insight p { margin: var(--f13) 0 0; font-weight: 500; font-size: clamp(32px, 3.4vw + 16px, 60px); line-height: 1.04; letter-spacing: -0.035em; max-width: 18ch; text-wrap: balance; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: var(--f34) var(--f21); }
+.card { display: grid; align-content: start; gap: var(--f13); text-decoration: none; color: inherit; min-width: 0; }
+.card .cover { border-radius: 13px; aspect-ratio: 3 / 2; transition: transform .45s cubic-bezier(.2, .8, .2, 1); }
+.card:hover .cover { transform: translateY(-3px); }
+.card:active .cover { transform: scale(.98); transition-duration: .1s; }
+.card h3 { margin: 0; font-weight: 500; font-size: 20px; line-height: 1.22; letter-spacing: -0.015em; text-wrap: balance; }
+.card .meta { display: flex; gap: var(--f13); color: var(--ink-muted); }
+.card .src { margin: 0; font-size: 14px; line-height: 1.45; color: var(--ink-muted); }
+
+.pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: var(--f21); }
+.pillar { border-top: 1px solid var(--ink); padding-top: var(--f21); display: grid; gap: var(--f13); align-content: start; }
+.pillar h3 { margin: 0; font-weight: 500; font-size: 24px; line-height: 1.15; letter-spacing: -0.02em; }
+.pillar p { margin: 0; color: var(--ink-muted); font-size: 16px; line-height: 1.5; max-width: 34ch; }
+
+.hb-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: var(--f21); margin-bottom: var(--f34); }
+.hb-intro { display: grid; gap: var(--f13); max-width: 46ch; }
+.hb-intro h2 { margin: 0; font-weight: 500; font-size: clamp(30px, 2vw + 20px, 44px); line-height: 1.05; letter-spacing: -0.03em; }
+.hb-intro p { margin: 0; color: var(--ink-muted); font-size: 18px; line-height: 1.5; }
+.hb-intro .ticks { margin-top: var(--f8); }
+.hb-nav { display: flex; gap: var(--f8); }
+.hb-nav button { appearance: none; width: 44px; height: 44px; border-radius: 999px; display: grid; place-items: center; cursor: pointer; padding: 0; transition: transform .1s ease-out, opacity .2s ease; }
+.hb-nav button:active { transform: scale(.93); }
+.hb-nav button:disabled { opacity: .35; cursor: default; }
+.hb-nav svg { width: 16px; height: 16px; }
+.hb-track { display: grid; grid-auto-flow: column; grid-auto-columns: min(300px, 80%); gap: var(--f21); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: var(--f21); overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: var(--hairline) transparent; }
+.hb-track:focus-visible { outline: 2px solid var(--naranja); outline-offset: 6px; }
+.hb-card { scroll-snap-align: start; display: grid; gap: var(--f13); align-content: start; min-width: 0; }
+.hb-cover { display: block; border-radius: 13px; aspect-ratio: 4 / 5; text-decoration: none; color: inherit; }
+.hb-cover .stack { position: absolute; inset: 0; display: grid; place-items: center; }
+.hb-cover .sheet { width: 64%; aspect-ratio: 3 / 4; border-radius: 8px; padding: var(--f21); display: grid; align-content: space-between; gap: var(--f8); transition: transform .45s cubic-bezier(.2, .8, .2, 1); }
+.hb-cover:hover .sheet { transform: translateY(-4px) rotate(-1deg); }
+.hb-cover .sheet b { font-weight: 500; font-size: 22px; line-height: 1.1; letter-spacing: -0.02em; }
+.hb-card h3 { margin: 0; font-weight: 500; font-size: 20px; line-height: 1.22; letter-spacing: -0.015em; text-wrap: balance; }
+.hb-card p { margin: 0; font-size: 14px; line-height: 1.45; color: var(--ink-muted); }
+.hb-card .btn { justify-self: start; padding: 10px 16px; font-size: 14px; }
+.hb-card.ghost .hb-cover { background: transparent; border-style: dashed; border-color: var(--ink-muted); display: grid; place-items: center; text-align: center; padding: var(--f21); color: var(--ink-muted); font-size: 15px; line-height: 1.45; }
+.state { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-muted); }
+.state::before { content: ""; width: 8px; height: 8px; border-radius: 999px; border: 1px solid var(--ink-muted); }
+.state.on { color: var(--ink); }
+.state.on::before { background: var(--naranja); border-color: var(--naranja); }
+.ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--f8); }
+.ticks li { display: flex; gap: var(--f13); align-items: baseline; }
+.ticks li::before { content: ""; width: 13px; height: 1px; background: var(--ink); flex: none; transform: translateY(-4px); }
+
+.about { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--f34); }
+@media (min-width: 900px) { .about { grid-template-columns: 280px minmax(0, 1fr); gap: var(--f55); } }
+.portrait { position: relative; margin: 0; aspect-ratio: 3 / 4; max-width: 280px; width: 100%; border-radius: 21px; overflow: hidden; border: 1px solid var(--hairline); background: var(--surface-raised); }
+.portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.portrait .chip { position: absolute; left: 13px; bottom: 13px; }
+@media (max-width: 899px) { .portrait { max-width: 340px; } }
+.who-chip { display: inline-flex; align-items: center; gap: 10px; border-radius: 999px; padding: 4px 14px 4px 4px; margin-bottom: var(--f21); text-decoration: none; }
+.who-chip img { width: 34px; height: 34px; border-radius: 999px; display: block; }
+.who-chip span { font-size: 14px; line-height: 1.25; }
+.who-chip span small { display: block; font-size: 12px; color: var(--ink-muted); }
+.about-text { display: grid; gap: var(--f21); align-content: start; max-width: 62ch; }
+.about-text p { margin: 0; font-size: 20px; line-height: 1.5; letter-spacing: -0.01em; }
+.about-text p.two { font-size: 20px; }
+.tags { display: flex; flex-wrap: wrap; gap: var(--f8); }
+.tag { border: 1px solid var(--hairline); border-radius: 999px; padding: 7px 13px; color: var(--ink-muted); }
+.disclaimer { font-size: 14px; color: var(--ink-muted); margin: 0; }
+
+.closer { position: relative; overflow: hidden; }
+.closer .grid { position: absolute; inset: 0; background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px); background-size: 89px 89px; opacity: .5; -webkit-mask-image: linear-gradient(to bottom, transparent, #000 45%); mask-image: linear-gradient(to bottom, transparent, #000 45%); }
+.closer .glow { position: absolute; left: 50%; bottom: -640px; width: 1200px; max-width: 200%; aspect-ratio: 1; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, var(--naranja), transparent); opacity: var(--glow-a); }
+.closer-in { position: relative; max-width: 760px; margin: 0 auto; padding-block: var(--f89) 120px; }
+.nl { border-radius: 21px; padding: var(--f34); display: grid; gap: var(--f21); }
+@media (max-width: 520px) { .nl { padding: var(--f21); } }
+.nl h3 { font-weight: 500; font-size: clamp(26px, 2.2vw + 16px, 38px); line-height: 1.1; letter-spacing: -0.025em; margin: 0; text-wrap: balance; }
+.nl .two b { color: var(--glass-on); }
+.nl .note { font-size: 15px; color: var(--ink-muted); margin: 0; }
+
+footer.site { border-top: 1px solid var(--hairline); }
+.foot { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--f21); padding-block: var(--f34) var(--f55); }
+.sign { display: inline-flex; align-items: flex-end; gap: var(--f13); color: var(--naranja); }
+.sign svg { width: 40px; height: auto; }
+.sign span { font-weight: 500; font-size: 21px; letter-spacing: -0.02em; line-height: 1; }
+.foot-links { display: flex; flex-wrap: wrap; gap: var(--f21); align-items: center; }
+.foot-links a { text-decoration: none; color: var(--ink-muted); }
+.foot-links a:hover { color: var(--ink); }
+
+/* ===== Ensayo ===== */
+.essay-top { max-width: var(--page); margin: var(--f34) auto 0; }
+.essay-cover { border-radius: 21px; aspect-ratio: 16 / 7; min-height: 240px; }
+.essay-cover .chips { position: absolute; left: 13px; bottom: 13px; right: 13px; display: flex; flex-wrap: wrap; gap: var(--f8); }
+@media (min-width: 760px) { .essay-cover .chips { left: 21px; bottom: 21px; } }
+.essay-body { max-width: var(--measure); margin: 0 auto; padding-block: var(--f55) var(--f89); font-size: var(--body-size); line-height: var(--body-leading); }
+.back { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: var(--ink-muted); margin-bottom: var(--f34); }
+.back:hover { color: var(--ink); }
+.essay-body h1 { font-weight: 500; font-size: clamp(36px, 3.6vw + 18px, 64px); line-height: 1.0; letter-spacing: -0.035em; margin: 0 0 var(--f34); text-wrap: balance; }
+.byline { display: flex; align-items: center; gap: var(--f13); padding-block: var(--f21); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); margin-bottom: var(--f55); }
+.byline .avatar { width: 40px; height: 40px; border-radius: 999px; background: var(--surface-raised); border: 1px solid var(--hairline); display: block; object-fit: cover; flex: none; }
+.byline .avatar svg { width: 18px; }
+.byline .who { font-size: 15px; line-height: 1.35; }
+.byline .who span { display: block; color: var(--ink-muted); font-size: 13px; }
+.prose { display: grid; gap: 1.15em; }
+.prose p { margin: 0; text-wrap: pretty; }
+.prose .lede { font-size: 1.2em; line-height: 1.45; letter-spacing: -0.01em; }
+.prose .list { display: grid; gap: .5em; padding-left: var(--f21); border-left: 1px solid var(--hairline); }
+.reframe { padding-block: var(--f34); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); display: grid; gap: var(--f13); margin-block: .5em; }
+.reframe p { font-weight: 500; font-size: clamp(26px, 2vw + 16px, 34px); line-height: 1.15; letter-spacing: -0.02em; }
+.question { font-weight: 500; font-size: clamp(22px, 1vw + 17px, 26px); line-height: 1.3; letter-spacing: -0.015em; }
+.sources { margin-top: var(--f34); padding-top: var(--f21); border-top: 1px solid var(--hairline); display: grid; gap: var(--f8); }
+.sources p { color: var(--ink-muted); font-size: 14px; line-height: 1.5; }
+.converse { margin-top: var(--f34); display: flex; flex-wrap: wrap; gap: var(--f8); }
+.next { margin-top: var(--f55); padding-top: var(--f21); border-top: 1px solid var(--hairline); display: grid; gap: var(--f8); text-decoration: none; }
+.next b { font-weight: 500; font-size: 22px; line-height: 1.25; letter-spacing: -0.015em; }
+.next:hover b { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+
+/* Barra de lectura */
+.dock { position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 13px); transform: translateX(-50%); z-index: 25; border-radius: 999px; display: flex; align-items: center; gap: 2px; padding: 6px; transition: transform .45s cubic-bezier(.2, .9, .25, 1); }
+.dock.tucked { transform: translateX(-50%) translateY(6px) scale(.94); }
+.dock button { appearance: none; border: 0; background: transparent; color: var(--glass-on); cursor: pointer; border-radius: 999px; min-width: 40px; height: 40px; padding: 0 12px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; transition: background-color .2s ease, transform .1s ease-out; }
+.dock button:hover { background: var(--glass-press); }
+.dock button:active { transform: scale(.93); }
+.dock button:disabled { opacity: .35; cursor: default; }
+.dock button[aria-pressed="true"] { background: var(--surface); color: var(--ink); }
+.dock .sep { width: 1px; height: 21px; background: var(--glass-edge); margin: 0 4px; }
+.dock .ring { display: inline-flex; align-items: center; gap: 8px; padding: 0 10px 0 6px; font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.dock .ring svg { width: 26px; height: 26px; transform: rotate(-90deg); }
+.dock .ring .track { fill: none; stroke: var(--glass-edge); stroke-width: 3; }
+.dock .ring .val { fill: none; stroke: var(--glass-on); stroke-width: 3; stroke-linecap: round; }
+.dock svg.ic { width: 17px; height: 17px; }
+
+:root[data-lectura="cafe"] .nav { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; animation: none !important; }
+  .dock.tucked { transform: translateX(-50%); }
+}
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="sym-a" fill-rule="evenodd" d="M51.803 5.825 L86.795 84.070 A2 2 0 0 1 84.116 86.695 L47.914 69.611 A8 8 0 0 0 41.086 69.611 L4.884 86.695 A2 2 0 0 1 2.205 84.070 L37.197 5.825 A8 8 0 0 1 51.803 5.825 Z M46.326 25.421 L60.597 57.332 A2 2 0 0 1 57.917 59.957 L47.914 55.236 A8 8 0 0 0 41.086 55.236 L31.083 59.957 A2 2 0 0 1 28.403 57.332 L42.674 25.421 A2 2 0 0 1 46.326 25.421 Z"/>
+    <path id="sym-rayo" d="M0 15 L18 0 L22 8 L44 0 L26 16 L22 8.5 Z"/>
+  </defs>
+</svg>
+
+<div class="topbar-wrap wrap">
+  <header class="topbar glass thick">
+    <a class="brand" href="#inicio" aria-label="Andy Noroña, inicio">
+      <svg viewBox="-1 0.09 91 89.91" aria-hidden="true"><use href="#sym-a" fill="currentColor"/></svg>
+      Andy Noroña
+    </a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#articulos">Artículos</a>
+      <a href="#handbooks">Handbooks</a>
+      <a href="#sobre-mi">Sobre mí</a>
+    </nav>
+    <div class="seg" role="group" aria-label="Modo de color">
+      <button type="button" id="modo-dark" data-modo="dark" aria-pressed="true" title="Dark">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 9.6A5.6 5.6 0 0 1 6.4 2.5a5.6 5.6 0 1 0 7.1 7.1Z" fill="currentColor"/></svg><span class="txt">Dark</span>
+      </button>
+      <button type="button" id="modo-light" data-modo="light" aria-pressed="false" title="Light">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3.4" fill="currentColor"/><g stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M8 1v1.6M8 13.4V15M1 8h1.6M13.4 8H15M3 3l1.1 1.1M11.9 11.9 13 13M3 13l1.1-1.1M11.9 4.1 13 3"/></g></svg><span class="txt">Light</span>
+      </button>
+      <button type="button" id="modo-cafe" data-modo="cafe" aria-pressed="false" title="Café, modo lectura">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 6h8.5v3.5a3.5 3.5 0 0 1-3.5 3.5H6a3.5 3.5 0 0 1-3.5-3.5V6Z" fill="currentColor"/><path d="M11 7h1a1.8 1.8 0 0 1 0 3.6h-1.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M5.5 1.5c-.6.8.6 1.4 0 2.3M8.5 1.5c-.6.8.6 1.4 0 2.3" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span class="txt">Café</span>
+      </button>
+    </div>
+  </header>
+</div>
+
+<!-- ===================== INICIO ===================== -->
+<main id="vista-inicio">
+  <section class="hero" id="inicio" aria-labelledby="hero-t">
+    <div class="grid" aria-hidden="true"></div>
+    <div class="glow cool" aria-hidden="true"></div>
+    <div class="glow" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="inner hero-in">
+        <div>
+          <a class="who-chip glass" href="#sobre-mi"><img src="fotos/andy-avatar.jpg" alt="" width="34" height="34"><span>Andy Noroña<small>Estrategia de producto · Quito</small></span></a><br>
+          <span class="label muted">Jobs to be Done · Banca y fintech · LATAM</span>
+          <h1 id="hero-t">Reimaginemos las finanzas hasta que sean parte de la vida de las personas<span class="dot">.</span></h1>
+          <p class="lead">Escribo sobre lo que no sale en el estado de cuenta: el progreso que la gente busca con su dinero.</p>
+          <div class="actions">
+            <a class="btn solid" href="#articulos">Leer los artículos</a>
+            <a class="btn glass" href="#newsletter">Recibir el handbook</a>
+          </div>
+        </div>
+        <figure class="statement glass thick" aria-label="Ilustración: un estado de cuenta donde la última línea, lo que la persona quería lograr, no aparece.">
+          <header><span>Estado de cuenta</span><span>Ilustrativo</span></header>
+          <ol>
+            <li><span>Saldo anterior</span><span class="lead-dots"></span><span class="amt">— —</span></li>
+            <li><span>Depósito</span><span class="lead-dots"></span><span class="amt">— —</span></li>
+            <li><span>Pago de tarjeta</span><span class="lead-dots"></span><span class="amt">— —</span></li>
+            <li><span>Transferencia</span><span class="lead-dots"></span><span class="amt">— —</span></li>
+            <li class="missing"><span>Lo que quería lograr</span><span class="lead-dots"></span><span class="amt">?</span></li>
+          </ol>
+          <footer>Lo que no sale en el estado de cuenta</footer>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="insight wrap" aria-label="Idea central">
+    <div class="inner">
+      <span class="label muted">La idea</span>
+      <p class="two">Nadie elige un producto. <b>Elige avanzar.</b></p>
+    </div>
+  </section>
+
+  <section class="section wrap" id="articulos" aria-labelledby="ens-t">
+    <div class="inner">
+      <div class="section-head">
+        <h2 id="ens-t">Artículos</h2>
+        <span class="label">Una herramienta, un caso, una pregunta</span>
+      </div>
+      <div class="cards" id="cards"></div>
+    </div>
+  </section>
+
+  <section class="section wrap" aria-labelledby="pil-t">
+    <div class="inner">
+      <div class="section-head">
+        <h2 id="pil-t">De qué escribo</h2>
+        <span class="label">Tres pilares</span>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <span class="label muted">Personas</span>
+          <h3>La vida real del dinero</h3>
+          <p>¿Qué intenta lograr la gente con su plata y qué se lo impide?</p>
+        </div>
+        <div class="pillar">
+          <span class="label muted">Industria</span>
+          <h3>Lo que la banca mide (y lo que no)</h3>
+          <p>¿Qué cuenta la industria y qué queda fuera?</p>
+        </div>
+        <div class="pillar">
+          <span class="label muted">Método</span>
+          <h3>Cómo reimaginarla</h3>
+          <p>¿Con qué herramienta se cierra la brecha y quién ya lo hace?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="handbooks" aria-labelledby="hb-t">
+    <div class="inner">
+      <div class="hb-head">
+        <div class="hb-intro">
+          <span class="label muted">Los viernes</span>
+          <h2 id="hb-t">Un handbook por semana<span class="dot">.</span></h2>
+          <p>Una herramienta de Jobs to be Done aplicada a banca y fintech, en pocas páginas y con su fuente.</p>
+          <ul class="ticks label">
+            <li>Una herramienta por handbook</li>
+            <li>Una idea por página</li>
+            <li>Fuente primaria y crédito al autor</li>
+          </ul>
+        </div>
+        <div class="hb-nav" id="hb-nav">
+          <button type="button" class="glass" id="hb-prev" aria-label="Handbook anterior"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button type="button" class="glass" id="hb-next" aria-label="Handbook siguiente"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+      <div class="hb-track" id="hb-track" tabindex="0" role="region" aria-label="Handbooks, desliza para ver más"></div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="sobre-mi" aria-labelledby="sm-t">
+    <div class="inner about">
+      <figure class="portrait">
+        <img src="fotos/andy-sobre-mi.jpg" alt="Andy Noroña, sentado en un banco de madera, con suéter gris y lentes." width="900" height="1200" loading="lazy">
+        <span class="chip glass">Quito, Ecuador</span>
+      </figure>
+      <div class="about-text">
+        <span class="label muted" id="sm-t">Sobre mí</span>
+        <p>Soy Andy Noroña. Trabajo en estrategia de segmentos en banca retail, en Quito.</p>
+        <p class="two">Me mueve una idea: <b>reimaginar las finanzas hasta que sean parte de la vida de las personas.</b></p>
+        <p>Para eso uso Jobs to be Done: entender qué intenta lograr la gente con su dinero, y qué se lo impide.</p>
+        <p>Aquí comparto lo que voy encontrando, con la fuente de cada idea.</p>
+        <div class="tags label">
+          <span class="tag">Jobs to be Done</span><span class="tag">Discovery</span><span class="tag">Segmentación</span><span class="tag">Lifecycle</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===================== ENSAYO ===================== -->
+<main id="vista-ensayo" hidden>
+  <div class="essay-top wrap">
+    <div class="cover essay-cover" id="essay-cover"></div>
+  </div>
+  <div class="wrap">
+    <article class="essay-body" id="essay"></article>
+  </div>
+</main>
+
+<!-- ===================== NEWSLETTER Y PIE ===================== -->
+<section class="closer" id="newsletter" aria-labelledby="nl-t">
+  <div class="grid" aria-hidden="true"></div>
+  <div class="glow" aria-hidden="true"></div>
+  <div class="closer-in wrap">
+    <div class="nl glass thick">
+      <span class="label muted">Newsletter</span>
+      <h3 id="nl-t"><span class="two">Un handbook por semana. <b>Una herramienta, aplicada a banca y fintech.</b></span></h3>
+      <p class="note" id="nl-note">La newsletter abre pronto. Mientras tanto, cada handbook se pide en los comentarios de mi post del viernes en LinkedIn.</p>
+      <div class="actions"><a class="btn solid" id="nl-btn" href="https://www.linkedin.com/in/andresnorona/" target="_blank" rel="noopener">Ir a mi LinkedIn</a></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site wrap">
+  <div class="inner foot">
+    <div class="sign" aria-label="Andy Noroña">
+      <svg viewBox="-1 -25.27 91 115.27" aria-hidden="true"><use href="#sym-a" fill="currentColor"/><g transform="translate(27.500 -24.273) scale(0.7727)"><use href="#sym-rayo" fill="currentColor"/></g></svg>
+      <span>Andy Noroña</span>
+    </div>
+    <div class="foot-links label">
+      <a href="#articulos">Artículos</a>
+      <a href="#handbooks">Handbooks</a>
+      <a href="https://www.linkedin.com/in/andresnorona/" target="_blank" rel="noopener">LinkedIn</a>
+      <span class="muted">© 2026</span>
+    </div>
+  </div>
+</footer>
+
+<div class="dock glass thick" id="dock" role="toolbar" aria-label="Lectura" hidden>
+  <span class="ring">
+    <svg viewBox="0 0 26 26" aria-hidden="true"><circle class="track" cx="13" cy="13" r="10"/><circle class="val" id="ring-val" cx="13" cy="13" r="10" stroke-dasharray="62.83" stroke-dashoffset="62.83"/></svg>
+    <span id="ring-txt">— min</span>
+  </span>
+  <span class="sep" aria-hidden="true"></span>
+  <button type="button" id="texto-menos" aria-label="Texto más pequeño">A−</button>
+  <button type="button" id="texto-mas" aria-label="Texto más grande">A+</button>
+  <span class="sep" aria-hidden="true"></span>
+  <button type="button" id="dock-cafe" aria-pressed="false" aria-label="Modo café">
+    <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 6h8.5v3.5a3.5 3.5 0 0 1-3.5 3.5H6a3.5 3.5 0 0 1-3.5-3.5V6Z" fill="currentColor"/><path d="M11 7h1a1.8 1.8 0 0 1 0 3.6h-1.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M5.5 1.5c-.6.8.6 1.4 0 2.3M8.5 1.5c-.6.8.6 1.4 0 2.3" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+  </button>
+</div>
+
+<script>
+(function () {
+  /* ---------- Ajustes del sitio ---------- */
+  // Cuando abras tu newsletter en Beehiiv, pega aquí el enlace de suscripción.
+  var NEWSLETTER_URL = '';
+  var LINKEDIN_URL = 'https://www.linkedin.com/in/andresnorona/';
+
+  /* ---------- Portadas (primitivas del sistema) ---------- */
+  var COVERS = {
+    // Barras a escala: 1 punto porcentual = 4 unidades
+    agentes: { gx: '90%', gy: '0%', cool: true, svg:
+      '<line class="ln" x1="120" y1="70" x2="120" y2="330"/>' +
+      '<text class="t strong" x="120" y="96" dx="13">BUSCAR PRECIO</text>' +
+      '<rect class="ink" x="120" y="108" width="264" height="34"/><text class="t strong" x="397" y="132">66%</text>' +
+      '<text class="t strong" x="120" y="186" dx="13">COMPRAS COTIDIANAS</text>' +
+      '<rect class="ink" x="120" y="198" width="208" height="34"/><text class="t strong" x="341" y="222">52%</text>' +
+      '<text class="t strong" x="120" y="276" dx="13">ALGO CARO</text>' +
+      '<rect class="acc" x="120" y="288" width="60" height="34"/><text class="t strong" x="193" y="312">15%</text>' },
+    credito: { gx: '15%', gy: '100%', svg:
+      '<line class="ln dash" x1="80" y1="200" x2="520" y2="200"/>' +
+      '<line class="ln bold" x1="80" y1="200" x2="227" y2="200"/>' +
+      '<circle class="acc" cx="80" cy="200" r="13"/>' +
+      '<circle class="ln hole" cx="227" cy="200" r="9"/>' +
+      '<circle class="ln hole" cx="373" cy="200" r="9"/>' +
+      '<circle class="ln hole" cx="520" cy="200" r="9"/>' +
+      '<text class="t strong" x="80" y="250" text-anchor="middle">PRIMER</text><text class="t strong" x="80" y="272" text-anchor="middle">PENSAMIENTO</text>' +
+      '<text class="t" x="227" y="146" text-anchor="middle">BÚSQUEDA</text><text class="t" x="227" y="168" text-anchor="middle">PASIVA</text>' +
+      '<text class="t" x="373" y="250" text-anchor="middle">BÚSQUEDA</text><text class="t" x="373" y="272" text-anchor="middle">ACTIVA</text>' +
+      '<text class="t" x="520" y="168" text-anchor="middle">DECISIÓN</text>' },
+    ahorro: { gx: '50%', gy: '110%', svg:
+      '<line class="ln dash" x1="300" y1="200" x2="140" y2="110"/>' +
+      '<line class="ln dash" x1="300" y1="200" x2="460" y2="110"/>' +
+      '<line class="ln dash" x1="300" y1="200" x2="300" y2="320"/>' +
+      '<circle class="ln hole" cx="300" cy="200" r="55"/>' +
+      '<circle class="acc" cx="300" cy="200" r="8"/>' +
+      '<circle class="ln hole" cx="140" cy="110" r="21"/>' +
+      '<circle class="ln hole" cx="460" cy="110" r="21"/>' +
+      '<circle class="ln hole" cx="300" cy="320" r="21"/>' +
+      '<text class="t" x="140" y="160" text-anchor="middle">COLCHÓN</text>' +
+      '<text class="t" x="460" y="160" text-anchor="middle">COOPERATIVA</text>' +
+      '<text class="t" x="300" y="370" text-anchor="middle">FAMILIAR</text>' +
+      '<text class="t strong" x="300" y="128" text-anchor="middle">TU CUENTA</text>' },
+    cambiarse: { gx: '85%', gy: '100%', svg:
+      '<line class="ln dash" x1="300" y1="70" x2="300" y2="330"/>' +
+      '<path class="ln" d="M100 130H280M262 116 280 130 262 144"/>' +
+      '<path class="ln" d="M100 185H280M262 171 280 185 262 199"/>' +
+      '<path class="ln dash" d="M500 240H320M338 226 320 240 338 254"/>' +
+      '<path class="ln dash" d="M500 295H320M338 281 320 295 338 309"/>' +
+      '<circle class="acc" cx="300" cy="70" r="8"/>' +
+      '<text class="t strong" x="100" y="116">EMPUJE</text>' +
+      '<text class="t strong" x="100" y="171">ATRACCIÓN</text>' +
+      '<text class="t" x="500" y="226" text-anchor="end">ANSIEDAD</text>' +
+      '<text class="t" x="500" y="281" text-anchor="end">HÁBITO</text>' }
+  };
+  function coverHTML(key) {
+    var c = COVERS[key];
+    return '<div class="grid"></div>' +
+      (c.cool ? '<div class="glow cool" style="--gx:' + c.gx + ';--gy:' + c.gy + '"></div>' : '<div class="glow" style="--gx:' + c.gx + ';--gy:' + c.gy + '"></div>') +
+      '<svg class="art" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid meet" aria-hidden="true">' + c.svg + '</svg>';
+  }
+
+  /* ---------- Ensayos: textos publicados en LinkedIn, sin cambios ---------- */
+  var ESSAYS = [
+    { id: 'articulo-agentes', cover: 'agentes', date: '2026-10-30', fecha: '30 oct 2026',
+      url: 'https://www.linkedin.com/feed/update/urn:li:activity:7521911319353180160/',
+      title: '¿Le dejarías a una IA comprar tu supermercado?',
+      blocks: [
+        ['lede', '¿Y tu próxima laptop?'],
+        ['p', 'Hace unos días, en Money20/20 en Las Vegas, buena parte de la conversación giró alrededor de agentes de IA que compran y pagan por nosotros.'],
+        ['p', 'Pero una encuesta de American Express de este mes me dejó pensando:'],
+        ['list', '66% de los consumidores en EE. UU. usaría un agente para buscar el mejor precio.|52% lo dejaría comprar cosas cotidianas de bajo costo.|Solo 15% lo dejaría comprar algo caro, como electrónicos.'],
+        ['p', 'La tecnología es la misma en los tres casos.<br>¿Qué cambia?'],
+        ['p', 'Me acordé de una idea de Clayton Christensen y sus coautores en <em>Competing Against Luck</em>.<br>Todo job tiene una dimensión funcional, una emocional y una social.<br>Y muchas veces las dos últimas pesan más que la primera.'],
+        ['p', 'Comparar precios es casi puro job funcional.<br>Comprar algo caro trae otra carga: no equivocarme, no arrepentirme, sentir que la decisión fue mía.'],
+        ['p', 'Y en banca y fintech casi nada es solo funcional.<br>Mover la plata, ahorrar, pedir un crédito.'],
+        ['reframe', 'No es un límite de la tecnología.|Es un límite del job.'],
+        ['p', 'La pregunta no es qué puede hacer el agente.<br>Es qué parte del job el cliente está dispuesto a soltar.'],
+        ['question', '¿Qué parte de tus finanzas le delegarías hoy a un agente, y cuál todavía no?']
+      ],
+      source: 'American Express, <em>Amex Trendex: Agentic Commerce Edition</em>, encuesta de Teneo a 2.005 adultos en EE. UU. (comunicado del 6 de octubre de 2026). Clayton Christensen, Taddy Hall, Karen Dillon y David S. Duncan, <em>Competing Against Luck</em>, 2016.' },
+    { id: 'articulo-credito', cover: 'credito', date: '2026-10-29', fecha: '29 oct 2026',
+      url: 'https://www.linkedin.com/feed/update/urn:li:activity:7521549108445167617/',
+      title: 'Nadie se despierta un día queriendo un crédito.',
+      blocks: [
+        ['lede', 'Me quedé pensando en eso porque solemos aparecer al final, cuando la persona ya está comparando tasas.'],
+        ['p', 'Bob Moesta y Chris Spiek dibujan una compra como una línea de tiempo:'],
+        ['list', 'Primer pensamiento: el momento en que alguien nota que tal vez necesita algo distinto.|Búsqueda pasiva: lo piensa, pero no se mueve.|Un evento lo empuja a la búsqueda activa, y ahí sí compara.|Otro evento lo lleva a decidir.'],
+        ['p', 'Si alguien piensa en un crédito para su negocio, ese primer pensamiento pudo haber llegado meses antes.<br>Para cuando compara tasas, buena parte de la decisión ya está tomada.'],
+        ['reframe', 'No busca un crédito.|Busca resolver algo que empezó a incomodarle hace tiempo.'],
+        ['question', '¿Sabes cuándo fue el primer pensamiento de tu último cliente?']
+      ],
+      source: 'Bob Moesta y Chris Spiek, la línea de tiempo de Jobs to be Done (jobstobedone.org).' },
+    { id: 'articulo-ahorro', cover: 'ahorro', date: '2026-10-28', fecha: '28 oct 2026',
+      url: 'https://www.linkedin.com/feed/update/urn:li:activity:7521187312177676288/',
+      title: '¿Con quién compite de verdad una cuenta de ahorros?',
+      blocks: [
+        ['lede', 'La respuesta rápida: con la del otro banco.'],
+        ['p', 'En <em>When Coffee and Kale Compete</em> (2016), Alan Klement propone otra forma de verlo.<br>La competencia no la define la categoría.<br>La define el cliente, según el progreso que busca.'],
+        ['p', 'Entonces la pregunta cambia: ¿qué deja de usar alguien cuando empieza a ahorrar en una cuenta?'],
+        ['list', 'La plata bajo el colchón.|La cooperativa del barrio.|El familiar que se la guarda.'],
+        ['p', 'No suelen aparecer en un análisis de competencia de un banco.<br>Pero compiten por el mismo job.'],
+        ['reframe', 'No compite contra otro banco.|Compite contra todo lo que el cliente ya usa para sentirse a salvo.'],
+        ['question', '¿Qué más pondrías en esa lista?']
+      ],
+      source: 'Alan Klement, <em>When Coffee and Kale Compete</em> (2016).' },
+    { id: 'articulo-cambiarse', cover: 'cambiarse', date: '2026-10-27', fecha: '27 oct 2026',
+      url: 'https://www.linkedin.com/feed/update/urn:li:activity:7520824362594365441/',
+      title: '¿Alguna vez pensaste en cambiarte de banco y al final no lo hiciste?',
+      blocks: [
+        ['lede', 'Me quedé pensando en por qué pasa eso.<br>No es que falten opciones.<br>Es que cambiar no depende solo de lo que ofrece lo nuevo.'],
+        ['p', 'Bob Moesta y Chris Spiek lo explican con las fuerzas del progreso.'],
+        ['p', 'Dos empujan hacia el cambio:'],
+        ['list', 'El empuje: lo que ya no te funciona hoy.|La atracción: lo que promete lo nuevo.'],
+        ['p', 'Dos lo frenan:'],
+        ['list', 'La ansiedad: ¿y si me cobran algo que no vi? ¿Y si pierdo mi historial?|El hábito: los pagos ya configurados, la app que ya sé usar.'],
+        ['p', 'La persona cambia solo cuando las dos primeras le ganan a las dos últimas.'],
+        ['p', 'Y eso tiene una lectura incómoda para quienes trabajamos en banca.<br>Que un cliente se quede no siempre significa que esté contento.<br>A veces solo significa que el hábito y la ansiedad están ganando.'],
+        ['reframe', 'No siempre es lealtad.|A veces es inercia.'],
+        ['question', '¿Cómo distingues, en tus clientes, la lealtad de la inercia?']
+      ],
+      source: 'Bob Moesta y Chris Spiek, las fuerzas del progreso (jobstobedone.org), desarrolladas en <em>Demand-Side Sales 101</em>, de Bob Moesta (2020).' }
+  ];
+  function words(e) {
+    var t = e.title + ' ' + e.blocks.map(function (b) { return b[1]; }).join(' ');
+    return t.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+  }
+  ESSAYS.forEach(function (e) { e.min = Math.max(1, Math.round(words(e) / 200)); });
+  var BY_ID = {}; ESSAYS.forEach(function (e, i) { e.i = i; BY_ID[e.id] = e; });
+
+  /* ---------- Tarjetas del inicio ---------- */
+  document.getElementById('cards').innerHTML = ESSAYS.map(function (e) {
+    return '<a class="card" href="#' + e.id + '">' +
+      '<div class="cover">' + coverHTML(e.cover) + '</div>' +
+      '<div class="meta label"><span>' + e.fecha + '</span><span>' + e.min + ' min</span></div>' +
+      '<h3>' + e.title + '</h3>' +
+      '<p class="src">' + e.source.split('.')[0].replace(/<[^>]+>/g, '') + '.</p>' +
+    '</a>';
+  }).join('');
+
+  /* ---------- Vista de ensayo ---------- */
+  var vInicio = document.getElementById('vista-inicio');
+  var vEnsayo = document.getElementById('vista-ensayo');
+  var essayEl = document.getElementById('essay');
+  var coverEl = document.getElementById('essay-cover');
+  var dock = document.getElementById('dock');
+  var current = null;
+
+  function block(b) {
+    var type = b[0], text = b[1];
+    if (type === 'list') return '<div class="list">' + text.split('|').map(function (l) { return '<p>' + l + '</p>'; }).join('') + '</div>';
+    if (type === 'reframe') { var parts = text.split('|'); return '<div class="reframe"><span class="label muted">Reencuadre</span><p class="two">' + parts[0] + '<br><b>' + parts[1] + '</b></p></div>'; }
+    if (type === 'question') return '<p class="question">' + text + '</p>';
+    if (type === 'lede') return '<p class="lede">' + text + '</p>';
+    return '<p>' + text + '</p>';
+  }
+  function renderEssay(e) {
+    coverEl.innerHTML = coverHTML(e.cover) +
+      '<div class="chips"><span class="chip glass">' + e.fecha + '</span><span class="chip glass">' + e.min + ' min</span><span class="chip glass">Publicado en LinkedIn</span></div>';
+    var next = ESSAYS[(e.i + 1) % ESSAYS.length];
+    essayEl.innerHTML =
+      '<a class="back label" href="#articulos">← Artículos</a>' +
+      '<h1>' + e.title + '</h1>' +
+      '<div class="byline"><img class="avatar" src="fotos/andy-avatar.jpg" alt="" width="40" height="40">' +
+      '<div class="who">Andy Noroña<span>' + e.fecha + ' · ' + e.min + ' min de lectura</span></div></div>' +
+      '<div class="prose">' + e.blocks.map(block).join('') +
+      '<div class="sources"><span class="label muted">Fuente</span><p>' + e.source + '</p></div>' +
+      '<div class="converse"><a class="btn solid" href="' + e.url + '" target="_blank" rel="noopener">Comentar en LinkedIn</a></div>' +
+      '</div>' +
+      '<a class="next" href="#' + next.id + '"><span class="label muted">Siguiente artículo</span><b>' + next.title + '</b></a>';
+    document.getElementById('ring-txt').textContent = e.min + ' min';
+  }
+
+  function route() {
+    var h = (location.hash || '').slice(1);
+    var e = BY_ID[h];
+    if (e) {
+      if (current !== e.id) { renderEssay(e); current = e.id; }
+      vInicio.hidden = true; vEnsayo.hidden = false; dock.hidden = false;
+      window.scrollTo(0, 0);
+    } else {
+      var wasEssay = !vEnsayo.hidden;
+      vInicio.hidden = false; vEnsayo.hidden = true; dock.hidden = true; current = null;
+      var target = h && document.getElementById(h);
+      if (target && h !== 'inicio') { target.scrollIntoView(); }
+      else if (wasEssay || h === 'inicio') { window.scrollTo(0, 0); }
+    }
+    onScroll();
+  }
+  window.addEventListener('hashchange', route);
+
+  /* ---------- Modos de color ---------- */
+  var root = document.documentElement;
+  function save(k, v) { try { localStorage.setItem(k, v); } catch (err) {} }
+  function load(k) { try { return localStorage.getItem(k); } catch (err) { return null; } }
+  var segButtons = Array.prototype.slice.call(document.querySelectorAll('[data-modo]'));
+  var cafeBtn = document.getElementById('dock-cafe');
+  var mqLight = window.matchMedia ? window.matchMedia('(prefers-color-scheme: light)') : null;
+  function mode() {
+    if (root.getAttribute('data-lectura') === 'cafe') return 'cafe';
+    var t = root.getAttribute('data-theme');
+    if (t === 'light' || t === 'dark') return t;
+    return mqLight && mqLight.matches ? 'light' : 'dark';
+  }
+  function sync() {
+    var c = mode();
+    segButtons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-modo') === c)); });
+    cafeBtn.setAttribute('aria-pressed', String(c === 'cafe'));
+  }
+  function apply(m) {
+    if (m === 'cafe') root.setAttribute('data-lectura', 'cafe');
+    else { root.removeAttribute('data-lectura'); root.setAttribute('data-theme', m); save('an-modo-dia', m); }
+    save('an-modo', m); sync();
+  }
+  segButtons.forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-modo')); }); });
+  cafeBtn.addEventListener('click', function () { apply(mode() === 'cafe' ? (load('an-modo-dia') || 'dark') : 'cafe'); });
+  var saved = load('an-modo');
+  if (saved === 'dark' || saved === 'light' || saved === 'cafe') apply(saved); else sync();
+  if (mqLight && mqLight.addEventListener) mqLight.addEventListener('change', sync);
+
+  /* ---------- Tamaño del texto ---------- */
+  var minus = document.getElementById('texto-menos'), plus = document.getElementById('texto-mas');
+  var size = parseInt(load('an-texto') || '0', 10); if (!(size >= 0 && size <= 2)) size = 0;
+  function setSize(s) {
+    size = Math.max(0, Math.min(2, s));
+    if (size === 0) root.removeAttribute('data-size'); else root.setAttribute('data-size', String(size));
+    minus.disabled = size === 0; plus.disabled = size === 2; save('an-texto', String(size));
+  }
+  minus.addEventListener('click', function () { setSize(size - 1); });
+  plus.addEventListener('click', function () { setSize(size + 1); });
+  setSize(size);
+
+  /* ---------- Progreso de lectura ---------- */
+  var C = 62.83, ringVal = document.getElementById('ring-val'), ringTxt = document.getElementById('ring-txt');
+  var lastY = window.scrollY, ticking = false;
+  function onScroll() {
+    if (!vEnsayo.hidden && current) {
+      var r = essayEl.getBoundingClientRect();
+      var total = r.height - window.innerHeight * 0.6;
+      var p = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 0;
+      ringVal.style.strokeDashoffset = (C * (1 - p)).toFixed(2);
+      var e = BY_ID[current];
+      ringTxt.textContent = p >= 0.99 ? 'Leído' : Math.max(1, Math.ceil(e.min * (1 - p))) + ' min';
+      var y = window.scrollY;
+      if (y > lastY + 4 && y > 200) dock.classList.add('tucked');
+      if (y < lastY - 4) dock.classList.remove('tucked');
+      lastY = y;
+    }
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+
+  /* ---------- Handbooks: el más nuevo primero ---------- */
+  // Cada viernes se agrega uno arriba. estado: 'disponible' o 'pronto'.
+  var HANDBOOKS = [
+    { n: '01', titulo: 'En preparación', herramienta: '', autor: '', estado: 'pronto', gx: '85%', gy: '100%' }
+  ];
+  var track = document.getElementById('hb-track');
+  function hbCard(h) {
+    var on = h.estado === 'disponible';
+    var dest = on && NEWSLETTER_URL ? NEWSLETTER_URL : '#newsletter';
+    var ext = dest.indexOf('http') === 0 ? ' target="_blank" rel="noopener"' : '';
+    return '<article class="hb-card">' +
+      '<a class="cover hb-cover" href="' + dest + '"' + ext + ' style="--gx:' + h.gx + ';--gy:' + h.gy + '" aria-label="Handbook ' + h.n + '">' +
+        '<div class="grid"></div><div class="glow"></div>' +
+        '<div class="stack"><div class="sheet glass thick"><span class="label muted">Handbook ' + h.n + '</span>' +
+        '<b>' + h.titulo + '<span class="dot">.</span></b><span class="label muted">Andy Noroña</span></div></div>' +
+      '</a>' +
+      '<span class="label state' + (on ? ' on' : '') + '">' + (on ? 'Disponible' : 'Pronto') + '</span>' +
+      '<h3>Handbook ' + h.n + (h.herramienta ? ': ' + h.herramienta : '') + '</h3>' +
+      (h.autor ? '<p>' + h.autor + '</p>' : '<p>La herramienta se anuncia el viernes en LinkedIn.</p>') +
+      '<a class="btn solid" href="' + dest + '"' + ext + '>' + (on ? 'Recibir por correo' : 'Avísame cuando salga') + '</a>' +
+    '</article>';
+  }
+  track.innerHTML = HANDBOOKS.map(hbCard).join('') +
+    '<article class="hb-card ghost"><div class="cover hb-cover">Cada viernes se suma un handbook nuevo a esta fila.</div></article>';
+  var hbPrev = document.getElementById('hb-prev'), hbNext = document.getElementById('hb-next');
+  function hbStep() { var c = track.querySelector('.hb-card'); return c ? c.getBoundingClientRect().width + 21 : 300; }
+  function hbSync() {
+    var max = track.scrollWidth - track.clientWidth - 2;
+    document.getElementById('hb-nav').hidden = max <= 0;
+    hbPrev.disabled = track.scrollLeft <= 2;
+    hbNext.disabled = track.scrollLeft >= max;
+  }
+  hbPrev.addEventListener('click', function () { track.scrollBy({ left: -hbStep(), behavior: 'smooth' }); });
+  hbNext.addEventListener('click', function () { track.scrollBy({ left: hbStep(), behavior: 'smooth' }); });
+  track.addEventListener('scroll', function () { requestAnimationFrame(hbSync); }, { passive: true });
+  window.addEventListener('resize', hbSync);
+  hbSync();
+
+  /* ---------- Newsletter ---------- */
+  if (NEWSLETTER_URL) {
+    var btn = document.getElementById('nl-btn');
+    btn.href = NEWSLETTER_URL; btn.textContent = 'Recibir el handbook por correo';
+    document.getElementById('nl-note').textContent = 'Te registras con tu correo y el handbook te llega en minutos. En español, desde LATAM. Te das de baja cuando quieras.';
+  }
+
+  route();
+})();
+</script>
+
+</body>
+</html>
