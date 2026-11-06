@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Las tres dimensiones de un job · Andy Noroña</title>
+<meta name="description" content="Una página para probar qué parte de un momento resuelve tu producto: lo funcional, lo emocional y lo social. Artefacto 01 de Andy Noroña.">
+<link rel="canonical" href="https://andynz.com/artefactos/tres-dimensiones/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://andynz.com/artefactos/tres-dimensiones/">
+<meta property="og:title" content="Las tres dimensiones de un job · Artefacto 01">
+<meta property="og:description" content="Una página para probar qué parte de un momento resuelve tu producto: lo funcional, lo emocional y lo social. Artefacto 01 de Andy Noroña.">
+<meta property="og:image" content="https://andynz.com/fotos/andy-sobre-mi.jpg">
+<meta property="og:locale" content="es_LA">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#0a0a0b">
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Artefacto 01 · Las tres dimensiones de un job. Mismo sistema que andynz.com: campo de luz detrás,
+   contenido sobre material estándar, vidrio solo en lo que flota. Un solo acento naranja: lo que el producto no toca. */
+:root {
+  --bg: #0a0a0b; --bg-2: #111113; --ink: #f4f1ec; --ink-2: #a39d95; --ink-3: #6f6a64;
+  --hair: rgba(255, 255, 255, .09); --naranja: #f35f1f; --naranja-text: #ff7a3d;
+  --grid-line: rgba(243, 95, 31, .14);
+  --orb-1: .5; --orb-2: .34; --orb-3: .4;
+  --m-fill: rgba(255, 255, 255, .055);
+  --g-tint-dim: rgba(10, 10, 11, .52); --g-edge: rgba(255, 255, 255, .14); --g-spec: rgba(255, 255, 255, .16);
+  --g-shadow: rgba(0, 0, 0, .5); --g-press: rgba(255, 255, 255, .08);
+  --on-glass: #f7f4ef; --on-glass-2: rgba(247, 244, 239, .66);
+  --field: rgba(255, 255, 255, .04);
+  color-scheme: dark;
+  --font-sans: "Geist", "SF Pro Display", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+  --f8: 8px; --f13: 13px; --f21: 21px; --f34: 34px; --f55: 55px; --f89: 89px;
+  --t-display: clamp(32px, 1.6vw + 24px, 48px); --t-title: clamp(26px, .5vw + 22px, 30px);
+  --t-headline: 19px; --t-body: 17px; --t-sub: 15px; --t-cap: 12px;
+  --spring: cubic-bezier(.2, .9, .25, 1);
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f4f2ee; --bg-2: #ebe7e0; --ink: #121212; --ink-2: #5f5a53; --ink-3: #8a847c;
+    --hair: rgba(18, 18, 18, .09); --naranja: #d9501a; --naranja-text: #b83a00; --grid-line: rgba(217, 80, 26, .16);
+    --orb-1: .42; --orb-2: .34; --orb-3: .22; --m-fill: rgba(255, 255, 255, .55);
+    --g-tint-dim: rgba(255, 255, 255, .62); --g-edge: rgba(255, 255, 255, .7); --g-spec: rgba(255, 255, 255, .75);
+    --g-shadow: rgba(70, 40, 15, .16); --g-press: rgba(18, 18, 18, .05); --on-glass: #121212; --on-glass-2: rgba(18, 18, 18, .62);
+    --field: rgba(255, 255, 255, .6); color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #f4f2ee; --bg-2: #ebe7e0; --ink: #121212; --ink-2: #5f5a53; --ink-3: #8a847c;
+  --hair: rgba(18, 18, 18, .09); --naranja: #d9501a; --naranja-text: #b83a00; --grid-line: rgba(217, 80, 26, .16);
+  --orb-1: .42; --orb-2: .34; --orb-3: .22; --m-fill: rgba(255, 255, 255, .55);
+  --g-tint-dim: rgba(255, 255, 255, .62); --g-edge: rgba(255, 255, 255, .7); --g-spec: rgba(255, 255, 255, .75);
+  --g-shadow: rgba(70, 40, 15, .16); --g-press: rgba(18, 18, 18, .05); --on-glass: #121212; --on-glass-2: rgba(18, 18, 18, .62);
+  --field: rgba(255, 255, 255, .6); color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-sans); font-size: var(--t-body); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+button, input, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--naranja); outline-offset: 3px; border-radius: 8px; }
+::selection { background: var(--naranja); color: #0a0a0b; }
+.label { font-family: var(--font-mono); font-weight: 500; font-size: var(--t-cap); line-height: 16px; letter-spacing: .14em; text-transform: uppercase; }
+.muted { color: var(--ink-2); }
+.dot { color: var(--naranja); }
+
+.page { position: relative; overflow-x: clip; min-height: 100vh; }
+.field { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.orb { position: absolute; border-radius: 50%; }
+.o1 { width: 760px; height: 760px; left: -220px; top: -260px; background: radial-gradient(closest-side, rgba(243, 95, 31, var(--orb-1)), rgba(243, 95, 31, 0)); }
+.o2 { width: 620px; height: 620px; right: -200px; top: 120px; background: radial-gradient(closest-side, rgba(252, 174, 49, var(--orb-2)), rgba(252, 174, 49, 0)); }
+.o3 { width: 700px; height: 700px; left: 30%; bottom: -380px; background: radial-gradient(closest-side, rgba(11, 120, 180, var(--orb-3)), rgba(5, 77, 124, 0)); }
+.fib { position: absolute; inset: 0; background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 89px 89px; background-position: center top;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 60% 30%, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse 70% 60% at 60% 30%, #000 20%, transparent 75%); }
+
+.wrap { position: relative; z-index: 1; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.col { max-width: 620px; margin: 0 auto; }
+
+.top { display: flex; align-items: center; justify-content: space-between; gap: var(--f13); padding-top: calc(env(safe-area-inset-top, 0px) + var(--f21)); }
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--naranja); font-weight: 500; font-size: 16px; white-space: nowrap; }
+.brand svg { width: 21px; height: auto; }
+
+.head { padding-top: var(--f89); display: grid; gap: var(--f13); }
+.head h1 { margin: 0; font-weight: 600; font-size: var(--t-display); line-height: 1.06; letter-spacing: -0.03em; text-wrap: balance; max-width: 16ch; }
+.head .lead { margin: 0; color: var(--ink-2); font-size: var(--t-headline); line-height: 1.5; max-width: 42ch; }
+
+.steps { display: grid; gap: var(--f21); margin-top: var(--f55); }
+.step { background: var(--m-fill); border-radius: 22px; padding: var(--f21); display: grid; gap: var(--f21); }
+.step-head { display: grid; gap: var(--f8); }
+.step-head p { margin: 0; color: var(--ink-2); font-size: var(--t-sub); line-height: 1.5; max-width: 52ch; }
+.step-head h2 { margin: 0; font-size: var(--t-headline); font-weight: 500; letter-spacing: -0.01em; }
+.fld { display: grid; gap: var(--f8); }
+.fld > span { font-size: var(--t-sub); color: var(--ink-2); }
+input[type="text"], textarea { width: 100%; appearance: none; border: 0; border-radius: 14px; background: var(--field); color: var(--ink);
+  box-shadow: inset 0 0 0 .5px var(--hair); padding: 13px 16px; line-height: 1.5; font-size: var(--t-body); transition: box-shadow .2s ease; }
+textarea { min-height: 96px; resize: vertical; }
+input:focus, textarea:focus { outline: 0; box-shadow: inset 0 0 0 1px var(--ink-3); }
+::placeholder { color: var(--ink-3); }
+.ghost { appearance: none; border: 0; background: transparent; color: var(--ink-2); font-size: var(--t-sub); padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--hair); justify-self: start; }
+.ghost:hover { color: var(--ink); }
+
+.dim { display: grid; gap: var(--f13); padding-top: var(--f21); border-top: .5px solid var(--hair); }
+.dim:first-of-type { border-top: 0; padding-top: 0; }
+.dim .q { margin: 0; font-size: var(--t-headline); font-weight: 500; letter-spacing: -0.01em; }
+.dim .hint { margin: 0; color: var(--ink-2); font-size: var(--t-sub); }
+.dim .hint em { font-style: normal; color: var(--ink); }
+.estado { display: flex; align-items: center; gap: var(--f13); flex-wrap: wrap; }
+.estado > span { font-size: var(--t-sub); color: var(--ink-2); }
+.seg { display: inline-flex; padding: 3px; gap: 2px; border-radius: 999px; background: var(--g-press); }
+.seg button { appearance: none; border: 0; background: transparent; color: var(--ink-2); font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: .12em;
+  text-transform: uppercase; padding: 7px 12px; min-height: 34px; border-radius: 999px; cursor: pointer; transition: color .2s ease, background-color .2s ease, transform .1s ease-out; }
+.seg button:hover { color: var(--ink); }
+.seg button:active { transform: scale(.94); }
+.seg button[aria-pressed="true"] { color: var(--ink); background: var(--bg); box-shadow: inset 0 0 0 .5px var(--g-edge), 0 4px 14px -4px var(--g-shadow); }
+.seg button[aria-pressed="true"][data-v="no"] { color: var(--naranja-text); }
+
+/* La ficha: misma pieza que el estado de cuenta del sitio */
+.ficha-wrap { display: grid; gap: var(--f21); justify-items: center; padding: var(--f21) 0; }
+.statement { position: relative; isolation: isolate; width: 100%; max-width: 460px; border-radius: 22px; padding: var(--f21) var(--f34) var(--f13);
+  background: var(--g-tint-dim); -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%); color: var(--on-glass);
+  box-shadow: inset 0 0 0 .5px var(--g-edge), 0 8px 24px -14px var(--g-shadow); font-family: var(--font-mono); font-size: 13px; line-height: 1.45; letter-spacing: .02em; }
+.statement::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1; background: radial-gradient(160px circle at 30% -30%, var(--g-spec), transparent 70%); opacity: .5; }
+.statement header { display: flex; justify-content: space-between; gap: var(--f13); padding-bottom: var(--f13); border-bottom: .5px solid var(--g-edge); margin-bottom: var(--f8); font-weight: 500; letter-spacing: .14em; font-size: 11px; color: var(--on-glass-2); text-transform: uppercase; }
+.statement header b { color: var(--on-glass); font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.statement ol { list-style: none; margin: 0; padding: 0; display: grid; }
+.statement li { display: grid; grid-template-columns: 1fr auto; gap: 4px var(--f13); padding-block: 13px; border-bottom: .5px solid var(--g-edge); align-items: baseline; }
+.statement li .k { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--on-glass-2); grid-column: 1; }
+.statement li .v { grid-column: 1; font-family: var(--font-sans); font-size: var(--t-sub); letter-spacing: 0; line-height: 1.45; color: var(--on-glass); white-space: pre-wrap; }
+.statement li .v:empty::before { content: "— —"; color: var(--on-glass-2); font-family: var(--font-mono); }
+.statement li .s { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--on-glass-2); white-space: nowrap; }
+.statement li .s[data-v="si"] { color: var(--on-glass); }
+.statement li .s[data-v="no"] { color: var(--naranja-text); font-weight: 500; }
+.statement li.momento { grid-template-columns: 1fr; }
+.statement footer { padding-top: var(--f13); margin-top: var(--f8); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--on-glass-2); display: flex; justify-content: space-between; gap: var(--f13); }
+.statement footer b { font-weight: 500; color: var(--on-glass); }
+.statement footer b.gap { color: var(--naranja-text); }
+.cierre { margin: 0; text-align: center; font-size: var(--t-title); line-height: 1.2; letter-spacing: -0.02em; text-wrap: balance; max-width: 22ch; }
+.actions { display: flex; flex-wrap: wrap; gap: var(--f8); justify-content: center; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; font-size: var(--t-sub); font-weight: 500; border-radius: 999px; padding: 14px 24px; min-height: 48px; border: 0; cursor: pointer;
+  transition: transform .45s var(--spring), background-color .2s ease; }
+.btn.solid { background: var(--ink); color: var(--bg); box-shadow: 0 10px 30px -12px var(--g-shadow); }
+.btn.solid:hover { transform: translateY(-2px); }
+.btn.soft { background: var(--g-press); color: var(--ink); }
+.btn.soft:hover { background: var(--hair); }
+.btn:active { transform: scale(.96); }
+
+.src { margin-top: var(--f89); padding-bottom: var(--f55); display: grid; gap: var(--f13); color: var(--ink-2); font-size: var(--t-sub); line-height: 1.5; }
+.src p { margin: 0; }
+.src .links { display: flex; flex-wrap: wrap; gap: var(--f13) var(--f21); }
+.src a { text-decoration: none; color: var(--ink); border-bottom: .5px solid var(--hair); }
+.src a:hover { border-color: var(--ink); }
+
+@media (max-width: 759px) {
+  .head { padding-top: var(--f55); }
+  .step { padding: var(--f21) var(--f13); }
+  .statement { padding: var(--f21) var(--f21) var(--f13); }
+}
+@media print {
+  .field, .top, .steps .step:not(.ficha), .actions, .ghost { display: none !important; }
+  body { background: #fff; color: #000; }
+  .statement { background: #fff; color: #000; box-shadow: inset 0 0 0 1px #000; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .statement li .v, .statement header b, .statement footer b { color: #000; }
+  .head { padding-top: 0; }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="sym-a" fill-rule="evenodd" d="M51.803 5.825 L86.795 84.070 A2 2 0 0 1 84.116 86.695 L47.914 69.611 A8 8 0 0 0 41.086 69.611 L4.884 86.695 A2 2 0 0 1 2.205 84.070 L37.197 5.825 A8 8 0 0 1 51.803 5.825 Z M46.326 25.421 L60.597 57.332 A2 2 0 0 1 57.917 59.957 L47.914 55.236 A8 8 0 0 0 41.086 55.236 L31.083 59.957 A2 2 0 0 1 28.403 57.332 L42.674 25.421 A2 2 0 0 1 46.326 25.421 Z"/>
+  </defs>
+</svg>
+
+<div class="page">
+  <div class="field" aria-hidden="true"><div class="fib"></div><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
+
+  <header class="wrap top">
+    <a class="brand" href="https://andynz.com/" aria-label="Andy Noroña, inicio"><svg viewBox="-1 0.09 91 89.91" fill="currentColor"><use href="#sym-a"/></svg>Andy Noroña</a>
+    <span class="label muted">Artefacto 01</span>
+  </header>
+
+  <main class="wrap col">
+    <section class="head">
+      <span class="label muted">Jobs to be Done</span>
+      <h1>Las tres dimensiones de un job<span class="dot">.</span></h1>
+      <p class="lead">Una app guarda una cosa. La persona vive tres. Esta página es para ver cuáles de las tres resuelve tu producto.</p>
+    </section>
+
+    <div class="steps">
+      <section class="step" aria-labelledby="s1">
+        <div class="step-head">
+          <span class="label muted" id="s1">01 · La escena</span>
+          <h2>Un momento concreto en que alguien usa tu producto.</h2>
+          <p>Con hora y lugar. Mientras más específico, más se nota lo que la app no guarda.</p>
+        </div>
+        <label class="fld"><span>Tu producto</span><input type="text" id="producto" placeholder="Una app de transferencias" autocomplete="off"></label>
+        <label class="fld"><span>El momento</span><textarea id="momento" placeholder="Son las once de la noche. Alguien que quieres te llama: necesita el dinero ya. Abres la app y la pantalla se queda pensando."></textarea></label>
+        <button type="button" class="ghost" id="ejemplo">Usar el ejemplo del post</button>
+      </section>
+
+      <section class="step" aria-labelledby="s2">
+        <div class="step-head">
+          <span class="label muted" id="s2">02 · Las tres dimensiones</span>
+          <h2>Pregúntale a la persona, no a la app.</h2>
+          <p>Christensen y sus coautores dicen que todo job tiene una parte funcional, una emocional y una social. Escribe las tres en una línea cada una, y marca cuál de ellas atiende tu producto hoy.</p>
+        </div>
+
+        <div class="dim" data-dim="funcional">
+          <span class="label muted">Funcional</span>
+          <p class="q">¿Qué tiene que pasar?</p>
+          <p class="hint">En el post: <em>que el dinero llegue.</em></p>
+          <textarea id="d-funcional" rows="2" placeholder="Que el dinero llegue."></textarea>
+          <div class="estado"><span>Tu producto hoy</span><div class="seg" role="group" aria-label="Funcional, tu producto hoy"><button type="button" data-v="si" aria-pressed="false">Lo resuelve</button><button type="button" data-v="medias" aria-pressed="false">A medias</button><button type="button" data-v="no" aria-pressed="false">No lo toca</button></div></div>
+        </div>
+
+        <div class="dim" data-dim="emocional">
+          <span class="label muted">Emocional</span>
+          <p class="q">¿Qué siente mientras pasa?</p>
+          <p class="hint">En el post: <em>esos segundos le aprietan el pecho.</em></p>
+          <textarea id="d-emocional" rows="2" placeholder="Esos segundos le aprietan el pecho."></textarea>
+          <div class="estado"><span>Tu producto hoy</span><div class="seg" role="group" aria-label="Emocional, tu producto hoy"><button type="button" data-v="si" aria-pressed="false">Lo resuelve</button><button type="button" data-v="medias" aria-pressed="false">A medias</button><button type="button" data-v="no" aria-pressed="false">No lo toca</button></div></div>
+        </div>
+
+        <div class="dim" data-dim="social">
+          <span class="label muted">Social</span>
+          <p class="q">¿Quién más está en la escena, y qué no quiere que piense de él?</p>
+          <p class="hint">En el post: <em>del otro lado alguien espera. No quiere quedar mal.</em></p>
+          <textarea id="d-social" rows="2" placeholder="Del otro lado alguien espera. No quiere quedar mal."></textarea>
+          <div class="estado"><span>Tu producto hoy</span><div class="seg" role="group" aria-label="Social, tu producto hoy"><button type="button" data-v="si" aria-pressed="false">Lo resuelve</button><button type="button" data-v="medias" aria-pressed="false">A medias</button><button type="button" data-v="no" aria-pressed="false">No lo toca</button></div></div>
+        </div>
+      </section>
+
+      <section class="step ficha" aria-labelledby="s3">
+        <div class="step-head">
+          <span class="label muted" id="s3">03 · La ficha</span>
+          <h2>Lo que la app guardó y lo que la persona vivió.</h2>
+        </div>
+        <div class="ficha-wrap">
+          <figure class="statement" id="ficha">
+            <header><span>Ficha del job</span><b id="f-producto">Tu producto</b></header>
+            <ol>
+              <li class="momento"><span class="k">Momento</span><span class="v" id="f-momento"></span></li>
+              <li><span class="k">Funcional</span><span class="v" id="f-funcional"></span><span class="s" id="s-funcional">— —</span></li>
+              <li><span class="k">Emocional</span><span class="v" id="f-emocional"></span><span class="s" id="s-emocional">— —</span></li>
+              <li><span class="k">Social</span><span class="v" id="f-social"></span><span class="s" id="s-social">— —</span></li>
+            </ol>
+            <footer><span>Tu producto hoy</span><b id="f-total">0 de 3 dimensiones</b></footer>
+          </figure>
+          <p class="cierre" id="cierre">¿Qué parte de ese momento resuelve tu producto?</p>
+          <div class="actions">
+            <button type="button" class="btn solid" id="copiar">Copiar la ficha</button>
+            <button type="button" class="btn soft" id="pdf">Guardar como PDF</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="src">
+      <p>Las tres dimensiones de un job: Clayton Christensen, Taddy Hall, Karen Dillon y David S. Duncan, <em>Competing Against Luck</em>, 2016. La escena del ejemplo es del post que acompaña a esta página.</p>
+      <p>Lo que escribes se queda en tu navegador. No se envía a ningún lado.</p>
+      <div class="links">
+        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7524085862817599488/" target="_blank" rel="noopener">Ver el post en LinkedIn</a>
+        <a href="https://andynz.com/#artefactos">Todos los artefactos</a>
+        <a href="https://andynz.com/">andynz.com</a>
+      </div>
+    </footer>
+  </main>
+</div>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var DIMS = ['funcional', 'emocional', 'social'];
+  var LABELS = { si: 'Lo resuelve', medias: 'A medias', no: 'No lo toca' };
+  var KEY = 'an-artefacto-01';
+  var state = { producto: '', momento: '', funcional: '', emocional: '', social: '', estado: { funcional: '', emocional: '', social: '' } };
+  var EJEMPLO = {
+    producto: 'Una app de transferencias',
+    momento: 'Son las once de la noche. Alguien que quieres te llama: necesita que le transfieras dinero, ya. Abres la app. Clave, código, enviar. Y la pantalla se queda pensando.',
+    funcional: 'Que el dinero llegue.',
+    emocional: 'Esos segundos le aprietan el pecho.',
+    social: 'Del otro lado alguien espera. No quiere quedar mal.'
+  };
+
+  function load() { try { var s = JSON.parse(localStorage.getItem(KEY) || 'null'); if (s && typeof s === 'object') { state = Object.assign(state, s); state.estado = Object.assign({ funcional: '', emocional: '', social: '' }, s.estado || {}); } } catch (e) {} }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+
+  function render() {
+    $('f-producto').textContent = state.producto.trim() || 'Tu producto';
+    $('f-momento').textContent = state.momento.trim();
+    var total = 0;
+    DIMS.forEach(function (d) {
+      $('f-' + d).textContent = state[d].trim();
+      var v = state.estado[d], s = $('s-' + d);
+      s.textContent = v ? LABELS[v] : '— —';
+      s.setAttribute('data-v', v || '');
+      if (v === 'si') total++;
+      document.querySelectorAll('.dim[data-dim="' + d + '"] .seg button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === v)); });
+    });
+    var tot = $('f-total');
+    tot.textContent = total + ' de 3 dimensiones';
+    tot.className = total < 3 && (state.estado.funcional || state.estado.emocional || state.estado.social) ? 'gap' : '';
+    var m = state.momento.toLowerCase();
+    $('cierre').textContent = m.indexOf('noche') > -1 ? '¿Qué parte de esa noche resuelve tu producto?' : '¿Qué parte de ese momento resuelve tu producto?';
+  }
+
+  function bind(id, key) {
+    var el = $(id);
+    el.value = state[key] || '';
+    el.addEventListener('input', function () { state[key] = el.value; save(); render(); });
+  }
+  load();
+  bind('producto', 'producto'); bind('momento', 'momento');
+  DIMS.forEach(function (d) { bind('d-' + d, d); });
+  document.querySelectorAll('.dim .seg button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var d = b.closest('.dim').getAttribute('data-dim'), v = b.getAttribute('data-v');
+      state.estado[d] = state.estado[d] === v ? '' : v; save(); render();
+    });
+  });
+  $('ejemplo').addEventListener('click', function () {
+    Object.keys(EJEMPLO).forEach(function (k) { state[k] = EJEMPLO[k]; $(k === 'producto' || k === 'momento' ? k : 'd-' + k).value = EJEMPLO[k]; });
+    save(); render();
+  });
+
+  function fichaTexto() {
+    var lines = ['FICHA DEL JOB · ' + (state.producto.trim() || 'Tu producto'), '', 'Momento: ' + (state.momento.trim() || '—'), ''];
+    DIMS.forEach(function (d) {
+      var v = state.estado[d];
+      lines.push(d.charAt(0).toUpperCase() + d.slice(1) + ': ' + (state[d].trim() || '—') + (v ? ' · ' + LABELS[v] : ''));
+    });
+    var total = DIMS.filter(function (d) { return state.estado[d] === 'si'; }).length;
+    lines.push('', 'Tu producto hoy: ' + total + ' de 3 dimensiones.', '', 'Las tres dimensiones de un job: Christensen, Hall, Dillon y Duncan, Competing Against Luck (2016).', 'andynz.com/artefactos/tres-dimensiones');
+    return lines.join('\n');
+  }
+  $('copiar').addEventListener('click', function () {
+    var t = fichaTexto(), btn = $('copiar');
+    function ok() { btn.textContent = 'Copiada'; setTimeout(function () { btn.textContent = 'Copiar la ficha'; }, 1800); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(ok, function () { fallback(t); ok(); });
+    else { fallback(t); ok(); }
+  });
+  function fallback(t) { var ta = document.createElement('textarea'); ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); } catch (e) {} document.body.removeChild(ta); }
+  $('pdf').addEventListener('click', function () { window.print(); });
+
+  render();
+})();
+</script>
+</body>
+</html>

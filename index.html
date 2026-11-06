@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Andy Noroña · Jobs to be Done en banca y fintech</title>
-<meta name="description" content="Jobs to be Done aplicado a banca y fintech, en español, desde LATAM. Artículos y un handbook por semana.">
+<meta name="description" content="Jobs to be Done aplicado a banca y fintech, en español, desde LATAM. Artículos, artefactos y un handbook por semana.">
 <link rel="canonical" href="https://andynz.com/">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://andynz.com/">
 <meta property="og:title" content="Andy Noroña">
-<meta property="og:description" content="Jobs to be Done aplicado a banca y fintech, en español, desde LATAM. Artículos y un handbook por semana.">
+<meta property="og:description" content="Jobs to be Done aplicado a banca y fintech, en español, desde LATAM. Artículos, artefactos y un handbook por semana.">
 <meta property="og:image" content="https://andynz.com/fotos/andy-sobre-mi.jpg">
 <meta property="og:locale" content="es_LA">
 <meta name="twitter:card" content="summary_large_image">
@@ -281,11 +281,12 @@ img { max-width: 100%; }
 @keyframes blink { 50% { opacity: .25; } }
 .statement footer { padding-top: var(--f13); border-top: 0; margin-top: var(--f8); font-size: 11px; color: var(--on-glass-2); letter-spacing: .14em; }
 
-/* ================= Intro: la historia antes de la página ================= */
-.intro { position: relative; z-index: 0; height: 500vh; height: 500svh; margin-bottom: -60vh; margin-bottom: -60svh; }
+/* ================= Intro: la historia antes de la página (se cuenta sola) ================= */
+.intro { position: fixed; inset: 0; z-index: 50; background: var(--bg); }
 .intro.done { display: none; }
+:root.intro-on { overflow: hidden; }
 .hero { z-index: 1; }
-.intro-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+.intro-stage { position: absolute; inset: 0; overflow: hidden; }
 .in-wrap { position: absolute; inset: 0; display: grid; place-items: center; }
 .in-wrap .fib { -webkit-mask-image: radial-gradient(ellipse 60% 55% at 50% 50%, #000 10%, transparent 75%); mask-image: radial-gradient(ellipse 60% 55% at 50% 50%, #000 10%, transparent 75%); }
 .in-sym { position: absolute; left: 50%; top: 50%; width: 89px; height: 89px; margin: -44px 0 0 -44px; color: var(--ink); fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linejoin: round; }
@@ -304,11 +305,16 @@ img { max-width: 100%; }
 .in-load { width: 34px; height: 34px; color: var(--ink); overflow: visible; }
 .in-load .ol { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linejoin: round; opacity: .35; }
 .in-load .fl { fill: currentColor; clip-path: inset(var(--fill, 100%) 0 0 0); }
-.in-cue .label { transition: opacity .4s ease; }
+.in-cue button { appearance: none; border: 0; background: transparent; color: var(--ink-2); font: inherit; cursor: pointer; padding: 8px 13px; border-radius: 999px; }
+.in-cue button:hover { color: var(--ink); }
 .topbar-wrap { transition: opacity .5s ease, transform .6s var(--spring-soft); }
 :root.intro-on .topbar-wrap { opacity: 0; transform: translateY(-13px); pointer-events: none; }
 .hero.hold h1 .w, .hero.hold .lead, .hero.hold .actions, .hero.hold .stage { animation-play-state: paused; }
-@media (max-width: 759px) { .intro { height: 450vh; height: 450svh; } }
+
+/* Artefactos: fila con número en vez de portada */
+.row .thumb.num { display: grid; place-items: center; font-family: var(--font-mono); font-size: 21px; font-weight: 500; letter-spacing: .04em; color: var(--naranja-text); background: var(--m-fill); }
+.row .thumb.num::after { content: ""; position: absolute; inset: 0; background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px); background-size: 12px 12px; opacity: .6; pointer-events: none; }
+.row .thumb.num span { position: relative; z-index: 1; }
 
 /* ================= Secciones ================= */
 .section { position: relative; padding-block: 0 var(--f89); }
@@ -563,6 +569,7 @@ footer.site { position: relative; padding-block: var(--f34) calc(var(--f21) + en
     <nav class="nav" aria-label="Secciones">
       <a href="#inicio" data-nav="inicio">Inicio</a>
       <a href="#articulos" data-nav="articulos">Artículos</a>
+      <a href="#artefactos" data-nav="artefactos">Artefactos</a>
       <a href="#handbooks" data-nav="handbooks">Handbooks</a>
       <a href="#sobre-mi" data-nav="sobre-mi">Sobre mí</a>
     </nav>
@@ -610,7 +617,7 @@ footer.site { position: relative; padding-block: var(--f34) calc(var(--f21) + en
             </figure>
           </div>
         </div>
-        <div class="in-cue" id="in-cue" aria-hidden="true" style="opacity:0"><svg class="in-load" id="in-load" viewBox="-1 0.09 91 89.91"><use href="#sym-a" class="ol"/><use href="#sym-a" class="fl" id="in-load-fill"/></svg><span class="label" id="in-cue-txt">Desliza</span></div>
+        <div class="in-cue" id="in-cue"><svg class="in-load" id="in-load" viewBox="-1 0.09 91 89.91"><use href="#sym-a" class="ol"/><use href="#sym-a" class="fl" id="in-load-fill"/></svg><button type="button" class="label" id="in-skip">Saltar</button></div>
       </div>
     </div>
   </section>
@@ -653,6 +660,17 @@ footer.site { position: relative; padding-block: var(--f34) calc(var(--f21) + en
       </div>
       <div class="list mat reveal" id="posts-home"></div>
       <a class="more-link label" href="#articulos">Ver todos los artículos →</a>
+    </div>
+  </section>
+
+  <section class="section wrap" aria-labelledby="arth-t">
+    <div class="inner">
+      <div class="section-head reveal">
+        <div><span class="label eyebrow">Artefactos</span><h2 id="arth-t">Para usar, no solo para leer<span class="dot">.</span></h2></div>
+        <p>Algunos posts traen una página para probar la herramienta con tu producto. El link va en el primer comentario; aquí quedan todas.</p>
+      </div>
+      <div class="list mat reveal" id="art-home"></div>
+      <a class="more-link label" href="#artefactos">Ver todos los artefactos →</a>
     </div>
   </section>
 
@@ -727,6 +745,18 @@ footer.site { position: relative; padding-block: var(--f34) calc(var(--f21) + en
       </div>
       <div class="list mat" id="posts-all"></div>
       <a class="more-link label" href="https://www.linkedin.com/in/andresnorona/" target="_blank" rel="noopener">Los artículos nacen en LinkedIn ↗</a>
+    </div>
+  </section>
+</main>
+
+<!-- ===================== ARTEFACTOS ===================== -->
+<main id="vista-artefactos" data-view="artefactos" hidden>
+  <section class="section wrap">
+    <i class="orb o-oceano" aria-hidden="true" style="width:700px;height:700px;right:-300px;top:-160px;--speed:-.1"></i>
+    <div class="inner">
+      <div class="page-head"><span class="label eyebrow">Artefactos</span><h1>Para usar, no solo para leer<span class="dot">.</span></h1><p>Un post te deja una idea. Un artefacto te deja una página para probarla con tu producto, hoy, en diez minutos. Cada uno sale en el primer comentario de su post y se queda aquí.</p></div>
+      <div class="list mat" id="art-all"></div>
+      <a class="more-link label" href="https://www.linkedin.com/in/andresnorona/" target="_blank" rel="noopener">Los artefactos nacen en LinkedIn ↗</a>
     </div>
   </section>
 </main>
@@ -979,6 +1009,19 @@ footer.site { position: relative; padding-block: var(--f34) calc(var(--f21) + en
     e.min = Math.max(1, Math.round(t.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length / 200));
     e.i = i;
   });
+  var ARTEFACTOS = [
+    { n: '01', titulo: 'Las tres dimensiones de un job', desc: 'Una página para ver qué parte de un momento resuelve tu producto: lo funcional, lo emocional y lo social.', fecha: '5 nov 2026', herramienta: 'Jobs to be Done',
+      url: 'https://andynz.com/artefactos/tres-dimensiones/', post: 'https://www.linkedin.com/feed/update/urn:li:activity:7524085862817599488/' }
+  ];
+  function artRowHTML(a) {
+    return '<a class="row" href="' + a.url + '">' +
+      '<div class="thumb num"><span>' + a.n + '</span></div>' +
+      '<div class="txt"><h3>' + a.titulo + '</h3><p>' + a.fecha + '<span class="tema"> · ' + a.herramienta + ' · ' + a.desc + '</span></p></div>' +
+      '<svg class="chev" viewBox="0 0 20 20" aria-hidden="true"><path d="m8 5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+    '</a>';
+  }
+  document.getElementById('art-home').innerHTML = ARTEFACTOS.slice(0, 2).map(artRowHTML).join('');
+  document.getElementById('art-all').innerHTML = ARTEFACTOS.map(artRowHTML).join('');
   var BY_ID = {}; ESSAYS.forEach(function (e) { BY_ID[e.id] = e; });
   var ARROW = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
@@ -1040,7 +1083,7 @@ footer.site { position: relative; padding-block: var(--f34) calc(var(--f21) + en
   document.getElementById('hb-home').innerHTML = hbCard(HANDBOOKS[0]);
 
   /* ---------- Rutas: inicio, artículos, handbooks, sobre mí y cada artículo ---------- */
-  var VIEWS = { inicio: 'vista-inicio', articulos: 'vista-articulos', handbooks: 'vista-handbooks', 'sobre-mi': 'vista-sobre-mi' };
+  var VIEWS = { inicio: 'vista-inicio', articulos: 'vista-articulos', artefactos: 'vista-artefactos', handbooks: 'vista-handbooks', 'sobre-mi': 'vista-sobre-mi' };
   var vEnsayo = document.getElementById('vista-ensayo');
   var vInicio = document.getElementById('vista-inicio');
   var essayEl = document.getElementById('essay'), coverEl = document.getElementById('essay-cover');
@@ -1079,7 +1122,7 @@ footer.site { position: relative; padding-block: var(--f34) calc(var(--f21) + en
     navLinks.forEach(function (a) { if (a.getAttribute('data-nav') === navName) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
     dock.hidden = name !== 'ensayo';
     if (name !== 'ensayo') current = null;
-    document.title = { inicio: 'Andy Noroña', articulos: 'Artículos · Andy Noroña', handbooks: 'Handbooks · Andy Noroña', 'sobre-mi': 'Sobre mí · Andy Noroña' }[name] || document.title;
+    document.title = { inicio: 'Andy Noroña', articulos: 'Artículos · Andy Noroña', artefactos: 'Artefactos · Andy Noroña', handbooks: 'Handbooks · Andy Noroña', 'sobre-mi': 'Sobre mí · Andy Noroña' }[name] || document.title;
   }
   function route() {
     var h = (location.hash || '').slice(1);
@@ -1191,43 +1234,56 @@ footer.site { position: relative; padding-block: var(--f34) calc(var(--f21) + en
     });
   }
 
-  /* ---------- Intro: la historia que se pinta con el scroll ---------- */
+  /* ---------- Intro: la historia se cuenta sola (unos 11 s); cualquier gesto la salta ---------- */
   var intro = document.getElementById('intro'), heroEl = document.getElementById('inicio'), vInicio = document.getElementById('vista-inicio');
-  var inWrap = document.getElementById('in-wrap'), inSym = document.getElementById('in-sym'), inSymUse = document.getElementById('in-sym-use');
+  var inSym = document.getElementById('in-sym'), inSymUse = document.getElementById('in-sym-use');
   var inCaps = Array.prototype.slice.call(document.querySelectorAll('#in-cap p'));
   var inCardW = document.getElementById('in-card-w'), inCard = document.getElementById('in-card');
   var inHead = inCard.querySelector('header'), inRows = Array.prototype.slice.call(inCard.querySelectorAll('ol > li:not(.gap)'));
   var inGap = inCard.querySelector('li.gap'), inGapSpans = Array.prototype.slice.call(inGap.querySelectorAll('span')), inFoot = inCard.querySelector('footer');
-  var inCue = document.getElementById('in-cue'), inCueTxt = document.getElementById('in-cue-txt'), inLoadFill = document.getElementById('in-load-fill');
+  var inCue = document.getElementById('in-cue'), inLoadFill = document.getElementById('in-load-fill');
   var symLen = 600; try { symLen = document.getElementById('sym-a').getTotalLength(); } catch (err) {}
   inSymUse.setAttribute('stroke-dasharray', String(symLen));
   inSymUse.setAttribute('stroke-dashoffset', String(symLen));
-  if (!reduce && inSymUse.animate) {
-    inSymUse.animate([{ strokeDashoffset: symLen }, { strokeDashoffset: 0 }], { duration: 1500, delay: 200, easing: 'cubic-bezier(.3,.7,.2,1)', fill: 'forwards' });
-    inSymUse.animate([{ fillOpacity: 0 }, { fillOpacity: 1 }], { duration: 700, delay: 1500, easing: 'ease-out', fill: 'forwards' });
-  } else { inSymUse.setAttribute('stroke-dashoffset', '0'); inSymUse.style.fillOpacity = '1'; }
-  inSymUse.style.fill = 'currentColor';
+  inSymUse.style.fill = 'currentColor'; inSymUse.style.fillOpacity = '0';
+  var symAnims = [];
+  function drawSymbol() {
+    symAnims.forEach(function (an) { an.cancel(); });
+    if (!inSymUse.animate) { inSymUse.setAttribute('stroke-dashoffset', '0'); inSymUse.style.fillOpacity = '1'; return; }
+    symAnims = [
+      inSymUse.animate([{ strokeDashoffset: symLen }, { strokeDashoffset: 0 }], { duration: 1500, delay: 200, easing: 'cubic-bezier(.3,.7,.2,1)', fill: 'forwards' }),
+      inSymUse.animate([{ fillOpacity: 0 }, { fillOpacity: 1 }], { duration: 700, delay: 1500, easing: 'ease-out', fill: 'forwards' })
+    ];
+  }
   var rowH = 44, introSeen = false, introStarted = false;
+  var INTRO_HOLD = 2.0, INTRO_END = 11.0, INTRO_DONE = .92;
+  var introT0 = 0, introP = 0, introRunning = false, skipFrom = null, skipT = 0;
+  function now() { return (window.performance && performance.now) ? performance.now() : Date.now(); }
   function measureIntro() { if (inRows[0]) rowH = inRows[0].offsetHeight || 44; }
   function tween(p, a, b) { return Math.min(1, Math.max(0, (p - a) / (b - a))); }
   function ease(t) { return t < .5 ? 2 * t * t : -1 + (4 - 2 * t) * t; }
   function introActive() { return !vInicio.hidden && !intro.classList.contains('done'); }
-  function finishIntro() { heroEl.classList.remove('hold'); root.classList.remove('intro-on'); }
-  var introT0 = (window.performance && performance.now) ? performance.now() : 0, autoP = 0;
-  function autoTick() {
-    var t = ((window.performance && performance.now) ? performance.now() - introT0 : 4000) / 1000;
-    autoP = .18 * tween(t, 1.9, 3.4);
-    introFrame(window.scrollY);
-    if (t < 3.5 && introActive()) requestAnimationFrame(autoTick);
+  function finishIntro() { introRunning = false; heroEl.classList.remove('hold'); root.classList.remove('intro-on'); }
+  function endIntro() { intro.classList.add('done'); finishIntro(); }
+  function startPrologue() {
+    if (reduce) { endIntro(); return; }
+    introT0 = now(); introP = 0; skipFrom = null; introRunning = true;
+    intro.style.opacity = '1'; root.classList.add('intro-on'); heroEl.classList.add('hold');
+    drawSymbol(); introFrame(0); requestAnimationFrame(introTick);
   }
-  function startPrologue() { introT0 = (window.performance && performance.now) ? performance.now() : 0; autoP = 0; if (!reduce) requestAnimationFrame(autoTick); }
-  function introFrame(y) {
-    if (!introActive()) { finishIntro(); return; }
-    var track = intro.offsetHeight - window.innerHeight;
-    if (track <= 0 || document.documentElement.scrollHeight <= window.innerHeight + 2) { intro.classList.add('done'); finishIntro(); return; }
-    var p = Math.min(1, Math.max(0, y / track));
-    p = Math.max(p, autoP);
-    /* símbolo: se dibuja y se va */
+  function introTick() {
+    if (!introActive() || !introRunning) return;
+    var t = (now() - introT0) / 1000;
+    var p = tween(t, INTRO_HOLD, INTRO_END) * INTRO_DONE;
+    if (skipFrom !== null) p = Math.max(p, skipFrom + (INTRO_DONE - skipFrom) * tween((now() - skipT) / 1000, 0, .7));
+    introP = Math.min(INTRO_DONE, p);
+    introFrame(introP);
+    if (introP >= INTRO_DONE) { endIntro(); return; }
+    requestAnimationFrame(introTick);
+  }
+  function skipIntro() { if (!introRunning || skipFrom !== null) return; skipFrom = introP; skipT = now(); }
+  function introFrame(p) {
+    /* símbolo: se dibuja solo (WAAPI) y luego se va */
     inSym.style.opacity = (1 - tween(p, .07, .12)).toFixed(3);
     inSym.style.transform = 'scale(' + (1 - .1 * tween(p, .07, .12)).toFixed(3) + ')';
     /* tarjeta entra */
@@ -1257,14 +1313,18 @@ footer.site { position: relative; padding-block: var(--f34) calc(var(--f21) + en
       el.style.opacity = o.toFixed(3);
       el.style.transform = 'translateY(' + ((1 - tween(p, r[0], r[1])) * 13).toFixed(1) + 'px)';
     });
-    inCue.style.opacity = ((reduce ? 1 : tween(p, .15, .18)) * (1 - tween(p, .80, .88))).toFixed(3);
-    inCueTxt.style.opacity = (1 - tween(p, .19, .22)).toFixed(3);
-    inLoadFill.style.setProperty('--fill', ((1 - tween(p, .18, .80)) * 100).toFixed(1) + '%');
-    /* la página sube sobre la historia */
-    inWrap.style.opacity = (1 - tween(p, .80, .90)).toFixed(3);
-    heroEl.classList.toggle('hold', !reduce && p < .85);
-    root.classList.toggle('intro-on', p < .92);
+    /* Ã como barra de carga y "Saltar" */
+    inCue.style.opacity = (1 - tween(p, .80, .86)).toFixed(3);
+    inLoadFill.style.setProperty('--fill', ((1 - tween(p, 0, .82)) * 100).toFixed(1) + '%');
+    /* la historia se funde y aparece la página */
+    intro.style.opacity = (1 - tween(p, .82, INTRO_DONE)).toFixed(3);
+    heroEl.classList.toggle('hold', p < .84);
+    root.classList.toggle('intro-on', p < .90);
   }
+  intro.addEventListener('wheel', skipIntro, { passive: true });
+  intro.addEventListener('touchmove', skipIntro, { passive: true });
+  intro.addEventListener('pointerdown', skipIntro);
+  document.addEventListener('keydown', function (ev) { if (introRunning && !ev.metaKey && !ev.ctrlKey && !ev.altKey) skipIntro(); });
   window.addEventListener('resize', measureIntro);
   measureIntro();
 
@@ -1274,8 +1334,8 @@ footer.site { position: relative; padding-block: var(--f34) calc(var(--f21) + en
   var lastY = window.scrollY, ticking = false;
   function onScroll() {
     var y = window.scrollY;
-    introFrame(y);
-    var hy = introActive() ? Math.max(0, y - heroEl.offsetTop) : y;
+    if (!introActive()) finishIntro();
+    var hy = y;
     root.classList.toggle('scrolled', hy > 24);
     root.classList.toggle('compact', hy > 160);
     if (!reduce) {
