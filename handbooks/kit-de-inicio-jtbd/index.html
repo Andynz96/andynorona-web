@@ -15,6 +15,7 @@
 <meta property="og:locale" content="es_LA">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#0a0a0b">
+<script src="/tag.js"></script>
 <style>html{-webkit-text-size-adjust:100%}body{margin:0}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -692,7 +693,7 @@ footer.site { position: relative; padding-block: var(--f34) calc(var(--f89) + en
               <div class="inrow"><input class="txt-in" id="map-add" maxlength="34" placeholder="Por ejemplo, una tanda con amigos"><button type="button" class="mini solid" id="map-add-btn">Agregar</button></div>
             </div>
             <div class="rivals" id="rivals" aria-label="Rivales en el mapa"></div>
-            <div class="lab-foot"><span class="status" id="map-status" role="status"></span><button type="button" class="mini" id="map-reset">Volver al ejemplo</button><button type="button" class="mini" id="map-send">Llevar a mi hoja</button></div>
+            <div class="lab-foot"><span class="status" id="map-status" role="status"></span><button type="button" class="mini" id="map-reset">Volver al ejemplo</button><button type="button" class="mini" id="map-send" data-track="hb01_mapa_a_hoja">Llevar a mi hoja</button></div>
           </div>
         </div>
       </div>
@@ -723,7 +724,7 @@ footer.site { position: relative; padding-block: var(--f34) calc(var(--f89) + en
               <span class="status" id="tl-status"></span>
               <button type="button" class="mini" id="tl-prev" aria-label="Etapa anterior">←</button>
               <button type="button" class="mini" id="tl-next" aria-label="Etapa siguiente">→</button>
-              <button type="button" class="mini" id="tl-here" aria-pressed="false">Aquí aparecemos hoy</button>
+              <button type="button" class="mini" id="tl-here" data-track="hb01_aqui_aparecemos" aria-pressed="false">Aquí aparecemos hoy</button>
             </div>
             <p class="tl-note" id="tl-note">Marca la etapa en la que tu equipo suele aparecer hoy frente al cliente.</p>
           </div>
@@ -809,7 +810,7 @@ footer.site { position: relative; padding-block: var(--f34) calc(var(--f89) + en
             <span class="note">Se guarda solo en este navegador.</span>
             <span class="status" id="ws-status" role="status"></span>
             <button type="button" class="mini" id="ws-clear">Borrar</button>
-            <button type="button" class="mini solid" id="ws-copy">Copiar mis respuestas</button>
+            <button type="button" class="mini solid" id="ws-copy" data-track="hb01_copiar_hoja">Copiar mis respuestas</button>
           </footer>
         </form>
       </div>

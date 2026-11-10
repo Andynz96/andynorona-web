@@ -15,7 +15,8 @@
 <meta property="og:locale" content="es_LA">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#0a0a0b">
-<style>html{-webkit-text-size-adjust:100%}body{margin:0}</style>
+<script src="/tag.js"></script>
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
@@ -276,6 +277,9 @@ input:focus, textarea:focus { outline: 0; box-shadow: inset 0 0 0 1px var(--ink-
 <script>
 (function () {
   var $ = function (id) { return document.getElementById(id); };
+  /* Medición: el ID vive en /tag.js, que solo carga en andynz.com */
+  function track(name, params) { if (window.anTrack) window.anTrack(name, params || {}); }
+  var completoEnviado = false;
   var DIMS = ['funcional', 'emocional', 'social'];
   var LABELS = { si: 'Lo resuelve', medias: 'A medias', no: 'No lo toca' };
   var KEY = 'an-artefacto-01';
@@ -322,11 +326,12 @@ input:focus, textarea:focus { outline: 0; box-shadow: inset 0 0 0 1px var(--ink-
     b.addEventListener('click', function () {
       var d = b.closest('.dim').getAttribute('data-dim'), v = b.getAttribute('data-v');
       state.estado[d] = state.estado[d] === v ? '' : v; save(); render();
+      if (!completoEnviado && DIMS.every(function (k) { return state.estado[k]; })) { completoEnviado = true; track('artefacto_completo', { artefacto: '01', resueltas: DIMS.filter(function (k) { return state.estado[k] === 'si'; }).length }); }
     });
   });
   $('ejemplo').addEventListener('click', function () {
     Object.keys(EJEMPLO).forEach(function (k) { state[k] = EJEMPLO[k]; $(k === 'producto' || k === 'momento' ? k : 'd-' + k).value = EJEMPLO[k]; });
-    save(); render();
+    save(); render(); track('artefacto_ejemplo', { artefacto: '01' });
   });
 
   function fichaTexto() {
@@ -340,13 +345,13 @@ input:focus, textarea:focus { outline: 0; box-shadow: inset 0 0 0 1px var(--ink-
     return lines.join('\n');
   }
   $('copiar').addEventListener('click', function () {
-    var t = fichaTexto(), btn = $('copiar');
+    var t = fichaTexto(), btn = $('copiar'); track('ficha_copiar', { artefacto: '01' });
     function ok() { btn.textContent = 'Copiada'; setTimeout(function () { btn.textContent = 'Copiar la ficha'; }, 1800); }
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(ok, function () { fallback(t); ok(); });
     else { fallback(t); ok(); }
   });
   function fallback(t) { var ta = document.createElement('textarea'); ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); } catch (e) {} document.body.removeChild(ta); }
-  $('pdf').addEventListener('click', function () { window.print(); });
+  $('pdf').addEventListener('click', function () { track('ficha_pdf', { artefacto: '01' }); window.print(); });
 
   render();
 })();

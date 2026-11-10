@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-spa>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -15,6 +15,7 @@
 <meta property="og:locale" content="es_LA">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0a0a0b">
+<script src="/tag.js"></script>
 <style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}</style>
 <script>document.documentElement.classList.add('intro-on');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -872,32 +873,11 @@ footer.site { position: relative; padding-block: var(--f34) calc(var(--f21) + en
   var NEWSLETTER_URL = '';
   var LINKEDIN_URL = 'https://www.linkedin.com/in/andresnorona/';
 
-  /* ---------- Medición: un solo ID. "GTM-XXXX" carga Tag Manager; "G-XXXX" carga GA4 directo. Vacío = no se carga nada. ---------- */
-  var TAG_ID = '';
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { window.dataLayer.push(arguments); }
-  function track(name, params) {
-    params = params || {};
-    if (!TAG_ID) return;
-    if (TAG_ID.indexOf('GTM-') === 0) { params.event = name; window.dataLayer.push(params); }
-    else gtag('event', name, params);
-  }
+  /* ---------- Medición: el ID vive en /tag.js, que solo carga en andynz.com ---------- */
+  function track(name, params) { if (window.anTrack) window.anTrack(name, params || {}); }
   function trackPage(path, title) {
-    track('page_view', { page_path: path, page_title: title, page_location: location.origin + location.pathname + path.replace(/^\//, '') });
+    track('page_view', { page_path: path, page_title: title, page_location: location.origin + '/' + path.replace(/^\//, '') });
   }
-  (function loadTag() {
-    if (!TAG_ID || !/^(GTM|G)-[A-Z0-9]+$/.test(TAG_ID)) return;
-    var sc = document.createElement('script'); sc.async = true;
-    if (TAG_ID.indexOf('GTM-') === 0) {
-      window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-      sc.src = 'https://www.googletagmanager.com/gtm.js?id=' + TAG_ID;
-    } else {
-      sc.src = 'https://www.googletagmanager.com/gtag/js?id=' + TAG_ID;
-      gtag('js', new Date());
-      gtag('config', TAG_ID, { send_page_view: false, anonymize_ip: true });
-    }
-    document.head.appendChild(sc);
-  })();
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var root = document.documentElement;
 
