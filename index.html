@@ -871,6 +871,33 @@ footer.site { position: relative; padding-block: var(--f34) calc(var(--f21) + en
   /* ---------- Ajustes ---------- */
   var NEWSLETTER_URL = '';
   var LINKEDIN_URL = 'https://www.linkedin.com/in/andresnorona/';
+
+  /* ---------- Medición: un solo ID. "GTM-XXXX" carga Tag Manager; "G-XXXX" carga GA4 directo. Vacío = no se carga nada. ---------- */
+  var TAG_ID = '';
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  function track(name, params) {
+    params = params || {};
+    if (!TAG_ID) return;
+    if (TAG_ID.indexOf('GTM-') === 0) { params.event = name; window.dataLayer.push(params); }
+    else gtag('event', name, params);
+  }
+  function trackPage(path, title) {
+    track('page_view', { page_path: path, page_title: title, page_location: location.origin + location.pathname + path.replace(/^\//, '') });
+  }
+  (function loadTag() {
+    if (!TAG_ID || !/^(GTM|G)-[A-Z0-9]+$/.test(TAG_ID)) return;
+    var sc = document.createElement('script'); sc.async = true;
+    if (TAG_ID.indexOf('GTM-') === 0) {
+      window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+      sc.src = 'https://www.googletagmanager.com/gtm.js?id=' + TAG_ID;
+    } else {
+      sc.src = 'https://www.googletagmanager.com/gtag/js?id=' + TAG_ID;
+      gtag('js', new Date());
+      gtag('config', TAG_ID, { send_page_view: false, anonymize_ip: true });
+    }
+    document.head.appendChild(sc);
+  })();
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var root = document.documentElement;
 
@@ -1063,12 +1090,12 @@ footer.site { position: relative; padding-block: var(--f34) calc(var(--f21) + en
 
   /* ---------- Handbooks ---------- */
   var HANDBOOKS = [
-    { n: '01', titulo: 'En preparación', herramienta: '', autor: '', estado: 'pronto', gx: '85%', gy: '100%' }
+    { n: '01', titulo: 'Kit de inicio JTBD', herramienta: 'Kit de inicio JTBD', autor: '', estado: 'disponible', url: 'https://andynz.com/handbooks/kit-de-inicio-jtbd/', gx: '85%', gy: '100%' }
   ];
   function hbCard(h) {
     var on = h.estado === 'disponible';
-    var dest = on && NEWSLETTER_URL ? NEWSLETTER_URL : '#newsletter';
-    var ext = dest.indexOf('http') === 0 ? ' target="_blank" rel="noopener"' : '';
+    var dest = on && h.url ? h.url : (on && NEWSLETTER_URL ? NEWSLETTER_URL : '#newsletter');
+    var ext = dest.indexOf('http') === 0 && dest.indexOf('andynz.com') < 0 ? ' target="_blank" rel="noopener"' : '';
     return '<a class="hb-card mat" href="' + dest + '"' + ext + '>' +
       '<div class="cover hb-cover">' +
         '<div class="grid"></div><div class="glow" style="--gx:' + h.gx + ';--gy:' + h.gy + '"></div>' +
@@ -1076,7 +1103,7 @@ footer.site { position: relative; padding-block: var(--f34) calc(var(--f21) + en
         '<b>' + h.titulo + '<span class="dot">.</span></b><span class="label" style="color:var(--on-glass-2)">Andy Noroña</span></div></div>' +
       '</div>' +
       '<div class="meta"><h3>Handbook ' + h.n + (h.herramienta ? ': ' + h.herramienta : '') + '</h3>' +
-      '<span class="label state' + (on ? ' on' : '') + '">' + (on ? 'Disponible · Recibir por correo' : 'Pronto · Avísame cuando salga') + '</span></div>' +
+      '<span class="label state' + (on ? ' on' : '') + '">' + (on ? (h.url ? 'Disponible · Abrir el handbook' : 'Disponible · Recibir por correo') : 'Pronto · Avísame cuando salga') + '</span></div>' +
     '</a>';
   }
   document.getElementById('hb-grid').innerHTML = HANDBOOKS.map(hbCard).join('');
@@ -1132,6 +1159,7 @@ footer.site { position: relative; padding-block: var(--f34) calc(var(--f21) + en
       if (current !== e.id) { renderEssay(e); current = e.id; }
       showView('ensayo'); document.title = e.title + ' · Andy Noroña';
       window.scrollTo(0, 0);
+      trackPage('/#' + e.id, document.title); track('article_open', { article_id: e.id, article_title: e.title, pilar: e.pilar });
     } else if (h === 'newsletter') {
       if (!currentView) showView('inicio');
       document.getElementById('newsletter').scrollIntoView();
@@ -1141,10 +1169,20 @@ footer.site { position: relative; padding-block: var(--f34) calc(var(--f21) + en
       else if (currentView === 'inicio') introSeen = true;
       showView(name);
       window.scrollTo(0, 0);
+      trackPage(name === 'inicio' ? '/' : '/#' + name, document.title);
     }
     currentView = e ? 'ensayo' : (VIEWS[h] ? h : (h === 'newsletter' ? currentView || 'inicio' : 'inicio'));
     onScroll();
   }
+  document.addEventListener('click', function (ev) {
+    var a = ev.target.closest ? ev.target.closest('a') : null;
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (a.classList.contains('hb-card')) track('handbook_click', { handbook_url: href, handbook_title: (a.querySelector('h3') || {}).textContent || '' });
+    else if (a.closest('#art-home, #art-all')) track('artifact_click', { artifact_url: href, artifact_title: (a.querySelector('h3') || {}).textContent || '' });
+    else if (a.classList.contains('btn')) track('cta_click', { cta_text: (a.textContent || '').trim(), cta_href: href, view: currentView || 'inicio' });
+    else if (/linkedin\.com/.test(href)) track('outbound_linkedin', { link_url: href, view: currentView || 'inicio' });
+  });
   window.addEventListener('hashchange', route);
   document.querySelector('.brand').addEventListener('click', function (ev) {
     introSeen = false; introStarted = false;
@@ -1191,7 +1229,7 @@ footer.site { position: relative; padding-block: var(--f34) calc(var(--f21) + en
     else { root.removeAttribute('data-lectura'); root.setAttribute('data-theme', m); save('an-modo-dia', m); }
     save('an-modo', m); sync(animate);
   }
-  segBtns.forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-modo'), true); }); });
+  segBtns.forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-modo'), true); track('theme_change', { theme: b.getAttribute('data-modo') }); }); });
   cafeBtn.addEventListener('click', function () { apply(mode() === 'cafe' ? (load('an-modo-dia') || 'dark') : 'cafe', true); });
   var saved = load('an-modo');
   if (saved === 'dark' || saved === 'light' || saved === 'cafe') apply(saved, false); else sync(false);
@@ -1264,7 +1302,7 @@ footer.site { position: relative; padding-block: var(--f34) calc(var(--f21) + en
   function ease(t) { return t < .5 ? 2 * t * t : -1 + (4 - 2 * t) * t; }
   function introActive() { return !vInicio.hidden && !intro.classList.contains('done'); }
   function finishIntro() { introRunning = false; heroEl.classList.remove('hold'); root.classList.remove('intro-on'); }
-  function endIntro() { intro.classList.add('done'); finishIntro(); }
+  function endIntro() { if (introRunning) track('intro_end', { how: skipFrom !== null ? 'skipped' : 'completed', at: Math.round(introP * 100) }); intro.classList.add('done'); finishIntro(); }
   function startPrologue() {
     if (reduce) { endIntro(); return; }
     introT0 = now(); introP = 0; skipFrom = null; introRunning = true;

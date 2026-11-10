@@ -1,0 +1,1187 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kit de inicio JTBD · Handbook 01 · Andy Noroña</title>
+<meta name="description" content="Handbook 01 de Andy Noroña: cuatro herramientas de Jobs to be Done para banca y fintech, con ejercicios interactivos y una hoja de trabajo.">
+<link rel="canonical" href="https://andynz.com/handbooks/kit-de-inicio-jtbd/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://andynz.com/handbooks/kit-de-inicio-jtbd/">
+<meta property="og:title" content="Kit de inicio JTBD · Handbook 01">
+<meta property="og:description" content="Handbook 01 de Andy Noroña: cuatro herramientas de Jobs to be Done para banca y fintech, con ejercicios interactivos y una hoja de trabajo.">
+<meta property="og:image" content="https://andynz.com/fotos/andy-sobre-mi.jpg">
+<meta property="og:locale" content="es_LA">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#0a0a0b">
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: un campo de luz (aurora) vive detrás del contenido y se mueve con el scroll.
+   El contenido va sobre material estándar (desenfoque y tinte). El liquid glass queda
+   solo para la capa funcional que flota: barra, selector de modo, botones, chips sobre
+   imágenes, flechas y la barra de lectura. Dark es el tema principal. */
+:root {
+  --bg: #0a0a0b;
+  --bg-2: #111113;
+  --ink: #f4f1ec;
+  --ink-2: #a39d95;
+  --ink-3: #6f6a64;
+  --hair: rgba(255, 255, 255, .09);
+  --naranja: #f35f1f;
+  --naranja-text: #ff7a3d;
+  --dorado: #fcae31;
+  --aqua: #0babcf;
+  --oceano: #054d7c;
+  --grid-line: rgba(243, 95, 31, .14);
+  --cover-bg: #0e0e10;
+
+  --orb-1: .5; --orb-2: .34; --orb-3: .4;
+
+  /* Material estándar (capa de contenido) */
+  --m-fill: rgba(255, 255, 255, .055);
+  --m-edge: rgba(255, 255, 255, .08);
+
+  /* Liquid glass (capa funcional) */
+  --g-tint: rgba(16, 16, 18, .42);
+  --g-tint-clear: rgba(16, 16, 18, .18);
+  --g-tint-dim: rgba(10, 10, 11, .52);
+  --g-rim-hi: rgba(255, 255, 255, .38);
+  --g-rim-lo: rgba(255, 255, 255, .07);
+  --g-edge: rgba(255, 255, 255, .14);
+  --g-spec: rgba(255, 255, 255, .16);
+  --g-shadow: rgba(0, 0, 0, .5);
+  --g-press: rgba(255, 255, 255, .08);
+  --on-glass: #f7f4ef;
+  --on-glass-2: rgba(247, 244, 239, .66);
+  --grain: .045;
+  color-scheme: dark;
+
+  --font-sans: "Geist", "SF Pro Display", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+  --f8: 8px; --f13: 13px; --f21: 21px; --f34: 34px; --f55: 55px; --f89: 89px; --f144: 144px;
+  --page: 1240px;
+  --measure: 680px;
+  --body-size: 17px;
+  --body-leading: 1.6;
+  /* Escala tipográfica: seis pasos, como en iOS */
+  --t-display: clamp(32px, 1.6vw + 24px, 48px);
+  --t-title: clamp(26px, .5vw + 22px, 30px);
+  --t-headline: 19px;
+  --t-body: 17px;
+  --t-sub: 15px;
+  --t-cap: 12px;
+  --spring: cubic-bezier(.2, .9, .25, 1);
+  --spring-soft: cubic-bezier(.22, 1, .36, 1);
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f4f2ee; --bg-2: #ebe7e0; --ink: #121212; --ink-2: #5f5a53; --ink-3: #8a847c;
+    --hair: rgba(18, 18, 18, .09); --naranja: #d9501a; --naranja-text: #b83a00; --dorado: #b87a0c; --aqua: #08829e;
+    --grid-line: rgba(217, 80, 26, .16); --cover-bg: #efeae2;
+    --orb-1: .42; --orb-2: .34; --orb-3: .22;
+    --m-fill: rgba(255, 255, 255, .55); --m-edge: rgba(18, 18, 18, .07);
+    --g-tint: rgba(255, 255, 255, .46); --g-tint-clear: rgba(255, 255, 255, .22); --g-tint-dim: rgba(255, 255, 255, .62);
+    --g-rim-hi: rgba(255, 255, 255, .95); --g-rim-lo: rgba(18, 18, 18, .05); --g-edge: rgba(255, 255, 255, .7);
+    --g-spec: rgba(255, 255, 255, .75); --g-shadow: rgba(70, 40, 15, .16); --g-press: rgba(18, 18, 18, .05);
+    --on-glass: #121212; --on-glass-2: rgba(18, 18, 18, .62); --grain: .05;
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #f4f2ee; --bg-2: #ebe7e0; --ink: #121212; --ink-2: #5f5a53; --ink-3: #8a847c;
+  --hair: rgba(18, 18, 18, .09); --naranja: #d9501a; --naranja-text: #b83a00; --dorado: #b87a0c; --aqua: #08829e;
+  --grid-line: rgba(217, 80, 26, .16); --cover-bg: #efeae2;
+  --orb-1: .42; --orb-2: .34; --orb-3: .22;
+  --m-fill: rgba(255, 255, 255, .55); --m-edge: rgba(18, 18, 18, .07);
+  --g-tint: rgba(255, 255, 255, .46); --g-tint-clear: rgba(255, 255, 255, .22); --g-tint-dim: rgba(255, 255, 255, .62);
+  --g-rim-hi: rgba(255, 255, 255, .95); --g-rim-lo: rgba(18, 18, 18, .05); --g-edge: rgba(255, 255, 255, .7);
+  --g-spec: rgba(255, 255, 255, .75); --g-shadow: rgba(70, 40, 15, .16); --g-press: rgba(18, 18, 18, .05);
+  --on-glass: #121212; --on-glass-2: rgba(18, 18, 18, .62); --grain: .05;
+  color-scheme: light;
+}
+:root[data-lectura="cafe"] {
+  --bg: #ece1cd; --bg-2: #e4d6bf; --ink: #2b1d12; --ink-2: #6b5644; --ink-3: #8c7662;
+  --hair: rgba(43, 29, 18, .1); --naranja: #b9501c; --naranja-text: #a3400c; --dorado: #a8721a; --aqua: #3f7f86;
+  --grid-line: rgba(185, 80, 28, .13); --cover-bg: #e6d8c0;
+  --orb-1: .22; --orb-2: .2; --orb-3: .08;
+  --m-fill: rgba(255, 250, 240, .45); --m-edge: rgba(43, 29, 18, .08);
+  --g-tint: rgba(245, 236, 221, .55); --g-tint-clear: rgba(245, 236, 221, .3); --g-tint-dim: rgba(245, 236, 221, .7);
+  --g-rim-hi: rgba(255, 252, 245, .9); --g-rim-lo: rgba(43, 29, 18, .06); --g-edge: rgba(255, 250, 240, .6);
+  --g-spec: rgba(255, 252, 245, .7); --g-shadow: rgba(60, 35, 15, .16); --g-press: rgba(43, 29, 18, .06);
+  --on-glass: #2b1d12; --on-glass-2: rgba(43, 29, 18, .64); --grain: .06;
+  color-scheme: light;
+  --body-size: 19px; --body-leading: 1.72; --measure: 620px;
+}
+:root[data-size="1"] { --body-size: 19px; }
+:root[data-size="2"] { --body-size: 21px; }
+:root[data-lectura="cafe"][data-size="1"] { --body-size: 21px; }
+:root[data-lectura="cafe"][data-size="2"] { --body-size: 23px; }
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-padding-top: 110px; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--font-sans); font-size: 17px; line-height: 1.55;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  transition: background-color .5s ease, color .5s ease;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--bg); }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+img { max-width: 100%; }
+:focus-visible { outline: 2px solid var(--naranja); outline-offset: 3px; border-radius: 8px; }
+::selection { background: var(--naranja); color: #0a0a0b; }
+.page { position: relative; overflow-x: clip; }
+.wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.inner { max-width: var(--page); margin: 0 auto; }
+.label { font-family: var(--font-mono); font-weight: 500; font-size: 12px; line-height: 16px; letter-spacing: .14em; text-transform: uppercase; }
+.muted { color: var(--ink-2); }
+.dot { color: var(--naranja); }
+.two { color: var(--ink-2); }
+.two b { color: var(--ink); font-weight: inherit; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ================= Campo de luz ================= */
+.grain { position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: var(--grain); mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.orb { position: absolute; border-radius: 50%; pointer-events: none; z-index: 0; will-change: transform;
+  transform: translate3d(0, calc(var(--sy, 0) * var(--speed, 0) * 1px), 0); }
+.orb.o-naranja { background: radial-gradient(closest-side, rgba(243, 95, 31, var(--orb-1)), rgba(243, 95, 31, 0)); }
+.orb.o-dorado { background: radial-gradient(closest-side, rgba(252, 174, 49, var(--orb-2)), rgba(252, 174, 49, 0)); }
+.orb.o-oceano { background: radial-gradient(closest-side, rgba(11, 120, 180, var(--orb-3)), rgba(5, 77, 124, 0)); }
+.fib { position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 89px 89px; background-position: center top;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 60% 40%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 60% at 60% 40%, #000 20%, transparent 75%); }
+
+/* ================= Liquid glass ================= */
+/* Un solo filo: medio píxel de borde, una sombra suave y un brillo tenue arriba. Nada más. */
+.lg {
+  --tint: var(--g-tint);
+  --blur: 20px;
+  position: relative; isolation: isolate;
+  background: var(--tint);
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(180%);
+  backdrop-filter: blur(var(--blur)) saturate(180%);
+  color: var(--on-glass);
+  box-shadow: inset 0 0 0 .5px var(--g-edge), 0 8px 24px -14px var(--g-shadow);
+  transition: transform .5s var(--spring), box-shadow .3s ease, background-color .3s ease;
+}
+.lg::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1;
+  background: radial-gradient(160px circle at var(--mx, 30%) var(--my, -30%), var(--g-spec), transparent 70%);
+  opacity: .5;
+}
+.lg.clear { --tint: var(--g-tint-clear); --blur: 10px; }
+.lg.dim { --tint: var(--g-tint-dim); }
+.lg.thick { --blur: 30px; }
+.lg.press:active, .lg.btn:active { transform: scale(.96); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .lg { --tint: var(--g-tint-dim); } }
+@media (prefers-reduced-transparency: reduce) {
+  .lg, .lg.clear { background: var(--bg-2); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .lg::after { display: none; }
+}
+@media (prefers-contrast: more) { .lg { background: var(--bg-2); box-shadow: inset 0 0 0 1px var(--ink-2); } }
+
+/* Material estándar para el contenido */
+.mat { background: var(--m-fill); border-radius: 22px; }
+.sep { height: .5px; background: var(--hair); }
+
+/* Borde de scroll (en vez de una línea divisoria) */
+.edge-top { position: fixed; top: 0; left: 0; right: 0; height: calc(env(safe-area-inset-top, 0px) + 96px); z-index: 39; pointer-events: none;
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  background: linear-gradient(var(--bg), transparent);
+  -webkit-mask-image: linear-gradient(#000 35%, transparent); mask-image: linear-gradient(#000 35%, transparent);
+  opacity: 0; transition: opacity .4s ease; }
+.scrolled .edge-top { opacity: 1; }
+
+/* ================= Barra superior ================= */
+.topbar-wrap { position: fixed; left: 0; right: 0; top: calc(env(safe-area-inset-top, 0px) + 13px); z-index: 40; pointer-events: none; }
+.topbar { pointer-events: auto; max-width: var(--page); margin: 0 auto; border-radius: 999px; display: flex; align-items: center; gap: var(--f21);
+  padding: 6px 6px 6px 20px; min-height: 56px; transition: max-width .7s var(--spring), padding .5s var(--spring), min-height .5s var(--spring), transform .5s var(--spring); }
+.compact .topbar { max-width: 920px; min-height: 50px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--naranja); font-weight: 500; font-size: 16px; letter-spacing: -0.01em; white-space: nowrap; }
+.brand svg { width: 21px; height: auto; flex: none; }
+.nav { display: flex; gap: 2px; margin-right: auto; }
+.nav a { text-decoration: none; color: var(--on-glass-2); font-size: var(--t-sub); padding: 8px 14px; border-radius: 999px; transition: color .2s ease, background-color .2s ease; }
+.nav a[aria-current="page"] { color: var(--on-glass); background: var(--g-press); }
+.nav a:hover { color: var(--on-glass); background: var(--g-press); }
+
+/* Selector con lente que se estira al moverse */
+.seg { position: relative; display: inline-flex; border-radius: 999px; padding: 3px; gap: 2px; background: var(--g-press); margin-left: auto; }
+.seg .lens { position: absolute; top: 3px; bottom: 3px; left: 3px; width: 40px; border-radius: 999px; z-index: 0;
+  background: var(--bg); box-shadow: inset 0 1px 0 var(--g-rim-hi), inset 0 0 0 .5px var(--g-edge), 0 4px 14px -4px var(--g-shadow); }
+.seg button { position: relative; z-index: 1; appearance: none; border: 0; background: transparent; color: var(--on-glass-2); font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: .12em; text-transform: uppercase; padding: 7px 12px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; min-height: 36px;
+  transition: color .25s ease, transform .1s ease-out; }
+.seg button:hover { color: var(--on-glass); }
+.seg button:active { transform: scale(.94); }
+.seg button[aria-pressed="true"] { color: var(--ink); }
+.seg svg { width: 13px; height: 13px; flex: none; }
+@media (max-width: 860px) {
+  .nav { display: none; }
+  .seg button .txt { display: none; }
+  .seg button { padding: 7px 11px; }
+  .topbar { padding-left: 16px; gap: var(--f13); }
+  .compact .topbar { max-width: var(--page); }
+}
+
+/* ================= Botones ================= */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; font-size: var(--t-sub); font-weight: 500; letter-spacing: -0.005em;
+  border-radius: 999px; padding: 14px 24px; min-height: 48px; border: 0; cursor: pointer; transition: transform .45s var(--spring), opacity .2s ease, box-shadow .3s ease; }
+.btn.solid { background: var(--ink); color: var(--bg); box-shadow: 0 10px 30px -12px var(--g-shadow); }
+.btn.solid:hover { transform: translateY(-2px); }
+.btn.solid:active { transform: scale(.96); transition-duration: .1s; }
+.btn.lg:hover { transform: translateY(-2px); }
+.btn .arr { width: 14px; height: 14px; transition: transform .45s var(--spring); }
+.btn:hover .arr { transform: translateX(3px); }
+.actions { display: flex; flex-wrap: wrap; gap: var(--f8); justify-content: center; }
+.section .actions, .hb-card .actions { justify-content: flex-start; }
+
+
+/* ================= Handbook: lo propio de esta página =================
+   Mismo contrato que el sitio: campo de luz detrás, contenido sobre material estándar (.mat),
+   liquid glass solo para la capa que flota (barra, selector, dock, chips). Cada herramienta
+   trae un ejercicio interactivo dentro de una tarjeta de material. */
+.page { position: relative; overflow-x: clip; }
+@supports (animation-timeline: view()) {
+  .reveal { animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 55%; }
+  @keyframes rise { from { transform: translateY(28px); } to { transform: none; } }
+}
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--ink-2); }
+.eyebrow::before { content: ""; width: 21px; height: 1px; background: var(--naranja); }
+:root[data-lectura="cafe"] .nav { display: none; }
+
+/* ---------- Portada ---------- */
+.hb-hero { position: relative; padding-block: 144px var(--f89); }
+.hb-hero .o1 { width: 1100px; height: 1100px; right: -380px; top: -260px; --speed: -.12; }
+.hb-hero .o2 { width: 560px; height: 560px; right: 14%; top: 40%; --speed: -.2; }
+.hb-hero .o3 { width: 900px; height: 900px; left: -480px; bottom: -560px; --speed: -.06; }
+.hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--f55); align-items: center; }
+@media (min-width: 900px) { .hero-grid { grid-template-columns: minmax(0, 1fr) 340px; gap: var(--f89); } }
+.hero-copy { display: grid; justify-items: start; gap: var(--f21); }
+.hero-copy h1 { font-weight: 600; font-size: clamp(38px, 3.4vw + 20px, 68px); line-height: 1.03; letter-spacing: -0.035em; margin: 0; text-wrap: balance; max-width: 15ch; }
+.hero-copy h1 .w { display: inline-block; animation: wordIn .9s var(--spring-soft) both; animation-delay: calc(var(--i) * 55ms + 120ms); }
+@keyframes wordIn { from { transform: translateY(.38em); filter: blur(10px); } to { transform: none; filter: none; } }
+.hero-copy .lead { font-size: var(--t-headline); line-height: 1.5; color: var(--ink-2); margin: 0; max-width: 40ch; }
+.chip-row { display: flex; flex-wrap: wrap; gap: var(--f8); }
+.chip { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 9px 14px; font-family: var(--font-mono); font-weight: 500; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; line-height: 1; }
+.chip .k { color: var(--on-glass-2); }
+.chip .live { width: 7px; height: 7px; border-radius: 99px; background: var(--naranja); }
+
+.cover { position: relative; overflow: hidden; background: var(--cover-bg); border-radius: 22px; aspect-ratio: 4 / 5; width: 100%; max-width: 340px; justify-self: center; }
+.cover .grid { position: absolute; inset: 0; background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px); background-size: 34px 34px; background-position: -1px -1px; }
+.cover .glow { position: absolute; width: 120%; aspect-ratio: 1; border-radius: 50%; left: var(--gx, 85%); top: var(--gy, 100%); transform: translate(-50%, -50%); background: radial-gradient(closest-side, rgba(243, 95, 31, var(--orb-1)), transparent); }
+.cover .sym { position: absolute; right: -13%; bottom: -8%; width: 78%; height: auto; opacity: .95; }
+.cover .sym .s1 { stop-color: var(--naranja); } .cover .sym .s2 { stop-color: var(--oceano); }
+.cover .sheet { position: absolute; left: 13%; top: 13%; width: 62%; aspect-ratio: 3 / 4; border-radius: 13px; padding: var(--f21); display: grid; align-content: space-between; gap: var(--f8); transition: transform .7s var(--spring); }
+.cover:hover .sheet { transform: translateY(-6px) rotate(-1.5deg); }
+.cover .sheet b { font-weight: 500; font-size: 22px; line-height: 1.1; letter-spacing: -0.02em; }
+.cover .sheet .label { color: var(--on-glass-2); }
+@media (max-width: 899px) { .hb-hero { padding-block: 120px var(--f55); } .cover { max-width: 280px; justify-self: start; } }
+
+/* ---------- Secciones ---------- */
+.sec { position: relative; padding-block: var(--f55) var(--f89); }
+.sec > .inner { position: relative; z-index: 1; }
+.sec-head { display: grid; gap: var(--f13); margin-bottom: var(--f34); max-width: 760px; }
+.sec-head .num { font-family: var(--font-mono); font-size: 13px; color: var(--ink-3); letter-spacing: .1em; }
+.sec-head h2 { margin: 0; font-weight: 600; font-size: var(--t-display); line-height: 1.06; letter-spacing: -0.03em; text-wrap: balance; }
+.col { max-width: var(--measure); display: grid; gap: var(--f21); }
+.col > p, .prose p { margin: 0; font-size: var(--body-size); line-height: var(--body-leading); text-wrap: pretty; }
+.col em { font-style: italic; }
+.lede { font-size: calc(var(--body-size) * 1.12) !important; line-height: 1.5 !important; color: var(--ink); }
+.muted { color: var(--ink-2); }
+.split { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--f34); align-items: start; }
+@media (min-width: 1040px) { .split { grid-template-columns: minmax(0, var(--measure)) minmax(0, 1fr); gap: var(--f55); } }
+
+/* Índice como lista agrupada de iOS */
+.list { display: grid; }
+.irow { position: relative; display: grid; grid-template-columns: 44px minmax(0, 1fr) 20px; gap: var(--f21); align-items: center; padding: var(--f21); text-decoration: none; color: inherit; transition: background-color .25s ease; }
+.irow + .irow::before { content: ""; position: absolute; top: 0; left: 86px; right: 0; height: .5px; background: var(--hair); }
+.irow:hover { background: var(--g-press); }
+.irow:first-child { border-radius: 22px 22px 0 0; } .irow:last-child { border-radius: 0 0 22px 22px; }
+.irow .n { width: 44px; height: 44px; border-radius: 999px; display: grid; place-items: center; font-family: var(--font-mono); font-size: 13px; color: var(--naranja); box-shadow: inset 0 0 0 .5px var(--hair); }
+.irow .txt { display: grid; gap: 4px; min-width: 0; }
+.irow h3 { margin: 0; font-weight: 400; font-size: var(--t-headline); line-height: 1.3; letter-spacing: -0.01em; }
+.irow .label { color: var(--ink-3); }
+.irow .chev { width: 20px; height: 20px; color: var(--ink-3); transition: transform .45s var(--spring); }
+.irow:hover .chev { transform: translateX(3px); }
+@media (max-width: 560px) { .irow { padding: var(--f13); gap: var(--f13); } .irow + .irow::before { left: 70px; } }
+
+/* Figuras con primitivas */
+.fig { position: relative; overflow: hidden; border-radius: 22px; background: var(--cover-bg); padding: var(--f55) var(--f21) var(--f21); margin: 0; }
+.fig .grid { position: absolute; inset: 0; background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px); background-size: 34px 34px; opacity: .7; }
+.fig .tagc { position: absolute; top: var(--f13); left: var(--f13); z-index: 2; }
+.fig svg { position: relative; display: block; width: 100%; height: auto; overflow: visible; }
+.fig-cap { margin: var(--f13) 0 0; font-size: var(--t-cap); line-height: 1.5; color: var(--ink-3); }
+.art .ln { fill: none; stroke: var(--ink-3); stroke-width: 1.5; }
+.art .ln.dash { stroke-dasharray: 4 6; }
+.art .ink { fill: var(--ink); }
+.art .trk { fill: var(--hair); }
+.art .acc { fill: var(--naranja); }
+.art .hole { fill: var(--cover-bg); stroke: var(--ink-2); stroke-width: 1.5; }
+.art text { font-family: var(--font-mono); font-size: 13px; letter-spacing: .08em; fill: var(--ink-2); font-weight: 500; }
+.art text.strong { fill: var(--ink); }
+.art text.acc-t { fill: var(--naranja-text); }
+.art .bar-anim { transition: width 1s var(--spring-soft); }
+
+/* Reencuadre y callout */
+.reframe { border-radius: 22px; padding: var(--f21) var(--f34); display: grid; gap: var(--f13); }
+.reframe .label { color: var(--ink-3); }
+.reframe p { margin: 0; font-weight: 400; font-size: var(--t-title); line-height: 1.22; letter-spacing: -0.02em; }
+s { text-decoration-thickness: 2px; text-decoration-color: var(--naranja); color: var(--ink-3); }
+.callout { border-radius: 22px; padding: var(--f21) var(--f34); display: grid; gap: var(--f8); }
+.callout .label { color: var(--naranja-text); }
+.callout p { margin: 0; font-size: var(--t-sub); line-height: 1.55; color: var(--ink); }
+@media (max-width: 560px) { .reframe, .callout { padding: var(--f21); } }
+
+/* Preguntas: lista agrupada */
+.qlist .q { position: relative; display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: var(--f13); padding: var(--f13) var(--f21); align-items: baseline; }
+.qlist .q + .q::before { content: ""; position: absolute; top: 0; left: var(--f21); right: 0; height: .5px; background: var(--hair); }
+.qlist .q .label { color: var(--ink-3); }
+.qlist .q p { margin: 0; font-size: var(--t-sub); line-height: 1.5; }
+.qhead { margin: var(--f13) 0 calc(var(--f8) * -1); }
+@media (max-width: 560px) { .qlist .q { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
+.src { margin: 0; font-size: var(--t-cap); line-height: 1.5; color: var(--ink-3); }
+
+/* ---------- Ejercicios ---------- */
+.lab { border-radius: 22px; padding: var(--f21); display: grid; gap: var(--f21); min-width: 0; }
+.lab-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--f8); }
+.lab-head .label { color: var(--naranja-text); }
+.lab-head .hint { font-size: var(--t-cap); color: var(--ink-3); }
+.lab h3 { margin: 0; font-weight: 400; font-size: var(--t-headline); line-height: 1.3; letter-spacing: -0.01em; }
+.mini { appearance: none; border: 0; cursor: pointer; border-radius: 999px; padding: 8px 14px; min-height: 36px; font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; background: var(--g-press); color: var(--ink-2); transition: color .2s ease, background-color .2s ease, transform .1s ease-out; }
+.mini:hover { color: var(--ink); }
+.mini:active { transform: scale(.95); }
+.mini[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.mini.solid { background: var(--ink); color: var(--bg); }
+.lab-foot { display: flex; flex-wrap: wrap; gap: var(--f8); align-items: center; }
+.lab-foot .status { margin-right: auto; font-size: var(--t-cap); color: var(--ink-2); min-height: 1.2em; }
+
+/* 1 · Clasifica */
+.sort { display: grid; gap: 0; }
+.sitem { display: grid; gap: var(--f8); padding: var(--f13) 0; border-top: .5px solid var(--hair); }
+.sitem .phrase { font-size: var(--t-body); line-height: 1.4; }
+.sitem .opts { display: flex; flex-wrap: wrap; gap: 6px; }
+.sitem .fb { font-size: var(--t-sub); line-height: 1.45; color: var(--ink-2); }
+.sitem .fb b { font-weight: 500; color: var(--ink); }
+.sitem .fb.ok b::before { content: "✓ "; color: var(--naranja); }
+.score { font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+
+/* 2 · Mapa de competencia */
+.mapwrap { position: relative; border-radius: 16px; background: var(--cover-bg); overflow: hidden; padding: var(--f13); }
+.mapwrap .grid { position: absolute; inset: 0; background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px); background-size: 34px 34px; opacity: .7; }
+.mapwrap svg { position: relative; display: block; width: 100%; height: auto; }
+.field { display: grid; gap: 6px; }
+.field label { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+.inrow { display: flex; gap: var(--f8); }
+.inrow input { flex: 1; min-width: 0; }
+.txt-in { appearance: none; border: 0; border-radius: 13px; background: var(--g-press); padding: 12px 14px; font-size: 16px; min-height: 44px; box-shadow: inset 0 0 0 .5px var(--hair); width: 100%; }
+.txt-in:focus { outline: none; box-shadow: inset 0 0 0 1.5px var(--naranja); }
+.rivals { display: flex; flex-wrap: wrap; gap: 6px; }
+.rival { display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; padding: 6px 6px 6px 13px; font-size: 14px; box-shadow: inset 0 0 0 .5px var(--hair); }
+.rival button { appearance: none; border: 0; background: var(--g-press); color: var(--ink-2); width: 26px; height: 26px; border-radius: 99px; cursor: pointer; display: grid; place-items: center; padding: 0; }
+.rival button:hover { color: var(--ink); }
+.rival button svg { width: 10px; height: 10px; }
+
+/* 3 · Línea de tiempo */
+.tl-track { position: relative; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); padding-top: 4px; }
+.tl-track::before { content: ""; position: absolute; left: calc(100% / 12); right: calc(100% / 12); top: 25px; height: 1.5px; background: var(--ink-3); opacity: .5; }
+.tl-step { appearance: none; border: 0; background: transparent; cursor: pointer; display: grid; justify-items: center; gap: 10px; padding: 8px 2px; color: var(--ink-3); min-width: 0; position: relative; z-index: 1; }
+.tl-step .pt { width: 21px; height: 21px; border-radius: 99px; background: var(--bg-2); box-shadow: inset 0 0 0 1.5px var(--ink-3); transition: transform .4s var(--spring), box-shadow .2s ease, background-color .2s ease; }
+.tl-step.ev .pt { width: 15px; height: 15px; margin-block: 3px; border-radius: 3px; transform: rotate(45deg); }
+.tl-step .nm { font-family: var(--font-mono); font-size: 10.5px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; text-align: center; line-height: 1.3; overflow-wrap: anywhere; }
+.tl-step:hover .nm { color: var(--ink-2); }
+.tl-step[aria-current="step"] { color: var(--ink); }
+.tl-step[aria-current="step"] .pt { background: var(--ink); box-shadow: 0 0 0 6px var(--g-press); transform: scale(1.1); }
+.tl-step.ev[aria-current="step"] .pt { transform: rotate(45deg) scale(1.1); }
+.tl-step.first .pt { background: var(--naranja); box-shadow: none; }
+.tl-step.here::after { content: "TÚ"; position: absolute; top: -13px; font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; color: var(--naranja-text); }
+@media (max-width: 560px) { .tl-step .nm { font-size: 9px; letter-spacing: .04em; } }
+.tl-panel { display: grid; gap: var(--f13); padding: var(--f21); border-radius: 16px; box-shadow: inset 0 0 0 .5px var(--hair); min-height: 233px; align-content: start; }
+.tl-panel .label { color: var(--ink-3); }
+.tl-panel h4 { margin: 0; font-weight: 500; font-size: var(--t-title); line-height: 1.15; letter-spacing: -0.02em; }
+.tl-panel p { margin: 0; font-size: var(--t-body); line-height: 1.5; color: var(--ink-2); }
+.tl-panel .ask { display: grid; gap: 4px; padding-top: var(--f13); border-top: .5px solid var(--hair); }
+.tl-panel .ask p { color: var(--ink); }
+.tl-note { font-size: var(--t-sub); line-height: 1.5; color: var(--ink-2); margin: 0; }
+.tl-note b { color: var(--ink); font-weight: 500; }
+
+/* 4 · Balanza de fuerzas */
+.sliders { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--f13) var(--f21); }
+@media (max-width: 560px) { .sliders { grid-template-columns: minmax(0, 1fr); } }
+.sl { display: grid; gap: 6px; }
+.sl .top { display: flex; justify-content: space-between; align-items: baseline; gap: var(--f8); }
+.sl label { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+.sl label small { display: block; font-family: var(--font-sans); letter-spacing: 0; text-transform: none; font-size: 13px; color: var(--ink-3); font-weight: 400; margin-top: 2px; }
+.sl output { font-family: var(--font-mono); font-size: 13px; color: var(--ink); font-variant-numeric: tabular-nums; }
+.sl input[type="range"] { width: 100%; accent-color: var(--ink); min-height: 34px; margin: 0; }
+.sl.stay label { color: var(--ink-3); }
+.tug { display: grid; gap: var(--f8); }
+.tug .side { display: grid; grid-template-columns: 136px minmax(0, 1fr) 34px; gap: var(--f13); align-items: center; }
+.tug .side .label { color: var(--ink-2); }
+.tug .side .bar { height: 21px; border-radius: 4px; background: var(--hair); overflow: hidden; }
+.tug .side .bar i { display: block; height: 100%; width: 0; background: var(--ink); border-radius: 4px; transition: width .6s var(--spring-soft); }
+.tug .side.stay .bar i { background: var(--ink-3); }
+.tug .side .v { font-family: var(--font-mono); font-size: 13px; text-align: right; font-variant-numeric: tabular-nums; }
+@media (max-width: 560px) { .tug .side { grid-template-columns: 96px minmax(0, 1fr) 26px; gap: var(--f8); } }
+.verdict { display: grid; gap: 6px; padding: var(--f21); border-radius: 16px; box-shadow: inset 0 0 0 .5px var(--hair); }
+.verdict b { font-weight: 600; font-size: var(--t-title); letter-spacing: -0.02em; line-height: 1.1; }
+.verdict p { margin: 0; font-size: var(--t-sub); line-height: 1.5; color: var(--ink-2); }
+.verdict p.q { color: var(--ink); }
+
+/* ---------- Hoja: un estado de cuenta con la línea que falta ---------- */
+.ws { border-radius: 22px; overflow: hidden; }
+.ws header { display: flex; justify-content: space-between; gap: var(--f13); padding: var(--f13) var(--f21); border-bottom: .5px dashed var(--ink-3); color: var(--ink-2); }
+.ws .grp { padding: var(--f8) var(--f21); color: var(--ink-3); background: var(--g-press); }
+.ws .row { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: var(--f13); align-items: center; padding: 10px var(--f21); border-top: .5px solid var(--hair); }
+.ws .row label { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); }
+.ws .row label small { display: block; letter-spacing: .02em; text-transform: none; color: var(--ink-3); font-size: 12px; font-weight: 400; margin-top: 2px; font-family: var(--font-sans); }
+.ws .row input, .ws .row textarea { width: 100%; min-width: 0; background: transparent; border: 0; border-bottom: 1px dotted var(--ink-3); padding: 6px 0; font-size: 16px; line-height: 1.45; border-radius: 0; }
+.ws .row textarea { resize: vertical; min-height: 55px; }
+.ws .row input::placeholder, .ws .row textarea::placeholder { color: var(--ink-3); }
+.ws .row input:focus, .ws .row textarea:focus { outline: none; border-bottom: 1px solid var(--naranja); }
+.ws .row.goal { padding-block: var(--f21); }
+.ws .row.goal label { color: var(--naranja-text); }
+.ws .row.goal textarea { border-bottom: 1.5px solid var(--naranja); font-size: 18px; }
+@media (max-width: 620px) { .ws .row { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
+.ws footer { display: flex; flex-wrap: wrap; align-items: center; gap: var(--f8); padding: var(--f13) var(--f21) var(--f21); border-top: .5px dashed var(--ink-3); }
+.ws footer .note { color: var(--ink-3); font-size: var(--t-cap); margin-right: auto; }
+
+/* ---------- Cierre ---------- */
+.closer { position: relative; padding-block: var(--f89); }
+.closer-bg { position: absolute; inset: 0; overflow: hidden; pointer-events: none; -webkit-mask-image: linear-gradient(to bottom, transparent, #000 45%); mask-image: linear-gradient(to bottom, transparent, #000 45%); }
+.closer .o1 { width: 1200px; height: 1200px; left: 50%; margin-left: -600px; bottom: -760px; --speed: -.08; }
+.closer .o2 { width: 600px; height: 600px; right: -200px; top: 10%; --speed: -.14; }
+.nl { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; border-radius: 22px; padding: clamp(28px, 4vw, 55px); display: grid; gap: var(--f21); }
+.nl .big { margin: 0; font-weight: 600; font-size: var(--t-display); line-height: 1.06; letter-spacing: -0.03em; text-wrap: balance; }
+.nl .two { color: var(--on-glass-2); } .nl .two b { color: var(--on-glass); }
+.nl p { margin: 0; font-size: var(--t-body); line-height: 1.55; color: var(--on-glass-2); max-width: 52ch; }
+.nl p b { color: var(--on-glass); font-weight: 500; }
+.nl .actions { justify-content: flex-start; align-items: center; }
+.nl .nextup { color: var(--on-glass-2); }
+
+/* ---------- Fuentes ---------- */
+.refs { list-style: none; padding: 0; margin: 0; display: grid; counter-reset: r; }
+.refs li { counter-increment: r; position: relative; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: var(--f8); padding: var(--f13) var(--f21); font-size: var(--t-sub); line-height: 1.55; color: var(--ink-2); }
+.refs li + li::before { content: ""; position: absolute; top: 0; left: var(--f21); right: 0; height: .5px; background: var(--hair); }
+.refs li::after { content: counter(r, decimal-leading-zero); position: absolute; left: var(--f21); top: calc(var(--f13) + 3px); font-family: var(--font-mono); font-size: 12px; color: var(--ink-3); }
+.refs li > span { grid-column: 2; }
+.refs a { text-underline-offset: 3px; text-decoration-color: var(--ink-3); overflow-wrap: anywhere; }
+
+/* ---------- Pie ---------- */
+footer.site { position: relative; padding-block: var(--f34) calc(var(--f89) + env(safe-area-inset-bottom, 0px)); border-top: .5px solid var(--hair); overflow: hidden; }
+.foot-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--f21); align-items: flex-start; margin-bottom: var(--f34); }
+.foot-top p { margin: 0; max-width: 30ch; color: var(--ink-2); font-size: var(--t-sub); line-height: 1.5; }
+.foot-links { display: flex; flex-wrap: wrap; gap: var(--f21); }
+.foot-links a { text-decoration: none; color: var(--ink-2); transition: color .2s ease; }
+.foot-links a:hover { color: var(--ink); }
+.wordmark { display: flex; align-items: flex-end; gap: .12em; font-weight: 400; font-size: clamp(36px, 5vw, 72px); line-height: .9; letter-spacing: -0.03em; color: var(--ink); white-space: nowrap; }
+.wordmark svg { width: .62em; height: auto; flex: none; color: var(--naranja); margin-bottom: .04em; }
+.foot-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--f13); margin-top: var(--f21); color: var(--ink-3); }
+
+/* ---------- Dock de lectura ---------- */
+.dock { position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 16px); transform: translateX(-50%); z-index: 45; border-radius: 999px; display: flex; align-items: center; gap: 2px; padding: 6px; transition: transform .55s var(--spring); }
+.dock.tucked { transform: translateX(-50%) translateY(8px) scale(.92); }
+.dock button { appearance: none; border: 0; background: transparent; color: var(--on-glass); cursor: pointer; border-radius: 999px; min-width: 42px; height: 42px; padding: 0 12px; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; transition: background-color .2s ease, transform .1s ease-out; }
+.dock button:hover { background: var(--g-press); }
+.dock button:active { transform: scale(.92); }
+.dock button:disabled { opacity: .35; cursor: default; }
+.dock button[aria-pressed="true"] { background: var(--bg); color: var(--ink); }
+.dock .sep { width: 1px; height: 21px; background: var(--g-edge); margin: 0 4px; }
+.dock .ring { display: inline-flex; align-items: center; gap: 8px; padding: 0 10px 0 6px; font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.dock .ring svg { width: 26px; height: 26px; transform: rotate(-90deg); }
+.dock .ring .track { fill: none; stroke: var(--g-edge); stroke-width: 3; }
+.dock .ring .val { fill: none; stroke: var(--naranja); stroke-width: 3; stroke-linecap: round; }
+.dock svg.ic { width: 17px; height: 17px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+  .orb { transform: none !important; }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="sym-a" fill-rule="evenodd" d="M51.803 5.825 L86.795 84.070 A2 2 0 0 1 84.116 86.695 L47.914 69.611 A8 8 0 0 0 41.086 69.611 L4.884 86.695 A2 2 0 0 1 2.205 84.070 L37.197 5.825 A8 8 0 0 1 51.803 5.825 Z M46.326 25.421 L60.597 57.332 A2 2 0 0 1 57.917 59.957 L47.914 55.236 A8 8 0 0 0 41.086 55.236 L31.083 59.957 A2 2 0 0 1 28.403 57.332 L42.674 25.421 A2 2 0 0 1 46.326 25.421 Z"/>
+    <path id="sym-rayo" d="M0 15 L18 0 L22 8 L44 0 L26 16 L22 8.5 Z"/>
+  </defs>
+</svg>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="edge-top" aria-hidden="true"></div>
+
+<div class="topbar-wrap wrap">
+  <header class="topbar lg thick">
+    <a class="brand" href="https://andynz.com/#handbooks" aria-label="Andy Noroña, volver a los handbooks">
+      <svg viewBox="-1 0.09 91 89.91" aria-hidden="true"><use href="#sym-a" fill="currentColor"/></svg>
+      Andy Noroña
+    </a>
+    <nav class="nav" aria-label="Herramientas del handbook">
+      <a href="#h1" data-nav="h1">Dimensiones</a>
+      <a href="#h2" data-nav="h2">Competencia</a>
+      <a href="#h3" data-nav="h3">Tiempo</a>
+      <a href="#h4" data-nav="h4">Fuerzas</a>
+      <a href="#hoja" data-nav="hoja">Tu hoja</a>
+    </nav>
+    <div class="seg" id="seg" role="group" aria-label="Modo de color">
+      <span class="lens" id="lens" aria-hidden="true"></span>
+      <button type="button" data-modo="dark" aria-pressed="true" title="Dark">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 9.6A5.6 5.6 0 0 1 6.4 2.5a5.6 5.6 0 1 0 7.1 7.1Z" fill="currentColor"/></svg><span class="txt">Dark</span>
+      </button>
+      <button type="button" data-modo="light" aria-pressed="false" title="Light">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3.4" fill="currentColor"/><g stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M8 1v1.6M8 13.4V15M1 8h1.6M13.4 8H15M3 3l1.1 1.1M11.9 11.9 13 13M3 13l1.1-1.1M11.9 4.1 13 3"/></g></svg><span class="txt">Light</span>
+      </button>
+      <button type="button" data-modo="cafe" aria-pressed="false" title="Café, modo lectura">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 6h8.5v3.5a3.5 3.5 0 0 1-3.5 3.5H6a3.5 3.5 0 0 1-3.5-3.5V6Z" fill="currentColor"/><path d="M11 7h1a1.8 1.8 0 0 1 0 3.6h-1.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M5.5 1.5c-.6.8.6 1.4 0 2.3M8.5 1.5c-.6.8.6 1.4 0 2.3" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span class="txt">Café</span>
+      </button>
+    </div>
+  </header>
+</div>
+
+<div class="page">
+<main id="doc">
+
+  <!-- ===================== PORTADA ===================== -->
+  <section class="hb-hero wrap" aria-labelledby="t">
+    <div class="fib" aria-hidden="true"></div>
+    <i class="orb o-naranja o1" aria-hidden="true"></i>
+    <i class="orb o-dorado o2" aria-hidden="true"></i>
+    <i class="orb o-oceano o3" aria-hidden="true"></i>
+    <div class="inner hero-grid">
+      <div class="hero-copy">
+        <span class="label eyebrow">Handbook 01 · Kit de inicio</span>
+        <h1 id="t" aria-label="Nadie elige un producto. Elige avanzar.">
+          <span class="two" aria-hidden="true"><span class="w" style="--i:0">Nadie</span> <span class="w" style="--i:1">elige</span> <span class="w" style="--i:2">un</span> <span class="w" style="--i:3">producto.</span> <b><span class="w" style="--i:4">Elige</span> <span class="w" style="--i:5">avanzar<span class="dot">.</span></span></b></span>
+        </h1>
+        <p class="lead">Cuatro herramientas de Jobs to be Done para entender por qué alguien elige, o no, un producto financiero. Cada una trae un ejercicio para probarla aquí mismo.</p>
+        <div class="chip-row">
+          <span class="chip lg clear"><span class="live" aria-hidden="true"></span>Andy Noroña</span>
+          <span class="chip lg clear"><span class="k">Lectura</span><span id="read-time">12 min</span></span>
+          <span class="chip lg clear"><span class="k">Ejercicios</span>4 + tu hoja</span>
+        </div>
+        <div class="actions" style="justify-content:flex-start">
+          <a class="btn solid" href="#como">Empezar <svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="btn lg" href="#hoja">Ir a la hoja de trabajo</a>
+        </div>
+      </div>
+      <div class="cover" aria-hidden="true" style="--gx:85%;--gy:100%">
+        <div class="grid"></div><div class="glow"></div>
+        <svg class="sym" viewBox="-1 0.09 91 89.91">
+          <defs><linearGradient id="cg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" class="s1"/><stop offset="1" class="s2"/></linearGradient></defs>
+          <use href="#sym-a" fill="url(#cg)"/>
+        </svg>
+        <div class="sheet lg"><span class="label">Handbook 01</span><b>Kit de inicio JTBD<span class="dot">.</span></b><span class="label">Andy Noroña</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CÓMO USARLO ===================== -->
+  <section class="sec wrap" id="como" aria-labelledby="como-t">
+    <div class="inner">
+      <div class="sec-head reveal"><span class="label eyebrow">Cómo usar este kit</span><h2 id="como-t">Cuatro preguntas, en orden<span class="dot">.</span></h2></div>
+      <div class="split">
+        <div class="col">
+          <p class="lede">En octubre compartí en LinkedIn cuatro herramientas de Jobs to be Done, una por post. Aquí las junto en el orden en que conviene usarlas.</p>
+          <p>Primero, qué intenta lograr la persona. Después, contra qué compites, cuándo empezó a decidir y por qué se mueve o se queda.</p>
+          <p>Elige un producto que conozcas bien: una cuenta de ahorros, un crédito, una tarjeta. Pásalo por las cuatro preguntas y por los ejercicios. Al final, una hoja junta tus respuestas.</p>
+          <p class="src">Los ejemplos son genéricos o públicos. Ninguno sale de un banco en particular.</p>
+        </div>
+        <div class="side">
+          <nav class="list mat reveal" aria-label="Las cuatro preguntas">
+            <a class="irow" href="#h1"><span class="n">01</span><span class="txt"><h3>¿Qué intenta lograr de verdad?</h3><span class="label">Christensen y otros · 2016</span></span><svg class="chev" viewBox="0 0 20 20" aria-hidden="true"><path d="m8 5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="irow" href="#h2"><span class="n">02</span><span class="txt"><h3>¿Contra qué compite tu producto?</h3><span class="label">Klement · 2016</span></span><svg class="chev" viewBox="0 0 20 20" aria-hidden="true"><path d="m8 5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="irow" href="#h3"><span class="n">03</span><span class="txt"><h3>¿Cuándo empezó a decidir?</h3><span class="label">Moesta y Spiek</span></span><svg class="chev" viewBox="0 0 20 20" aria-hidden="true"><path d="m8 5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="irow" href="#h4"><span class="n">04</span><span class="txt"><h3>¿Por qué cambia, o por qué se queda?</h3><span class="label">Moesta y Spiek</span></span><svg class="chev" viewBox="0 0 20 20" aria-hidden="true"><path d="m8 5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 01 · DIMENSIONES ===================== -->
+  <section class="sec wrap" id="h1" aria-labelledby="h1-t">
+    <i class="orb o-dorado" aria-hidden="true" style="width:700px;height:700px;left:-340px;top:80px;--speed:-.1"></i>
+    <div class="inner">
+      <div class="sec-head reveal"><span class="label eyebrow">01 · Las tres dimensiones del job</span><h2 id="h1-t">¿Qué intenta lograr de verdad<span class="dot">?</span></h2></div>
+      <div class="split">
+        <div class="col">
+          <p class="lede">Clayton Christensen, Taddy Hall, Karen Dillon y David S. Duncan proponen en <em>Competing Against Luck</em> (2016) que todo job tiene tres dimensiones: una funcional, una emocional y una social.</p>
+          <p>Y muchas veces las dos últimas pesan más que la primera.</p>
+          <figure class="fig reveal">
+            <div class="grid" aria-hidden="true"></div>
+            <span class="chip lg clear tagc">Hallazgo</span>
+            <svg class="art" viewBox="0 0 480 246" role="img" aria-labelledby="f1-t">
+              <title id="f1-t">Qué dejaría hacer a un agente de IA: 66% buscar el mejor precio, 52% comprar cosas cotidianas y baratas, 15% comprar algo caro como electrónicos.</title>
+              <text class="strong" x="0" y="34">BUSCAR EL MEJOR PRECIO</text>
+              <rect class="trk" x="0" y="44" width="400" height="34" rx="3"/>
+              <rect class="ink bar-anim" data-w="264" x="0" y="44" width="264" height="34" rx="3"/>
+              <text class="strong" x="277" y="67">66%</text>
+              <text class="strong" x="0" y="110">COMPRAS COTIDIANAS Y BARATAS</text>
+              <rect class="trk" x="0" y="120" width="400" height="34" rx="3"/>
+              <rect class="ink bar-anim" data-w="208" x="0" y="120" width="208" height="34" rx="3"/>
+              <text class="strong" x="221" y="143">52%</text>
+              <text class="strong" x="0" y="186">ALGO CARO, COMO ELECTRÓNICOS</text>
+              <rect class="trk" x="0" y="196" width="400" height="34" rx="3"/>
+              <rect class="acc bar-anim" data-w="60" x="0" y="196" width="60" height="34" rx="3"/>
+              <text class="acc-t" x="73" y="219">15%</text>
+              <text x="400" y="246" text-anchor="end">100%</text>
+            </svg>
+          </figure>
+          <p class="fig-cap">Encuesta de Teneo para American Express a 2.005 adultos en EE. UU. con 3 o más compras en línea en los últimos seis meses. Campo en agosto de 2026; publicada el 6 de octubre de 2026. El 66% habla de uso probable en los próximos 12 meses.</p>
+          <p>La tecnología es la misma en los tres casos. Lo que cambia es el job.</p>
+          <p>Comparar precios es casi puro job funcional. Comprar algo caro trae otra carga: no equivocarme, no arrepentirme, sentir que la decisión fue mía. Y en banca y fintech casi nada es solo funcional. Mover dinero, ahorrar, pedir un crédito.</p>
+          <div class="reframe mat reveal"><span class="label">Reencuadre</span><p>No es <s>un límite de la tecnología</s>. <span class="two"><b>Es un límite del job</b></span><span class="dot">.</span></p></div>
+          <p class="label qhead muted">Preguntas para usarla</p>
+          <div class="list mat qlist">
+            <div class="q"><span class="label">Funcional</span><p>¿Qué tiene que quedar resuelto? Pagar, guardar, mover, pedir prestado.</p></div>
+            <div class="q"><span class="label">Emocional</span><p>¿Cómo quiere sentirse mientras lo hace? Y, sobre todo, ¿cómo no quiere sentirse?</p></div>
+            <div class="q"><span class="label">Social</span><p>¿Cómo quiere que lo vean los demás? Su familia, su jefe, su socio.</p></div>
+          </div>
+          <div class="callout mat"><span class="label">Ojo</span><p>Describir el job solo con atributos del producto: tasa, plazo, monto. Eso es la dimensión funcional, y casi nunca es la única.</p></div>
+          <p class="src">Christensen, Hall, Dillon y Duncan, <em>Competing Against Luck</em>, HarperBusiness, 2016. American Express, <em>Amex Trendex: Agentic Commerce Edition</em>, 2026.</p>
+        </div>
+        <div class="side">
+          <div class="lab mat reveal" id="lab-sort">
+            <div class="lab-head"><span class="label">Ejercicio 01</span><span class="score" id="sort-score">0 de 6</span></div>
+            <h3>¿Funcional, emocional o social?</h3>
+            <p class="src">Frases de ejemplo. Muchas tocan más de una dimensión: elige la que más pesa.</p>
+            <div class="sort" id="sort"></div>
+            <div class="lab-foot"><span class="status" id="sort-status"></span><button type="button" class="mini" id="sort-reset">Empezar de nuevo</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 02 · COMPETENCIA ===================== -->
+  <section class="sec wrap" id="h2" aria-labelledby="h2-t">
+    <div class="inner">
+      <div class="sec-head reveal"><span class="label eyebrow">02 · La competencia la define el cliente</span><h2 id="h2-t">¿Contra qué compite tu producto<span class="dot">?</span></h2></div>
+      <div class="split">
+        <div class="col">
+          <p class="lede">La respuesta rápida: contra el producto parecido de otra entidad.</p>
+          <p>En <em>When Coffee and Kale Compete</em> (2016), Alan Klement propone otra forma de verlo. La competencia la define el cliente, según el progreso que busca. La categoría no alcanza para verla.</p>
+          <p>Entonces la pregunta cambia: ¿qué deja de usar alguien cuando empieza a ahorrar en una cuenta?</p>
+          <p>El dinero bajo el colchón. La cooperativa del barrio. El familiar que lo guarda. No suelen aparecer en un análisis de competencia de un banco. Pero compiten por el mismo job.</p>
+          <div class="reframe mat reveal"><span class="label">Reencuadre</span><p>No compite <s>contra otro banco</s>. <span class="two"><b>Compite contra todo lo que el cliente ya usa para sentirse a salvo</b></span><span class="dot">.</span></p></div>
+          <p class="label qhead muted">Preguntas para usarla</p>
+          <div class="list mat qlist">
+            <div class="q"><span class="label">Antes</span><p>¿Qué usaba para lograr lo mismo antes de tu producto?</p></div>
+            <div class="q"><span class="label">Lo que soltó</span><p>¿Qué dejó de usar cuando empezó con lo nuevo?</p></div>
+            <div class="q"><span class="label">En paralelo</span><p>¿Qué sigue usando al mismo tiempo, y para qué?</p></div>
+          </div>
+          <div class="callout mat"><span class="label">Ojo</span><p>Armar el mapa de competencia con la lista de entidades reguladas. Ahí solo aparecen los que se parecen a ti.</p></div>
+          <p class="src">Alan Klement, <em>When Coffee and Kale Compete</em>, 2016.</p>
+        </div>
+        <div class="side">
+          <div class="lab mat reveal" id="lab-map">
+            <div class="lab-head"><span class="label">Ejercicio 02</span><span class="hint">Empieza con el ejemplo del post</span></div>
+            <h3>Dibuja el mapa de tu producto</h3>
+            <div class="mapwrap"><div class="grid" aria-hidden="true"></div><svg class="art" id="map" viewBox="0 0 480 380" role="img" aria-label="Mapa de competencia"></svg></div>
+            <div class="field"><label for="map-job">El job, en pocas palabras</label><input class="txt-in" id="map-job" maxlength="40" placeholder="Sentirse a salvo"></div>
+            <div class="field"><label for="map-add">¿Qué más usa tu cliente para lograrlo?</label>
+              <div class="inrow"><input class="txt-in" id="map-add" maxlength="34" placeholder="Por ejemplo, una tanda con amigos"><button type="button" class="mini solid" id="map-add-btn">Agregar</button></div>
+            </div>
+            <div class="rivals" id="rivals" aria-label="Rivales en el mapa"></div>
+            <div class="lab-foot"><span class="status" id="map-status" role="status"></span><button type="button" class="mini" id="map-reset">Volver al ejemplo</button><button type="button" class="mini" id="map-send">Llevar a mi hoja</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 03 · LÍNEA DE TIEMPO ===================== -->
+  <section class="sec wrap" id="h3" aria-labelledby="h3-t">
+    <i class="orb o-oceano" aria-hidden="true" style="width:760px;height:760px;right:-360px;top:40px;--speed:-.08"></i>
+    <div class="inner">
+      <div class="sec-head reveal"><span class="label eyebrow">03 · La línea de tiempo</span><h2 id="h3-t">¿Cuándo empezó a decidir<span class="dot">?</span></h2></div>
+      <div class="split">
+        <div class="col">
+          <p class="lede">Nadie se despierta un día queriendo un crédito.</p>
+          <p>Bob Moesta y Chris Spiek dibujan una compra como una línea de tiempo. Hay etapas, y hay eventos que empujan a la persona de una etapa a la siguiente.</p>
+          <p>Si alguien piensa en un crédito para su negocio, ese primer pensamiento pudo haber llegado meses antes. Para cuando compara tasas, buena parte de la decisión ya está tomada. Y muchas veces es justo ahí cuando aparecemos.</p>
+          <div class="reframe mat reveal"><span class="label">Reencuadre</span><p>No <s>busca un crédito</s>. <span class="two"><b>Busca resolver algo que empezó a incomodarle hace tiempo</b></span><span class="dot">.</span></p></div>
+          <div class="callout mat"><span class="label">Ojo</span><p>Empezar a mirar en la búsqueda activa. Para entonces ya te perdiste el primer pensamiento, que es donde nace el job.</p></div>
+          <p class="src">Bob Moesta y Chris Spiek, la línea de tiempo de Jobs to be Done, jobstobedone.org.</p>
+        </div>
+        <div class="side">
+          <div class="lab mat reveal" id="lab-tl">
+            <div class="lab-head"><span class="label">Ejercicio 03</span><span class="hint">Toca cada etapa</span></div>
+            <h3>Recorre la decisión y marca dónde apareces</h3>
+            <div class="tl-track" id="tl-track" role="tablist" aria-label="Etapas de la línea de tiempo"></div>
+            <div class="tl-panel" id="tl-panel" role="tabpanel" aria-live="polite"></div>
+            <div class="lab-foot">
+              <span class="status" id="tl-status"></span>
+              <button type="button" class="mini" id="tl-prev" aria-label="Etapa anterior">←</button>
+              <button type="button" class="mini" id="tl-next" aria-label="Etapa siguiente">→</button>
+              <button type="button" class="mini" id="tl-here" aria-pressed="false">Aquí aparecemos hoy</button>
+            </div>
+            <p class="tl-note" id="tl-note">Marca la etapa en la que tu equipo suele aparecer hoy frente al cliente.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 04 · FUERZAS ===================== -->
+  <section class="sec wrap" id="h4" aria-labelledby="h4-t">
+    <div class="inner">
+      <div class="sec-head reveal"><span class="label eyebrow">04 · Las cuatro fuerzas del progreso</span><h2 id="h4-t">¿Por qué cambia, o por qué se queda<span class="dot">?</span></h2></div>
+      <div class="split">
+        <div class="col">
+          <p class="lede">Cambiar no depende solo de lo que ofrece lo nuevo.</p>
+          <p>Bob Moesta y Chris Spiek lo explican con cuatro fuerzas, que Moesta desarrolla en <em>Demand-Side Sales 101</em> (2020). Dos empujan hacia el cambio. Dos lo frenan.</p>
+          <div class="list mat qlist">
+            <div class="q"><span class="label">Empuje</span><p>De la situación: lo que ya no le funciona hoy.</p></div>
+            <div class="q"><span class="label">Atracción</span><p>De lo nuevo: lo que promete la alternativa.</p></div>
+            <div class="q"><span class="label">Ansiedad</span><p>Por lo nuevo: ¿y si me cobran algo que no vi? ¿Y si pierdo mi historial?</p></div>
+            <div class="q"><span class="label">Hábito</span><p>Del presente: los pagos ya configurados, la app que ya sé usar.</p></div>
+          </div>
+          <p>La persona cambia solo cuando las dos primeras les ganan a las dos últimas.</p>
+          <p>Y eso tiene una lectura incómoda para quienes trabajamos en banca. Que un cliente se quede no siempre significa que esté contento. A veces solo significa que el hábito y la ansiedad están ganando.</p>
+          <div class="reframe mat reveal"><span class="label">Reencuadre</span><p>No siempre es <s>lealtad</s>. <span class="two"><b>A veces es inercia</b></span><span class="dot">.</span></p></div>
+          <p class="label qhead muted">Preguntas para usarla</p>
+          <div class="list mat qlist">
+            <div class="q"><span class="label">Empuje</span><p>¿Qué ya no te funcionaba con lo que tenías?</p></div>
+            <div class="q"><span class="label">Atracción</span><p>¿Qué te prometía lo nuevo?</p></div>
+            <div class="q"><span class="label">Ansiedad</span><p>¿Qué te preocupaba de cambiar?</p></div>
+            <div class="q"><span class="label">Hábito</span><p>¿Qué te costaba dejar de lo que ya usabas?</p></div>
+          </div>
+          <div class="callout mat"><span class="label">Ojo</span><p>Leer la permanencia como satisfacción. Antes de celebrar la retención, pregunta cuál de las cuatro fuerzas la explica.</p></div>
+          <p class="src">Bob Moesta y Chris Spiek, las cuatro fuerzas, jobstobedone.org. Bob Moesta, <em>Demand-Side Sales 101</em>, 2020.</p>
+        </div>
+        <div class="side">
+          <div class="lab mat reveal" id="lab-forces">
+            <div class="lab-head"><span class="label">Ejercicio 04</span><span class="hint">De 0 a 5, según lo que oíste</span></div>
+            <h3>Pon a prueba la decisión de un cliente</h3>
+            <div class="sliders">
+              <div class="sl"><div class="top"><label for="f-push">Empuje<small>Lo que ya no funciona</small></label><output id="o-push" for="f-push">3</output></div><input type="range" id="f-push" min="0" max="5" step="1" value="3"></div>
+              <div class="sl"><div class="top"><label for="f-pull">Atracción<small>Lo que promete lo nuevo</small></label><output id="o-pull" for="f-pull">3</output></div><input type="range" id="f-pull" min="0" max="5" step="1" value="3"></div>
+              <div class="sl stay"><div class="top"><label for="f-anx">Ansiedad<small>Lo que preocupa de cambiar</small></label><output id="o-anx" for="f-anx">2</output></div><input type="range" id="f-anx" min="0" max="5" step="1" value="2"></div>
+              <div class="sl stay"><div class="top"><label for="f-hab">Hábito<small>Lo que cuesta dejar</small></label><output id="o-hab" for="f-hab">4</output></div><input type="range" id="f-hab" min="0" max="5" step="1" value="4"></div>
+            </div>
+            <div class="tug" aria-hidden="true">
+              <div class="side"><span class="label">Hacia el cambio</span><span class="bar"><i id="b-move"></i></span><span class="v" id="v-move">6</span></div>
+              <div class="side stay"><span class="label">Hacia quedarse</span><span class="bar"><i id="b-stay"></i></span><span class="v" id="v-stay">6</span></div>
+            </div>
+            <div class="verdict" id="verdict" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOJA ===================== -->
+  <section class="sec wrap" id="hoja" aria-labelledby="hoja-t">
+    <i class="orb o-naranja" aria-hidden="true" style="width:800px;height:800px;right:-380px;top:40px;--speed:-.1"></i>
+    <div class="inner">
+      <div class="sec-head reveal"><span class="label eyebrow">Tu hoja de trabajo</span><h2 id="hoja-t">Lo que no sale en el estado de cuenta<span class="dot">.</span></h2></div>
+      <div class="col" style="max-width:820px">
+        <p>Llena cada línea con lo que te dijeron tus clientes, no con lo que crees. Si una línea queda vacía, ya sabes qué preguntar en tu próxima entrevista.</p>
+        <form class="ws mat" id="sheet" autocomplete="off">
+          <header class="label"><span>Tarjeta del job</span><span>Handbook 01</span></header>
+          <div class="row"><label for="p-producto">Producto<small>El que vas a analizar</small></label><input id="p-producto" name="producto" placeholder="Una cuenta de ahorros, un crédito…"></div>
+          <div class="grp label">01 · Dimensiones</div>
+          <div class="row"><label for="p-funcional">Funcional<small>Qué tiene que quedar resuelto</small></label><input id="p-funcional" name="funcional"></div>
+          <div class="row"><label for="p-emocional">Emocional<small>Cómo quiere sentirse, o no</small></label><input id="p-emocional" name="emocional"></div>
+          <div class="row"><label for="p-social">Social<small>Cómo quiere que lo vean</small></label><input id="p-social" name="social"></div>
+          <div class="grp label">02 · Competencia</div>
+          <div class="row"><label for="p-compite">Compite contra<small>Lo que deja de usar</small></label><input id="p-compite" name="compite"></div>
+          <div class="grp label">03 · Línea de tiempo</div>
+          <div class="row"><label for="p-primer">Primer pensamiento<small>Cuándo y dónde</small></label><input id="p-primer" name="primer"></div>
+          <div class="row"><label for="p-evento">Evento que lo movió<small>De mirar a buscar en serio</small></label><input id="p-evento" name="evento"></div>
+          <div class="grp label">04 · Fuerzas</div>
+          <div class="row"><label for="p-empuje">Empuje</label><input id="p-empuje" name="empuje"></div>
+          <div class="row"><label for="p-atraccion">Atracción</label><input id="p-atraccion" name="atraccion"></div>
+          <div class="row"><label for="p-ansiedad">Ansiedad</label><input id="p-ansiedad" name="ansiedad"></div>
+          <div class="row"><label for="p-habito">Hábito</label><input id="p-habito" name="habito"></div>
+          <div class="row goal"><label for="p-logro">Lo que quería lograr<small>En una frase, con sus palabras</small></label><textarea id="p-logro" name="logro" rows="2"></textarea></div>
+          <footer>
+            <span class="note">Se guarda solo en este navegador.</span>
+            <span class="status" id="ws-status" role="status"></span>
+            <button type="button" class="mini" id="ws-clear">Borrar</button>
+            <button type="button" class="mini solid" id="ws-copy">Copiar mis respuestas</button>
+          </footer>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CIERRE ===================== -->
+  <section class="closer wrap" aria-labelledby="cierre-t">
+    <div class="closer-bg" aria-hidden="true">
+      <div class="fib" style="-webkit-mask-image:radial-gradient(ellipse 60% 70% at 50% 100%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse 60% 70% at 50% 100%,#000 20%,transparent 75%)"></div>
+      <i class="orb o-naranja o1"></i>
+      <i class="orb o-dorado o2"></i>
+    </div>
+    <div class="nl lg thick reveal">
+      <span class="label eyebrow">Para cerrar</span>
+      <p class="big" id="cierre-t"><span class="two">Nadie elige un producto. <b>Elige avanzar<span class="dot">.</span></b></span></p>
+      <p>Las cuatro herramientas miran lo mismo desde lugares distintos: el progreso que la persona intenta hacer con su dinero. <b>¿Cuál de las cuatro te cuesta más ver en tus clientes?</b></p>
+      <div class="actions">
+        <a class="btn solid" href="https://www.linkedin.com/in/andresnorona/" target="_blank" rel="noopener">Cuéntamelo en LinkedIn <svg class="arr" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <span class="label nextup">Próximo viernes · Resultados deseados, con Anthony Ulwick</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FUENTES ===================== -->
+  <section class="sec wrap" id="fuentes" aria-labelledby="fuentes-t">
+    <div class="inner">
+      <div class="sec-head"><span class="label eyebrow">Fuentes</span><h2 id="fuentes-t" style="font-size:var(--t-title);font-weight:400">Para leer en la fuente<span class="dot">.</span></h2></div>
+      <ol class="refs list mat" style="max-width:820px">
+        <li><span>Clayton M. Christensen, Taddy Hall, Karen Dillon y David S. Duncan. <em>Competing Against Luck: The Story of Innovation and Customer Choice</em>. HarperBusiness, 2016.</span></li>
+        <li><span>Alan Klement. <em>When Coffee and Kale Compete: Become Great at Making Products People Will Buy</em>. 2016.</span></li>
+        <li><span>Bob Moesta y Chris Spiek. «The Timeline». <a href="https://jobstobedone.org/the-timeline/" target="_blank" rel="noopener">jobstobedone.org/the-timeline</a>. Consultado en noviembre de 2026.</span></li>
+        <li><span>Bob Moesta y Chris Spiek. «The Four Forces». <a href="https://jobstobedone.org/the-four-forces/" target="_blank" rel="noopener">jobstobedone.org/the-four-forces</a>. Consultado en noviembre de 2026.</span></li>
+        <li><span>Bob Moesta. <em>Demand-Side Sales 101: Stop Selling and Help Your Customers Make Progress</em>. Lioncrest, 2020.</span></li>
+        <li><span>American Express. <em>Amex Trendex: Agentic Commerce Edition</em>, parte del Amex Business Playbook for Agentic Commerce, 6 de octubre de 2026. Encuesta de Teneo a 2.005 adultos en EE. UU., 10 al 14 de agosto de 2026. <a href="https://www.americanexpress.com/us/merchant/business-class-for-merchants/amex-business-playbook-for-agentic-commerce/" target="_blank" rel="noopener">americanexpress.com</a>.</span></li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<footer class="site wrap">
+  <div class="inner">
+    <div class="foot-top">
+      <p>Reimaginar las finanzas hasta que sean parte de la vida de las personas.</p>
+      <div class="foot-links label">
+        <a href="https://andynz.com/">Inicio</a>
+        <a href="https://andynz.com/#articulos">Artículos</a>
+        <a href="https://andynz.com/#handbooks">Handbooks</a>
+        <a href="https://www.linkedin.com/in/andresnorona/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </div>
+    <div class="wordmark" aria-label="Andy Noroña">
+      <svg viewBox="-1 -25.27 91 115.27" aria-hidden="true"><use href="#sym-a" fill="currentColor"/><g transform="translate(27.500 -24.273) scale(0.7727)"><use href="#sym-rayo" fill="currentColor"/></g></svg>
+      <span aria-hidden="true">Andy Noroña</span>
+    </div>
+    <div class="foot-bottom label"><span>Handbook 01 · Kit de inicio JTBD</span><span>© 2026 andynz.com</span></div>
+  </div>
+</footer>
+</div>
+
+<div class="dock lg thick" id="dock" role="toolbar" aria-label="Lectura">
+  <span class="ring">
+    <svg viewBox="0 0 26 26" aria-hidden="true"><circle class="track" cx="13" cy="13" r="10"/><circle class="val" id="ring-val" cx="13" cy="13" r="10" stroke-dasharray="62.83" stroke-dashoffset="62.83"/></svg>
+    <span id="ring-txt">12 min</span>
+  </span>
+  <span class="sep" aria-hidden="true"></span>
+  <button type="button" id="texto-menos" aria-label="Texto más pequeño">A−</button>
+  <button type="button" id="texto-mas" aria-label="Texto más grande">A+</button>
+  <span class="sep" aria-hidden="true"></span>
+  <button type="button" id="dock-cafe" aria-pressed="false" aria-label="Modo café">
+    <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 6h8.5v3.5a3.5 3.5 0 0 1-3.5 3.5H6a3.5 3.5 0 0 1-3.5-3.5V6Z" fill="currentColor"/><path d="M11 7h1a1.8 1.8 0 0 1 0 3.6h-1.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M5.5 1.5c-.6.8.6 1.4 0 2.3M8.5 1.5c-.6.8.6 1.4 0 2.3" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+  </button>
+</div>
+<script>
+(function () {
+  var root = document.documentElement;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function save(k, v) { try { localStorage.setItem(k, v); } catch (err) {} }
+  function load(k) { try { return localStorage.getItem(k); } catch (err) { return null; } }
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function flash(el, t) { el.textContent = t; clearTimeout(el._t); el._t = setTimeout(function () { el.textContent = ''; }, 2600); }
+
+  /* ---------- Modos con lente que se estira (igual que el sitio) ---------- */
+  var segBtns = Array.prototype.slice.call(document.querySelectorAll('[data-modo]'));
+  var lens = $('lens'), seg = $('seg'), cafeBtn = $('dock-cafe');
+  var mqLight = window.matchMedia ? window.matchMedia('(prefers-color-scheme: light)') : null;
+  function mode() {
+    if (root.getAttribute('data-lectura') === 'cafe') return 'cafe';
+    var t = root.getAttribute('data-theme');
+    if (t === 'light' || t === 'dark') return t;
+    return mqLight && mqLight.matches ? 'light' : 'dark';
+  }
+  function placeLens(animate) {
+    var c = mode(), btn = seg.querySelector('[data-modo="' + c + '"]');
+    if (!btn) return;
+    var x = btn.offsetLeft, w = btn.offsetWidth;
+    var fromX = parseFloat(lens.dataset.x || x), fromW = parseFloat(lens.dataset.w || w);
+    lens.style.transform = 'translateX(' + (x - 3) + 'px)'; lens.style.width = w + 'px';
+    if (animate && !reduce && lens.animate && (fromX !== x || fromW !== w)) {
+      var left = Math.min(fromX, x), right = Math.max(fromX + fromW, x + w);
+      lens.animate([
+        { transform: 'translateX(' + (fromX - 3) + 'px)', width: fromW + 'px' },
+        { transform: 'translateX(' + (left - 3) + 'px)', width: (right - left) + 'px', offset: .42 },
+        { transform: 'translateX(' + (x - 3) + 'px)', width: w + 'px' }
+      ], { duration: 560, easing: 'cubic-bezier(.2,.9,.25,1)' });
+    }
+    lens.dataset.x = x; lens.dataset.w = w;
+  }
+  function sync(animate) {
+    var c = mode();
+    segBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-modo') === c)); });
+    cafeBtn.setAttribute('aria-pressed', String(c === 'cafe'));
+    placeLens(animate);
+  }
+  function apply(m, animate) {
+    if (m === 'cafe') root.setAttribute('data-lectura', 'cafe');
+    else { root.removeAttribute('data-lectura'); root.setAttribute('data-theme', m); save('an-modo-dia', m); }
+    save('an-modo', m); sync(animate);
+  }
+  segBtns.forEach(function (b) { b.addEventListener('click', function () { apply(b.getAttribute('data-modo'), true); }); });
+  cafeBtn.addEventListener('click', function () { apply(mode() === 'cafe' ? (load('an-modo-dia') || 'dark') : 'cafe', true); });
+  var savedMode = load('an-modo');
+  if (savedMode === 'dark' || savedMode === 'light' || savedMode === 'cafe') apply(savedMode, false); else sync(false);
+  if (mqLight && mqLight.addEventListener) mqLight.addEventListener('change', function () { sync(true); });
+  window.addEventListener('resize', function () { placeLens(false); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { placeLens(false); });
+
+  /* ---------- Tamaño del texto ---------- */
+  var minus = $('texto-menos'), plus = $('texto-mas');
+  var size = parseInt(load('an-texto') || '0', 10); if (!(size >= 0 && size <= 2)) size = 0;
+  function setSize(s) {
+    size = Math.max(0, Math.min(2, s));
+    if (size === 0) root.removeAttribute('data-size'); else root.setAttribute('data-size', String(size));
+    minus.disabled = size === 0; plus.disabled = size === 2; save('an-texto', String(size));
+  }
+  minus.addEventListener('click', function () { setSize(size - 1); });
+  plus.addEventListener('click', function () { setSize(size + 1); });
+  setSize(size);
+
+  /* ---------- Brillo especular que sigue al puntero ---------- */
+  document.addEventListener('pointermove', function (ev) {
+    var el = ev.target.closest && ev.target.closest('.lg');
+    if (!el) return;
+    var r = el.getBoundingClientRect();
+    el.style.setProperty('--mx', (ev.clientX - r.left) + 'px');
+    el.style.setProperty('--my', (ev.clientY - r.top) + 'px');
+  }, { passive: true });
+
+  /* ---------- Tiempo de lectura ---------- */
+  var docEl = $('doc');
+  var words = (docEl.textContent || '').split(/\s+/).filter(Boolean).length;
+  var MIN = Math.max(1, Math.round(words / 200));
+  $('read-time').textContent = MIN + ' min';
+
+  /* ---------- Ejercicio 01: clasifica ---------- */
+  var DIM = { f: 'Funcional', e: 'Emocional', s: 'Social' };
+  var ITEMS = [
+    { t: 'Comparar tasas antes de firmar', a: 'f', why: 'Es la tarea concreta: elegir la mejor condición.' },
+    { t: 'No arrepentirme después', a: 'e', why: 'Habla de cómo quiere sentirse, no de la tarea.' },
+    { t: 'Que mi familia vea que lo manejé bien', a: 's', why: 'Depende de la mirada de otros.' },
+    { t: 'Pagar la luz antes de que venza', a: 'f', why: 'Es algo que tiene que quedar resuelto.' },
+    { t: 'Dormir tranquilo con mis ahorros', a: 'e', why: 'Es una emoción: tranquilidad.' },
+    { t: 'Que mi socio confíe en las cuentas del negocio', a: 's', why: 'Es sobre cómo lo ven los demás.' }
+  ];
+  var sortEl = $('sort'), picks = {};
+  try { picks = JSON.parse(load('hb01-sort') || '{}') || {}; } catch (err) { picks = {}; }
+  function renderSort() {
+    sortEl.innerHTML = ITEMS.map(function (it, i) {
+      var p = picks[i], fb = '';
+      if (p) fb = p === it.a ? '<div class="fb ok"><b>' + DIM[it.a] + '.</b> ' + it.why + '</div>'
+                             : '<div class="fb">Yo la leería como <b>' + DIM[it.a].toLowerCase() + '</b>. ' + it.why + '</div>';
+      return '<div class="sitem" role="group" aria-label="' + esc(it.t) + '"><span class="phrase">«' + esc(it.t) + '»</span><div class="opts">' +
+        ['f', 'e', 's'].map(function (k) { return '<button type="button" class="mini" data-i="' + i + '" data-k="' + k + '" aria-pressed="' + (p === k) + '">' + DIM[k] + '</button>'; }).join('') +
+        '</div>' + fb + '</div>';
+    }).join('');
+    var done = 0, ok = 0;
+    ITEMS.forEach(function (it, i) { if (picks[i]) { done++; if (picks[i] === it.a) ok++; } });
+    $('sort-score').textContent = done + ' de 6';
+    $('sort-status').textContent = done === 6 ? ok + ' de 6 coinciden con mi lectura.' : '';
+  }
+  sortEl.addEventListener('click', function (ev) {
+    var b = ev.target.closest('button[data-k]'); if (!b) return;
+    picks[b.dataset.i] = b.dataset.k; save('hb01-sort', JSON.stringify(picks)); renderSort();
+    var again = sortEl.querySelector('button[data-i="' + b.dataset.i + '"][data-k="' + b.dataset.k + '"]'); if (again) again.focus();
+  });
+  $('sort-reset').addEventListener('click', function () { picks = {}; save('hb01-sort', '{}'); renderSort(); });
+  renderSort();
+
+  /* ---------- Ejercicio 02: mapa de competencia ---------- */
+  var DEFAULT_MAP = { job: 'Sentirse a salvo', rivals: ['Cuenta de ahorros', 'Dinero bajo el colchón', 'Cooperativa del barrio', 'Familiar que lo guarda'] };
+  var map;
+  try { map = JSON.parse(load('hb01-map') || 'null'); } catch (err) { map = null; }
+  if (!map || !Array.isArray(map.rivals)) map = JSON.parse(JSON.stringify(DEFAULT_MAP));
+  var mapSvg = $('map'), jobIn = $('map-job'), addIn = $('map-add'), mapStatus = $('map-status');
+  jobIn.value = map.job;
+  function wrap(text, max, lines) {
+    var w = String(text).toUpperCase().split(/\s+/), out = [], cur = '';
+    w.forEach(function (x) { if ((cur + ' ' + x).trim().length > max && cur) { out.push(cur); cur = x; } else cur = (cur + ' ' + x).trim(); });
+    if (cur) out.push(cur);
+    if (out.length > lines) { out = out.slice(0, lines); out[lines - 1] = out[lines - 1].slice(0, max - 1) + '…'; }
+    return out;
+  }
+  function renderMap() {
+    var cx = 240, cy = 190, n = map.rivals.length, rx = 168, ry = 128, s = '';
+    var pts = map.rivals.map(function (r, i) {
+      var a = (-90 + (360 / Math.max(n, 1)) * i + (n % 2 === 0 ? 180 / n : 0)) * Math.PI / 180;
+      return { x: cx + rx * Math.cos(a), y: cy + ry * Math.sin(a), r: r };
+    });
+    pts.forEach(function (p) { s += '<line class="ln dash" x1="' + cx + '" y1="' + cy + '" x2="' + p.x.toFixed(1) + '" y2="' + p.y.toFixed(1) + '"/>'; });
+    s += '<circle class="hole" cx="' + cx + '" cy="' + cy + '" r="68"/>';
+    s += '<circle class="acc" cx="' + cx + '" cy="' + (cy - 26) + '" r="8"/>';
+    wrap(map.job || 'El job', 12, 2).forEach(function (l, i, arr) {
+      s += '<text class="acc-t" x="' + cx + '" y="' + (cy + 8 + i * 18 - (arr.length - 1) * 4) + '" text-anchor="middle">' + esc(l) + '</text>';
+    });
+    pts.forEach(function (p) {
+      s += '<circle class="hole" cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="6"/>';
+      var lines = wrap(p.r, 15, 2), above = p.y < cy - 4, side = Math.abs(p.y - cy) < 30;
+      var x = Math.max(66, Math.min(414, p.x));
+      lines.forEach(function (l, i) {
+        var y = side ? p.y + 26 + i * 17 : (above ? p.y - 15 - (lines.length - 1 - i) * 17 : p.y + 25 + i * 17);
+        s += '<text class="strong" x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" text-anchor="middle">' + esc(l) + '</text>';
+      });
+    });
+    mapSvg.innerHTML = '<title>Al centro, el job: ' + esc(map.job) + '. Compiten por él: ' + esc(map.rivals.join(', ')) + '.</title>' + s;
+    $('rivals').innerHTML = map.rivals.map(function (r, i) {
+      return '<span class="rival">' + esc(r) + '<button type="button" data-del="' + i + '" aria-label="Quitar ' + esc(r) + '"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 1.5l7 7M8.5 1.5l-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></span>';
+    }).join('');
+    save('hb01-map', JSON.stringify(map));
+  }
+  function addRival() {
+    var v = addIn.value.trim();
+    if (!v) { flash(mapStatus, 'Escribe algo que tu cliente use para lograr el job.'); addIn.focus(); return; }
+    if (map.rivals.length >= 8) { flash(mapStatus, 'Con 8 el mapa ya está lleno. Quita uno para sumar otro.'); return; }
+    map.rivals.push(v); addIn.value = ''; renderMap(); flash(mapStatus, 'Agregado.');
+  }
+  $('map-add-btn').addEventListener('click', addRival);
+  addIn.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') { ev.preventDefault(); addRival(); } });
+  jobIn.addEventListener('input', function () { map.job = jobIn.value; renderMap(); });
+  $('rivals').addEventListener('click', function (ev) {
+    var b = ev.target.closest('button[data-del]'); if (!b) return;
+    map.rivals.splice(+b.dataset.del, 1); renderMap(); flash(mapStatus, 'Quitado.');
+  });
+  $('map-reset').addEventListener('click', function () { map = JSON.parse(JSON.stringify(DEFAULT_MAP)); jobIn.value = map.job; renderMap(); flash(mapStatus, 'Volviste al ejemplo.'); });
+
+  /* ---------- Ejercicio 03: línea de tiempo ---------- */
+  var STAGES = [
+    { k: 'Primer pensamiento', d: 'La persona nota que tal vez necesita algo distinto. Suele pasar antes de lo que ella misma recuerda.', q: '¿Cuándo pensaste por primera vez en esto? ¿Dónde estabas?' },
+    { k: 'Búsqueda pasiva', d: 'Lo piensa, se fija, pero no se mueve.', q: '¿Qué empezaste a notar desde ese momento?' },
+    { k: 'Evento 1', ev: true, d: 'Algo pasa, y la curiosidad se vuelve necesidad de actuar.', q: '¿Qué pasó que te hizo buscar en serio?' },
+    { k: 'Búsqueda activa', d: 'Compara, pregunta, descarta. Aquí recién aparecen las tasas.', q: '¿Qué más consideraste, aunque no fuera un producto financiero?' },
+    { k: 'Evento 2', ev: true, d: 'Algo la lleva de comparar a decidir.', q: '¿Qué pasó el día que decidiste?' },
+    { k: 'Decisión y uso', d: 'Firma, paga y empieza a usarlo.', q: '¿Cómo fueron los primeros días de uso?' }
+  ];
+  var tlCur = 0, tlHere = parseInt(load('hb01-here') || '-1', 10); if (!(tlHere >= 0 && tlHere < 6)) tlHere = -1;
+  var track = $('tl-track');
+  track.innerHTML = STAGES.map(function (s, i) {
+    return '<button type="button" class="tl-step' + (s.ev ? ' ev' : '') + (i === 0 ? ' first' : '') + '" role="tab" data-i="' + i + '" id="tl-s' + i + '"><span class="pt" aria-hidden="true"></span><span class="nm">' + s.k + '</span></button>';
+  }).join('');
+  var steps = Array.prototype.slice.call(track.querySelectorAll('.tl-step'));
+  function renderTl() {
+    steps.forEach(function (b, i) {
+      var on = i === tlCur;
+      b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1;
+      if (on) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current');
+      b.classList.toggle('here', i === tlHere);
+    });
+    var s = STAGES[tlCur];
+    $('tl-panel').setAttribute('aria-labelledby', 'tl-s' + tlCur);
+    $('tl-panel').innerHTML = '<span class="label">' + (s.ev ? 'Evento' : 'Etapa') + ' · ' + (tlCur + 1) + ' de 6</span><h4>' + s.k + '<span class="dot">.</span></h4><p>' + s.d + '</p>' +
+      '<div class="ask"><span class="label">Pregunta para la entrevista</span><p>' + s.q + '</p></div>';
+    $('tl-prev').disabled = tlCur === 0; $('tl-next').disabled = tlCur === 5;
+    var hb = $('tl-here'); hb.setAttribute('aria-pressed', String(tlHere === tlCur));
+    hb.textContent = tlHere === tlCur ? 'Aquí aparecemos ✓' : 'Aquí aparecemos hoy';
+    var note = $('tl-note');
+    if (tlHere < 0) note.innerHTML = 'Marca la etapa en la que tu equipo suele aparecer hoy frente al cliente.';
+    else if (tlHere === 0) note.innerHTML = 'Apareces en el <b>primer pensamiento</b>. Llegas desde el inicio del job.';
+    else note.innerHTML = 'Apareces en <b>' + STAGES[tlHere].k.toLowerCase() + '</b>. Antes de eso ya pasaron <b>' + tlHere + ' de 6</b> momentos de la decisión. ¿Qué sabes de ellos?';
+  }
+  function goTl(i, focus) { tlCur = Math.max(0, Math.min(5, i)); renderTl(); if (focus) steps[tlCur].focus(); }
+  track.addEventListener('click', function (ev) { var b = ev.target.closest('.tl-step'); if (b) goTl(+b.dataset.i); });
+  track.addEventListener('keydown', function (ev) {
+    if (ev.key === 'ArrowRight') { ev.preventDefault(); goTl(tlCur + 1, true); }
+    if (ev.key === 'ArrowLeft') { ev.preventDefault(); goTl(tlCur - 1, true); }
+  });
+  $('tl-prev').addEventListener('click', function () { goTl(tlCur - 1); });
+  $('tl-next').addEventListener('click', function () { goTl(tlCur + 1); });
+  $('tl-here').addEventListener('click', function () { tlHere = tlHere === tlCur ? -1 : tlCur; save('hb01-here', String(tlHere)); renderTl(); });
+  renderTl();
+
+  /* ---------- Ejercicio 04: balanza de fuerzas ---------- */
+  var F = { push: $('f-push'), pull: $('f-pull'), anx: $('f-anx'), hab: $('f-hab') };
+  var FNAME = { anx: 'la ansiedad', hab: 'el hábito' };
+  try { var fs = JSON.parse(load('hb01-forces') || 'null'); if (fs) Object.keys(F).forEach(function (k) { if (fs[k] >= 0 && fs[k] <= 5) F[k].value = fs[k]; }); } catch (err) {}
+  function renderForces() {
+    var v = {}; Object.keys(F).forEach(function (k) { v[k] = +F[k].value; $('o-' + k).textContent = v[k]; });
+    var move = v.push + v.pull, stay = v.anx + v.hab;
+    $('b-move').style.width = (move * 10) + '%'; $('b-stay').style.width = (stay * 10) + '%';
+    $('v-move').textContent = move; $('v-stay').textContent = stay;
+    var brake = v.hab >= v.anx ? 'hab' : 'anx', html;
+    if (move > stay) html = '<b>Cambia<span class="dot">.</span></b><p>Empuje y atracción ganan por ' + (move - stay) + '. Ahora pregunta qué evento lo hizo moverse justo ese día.</p>';
+    else if (move === stay) html = '<b>Se queda<span class="dot">.</span></b><p>Con empate gana el presente: para cambiar, las fuerzas a favor tienen que ganar.</p><p class="q">El freno que más pesa es ' + FNAME[brake] + ' (' + v[brake] + '). ¿Qué harías para bajarlo un punto?</p>';
+    else html = '<b>Se queda<span class="dot">.</span></b><p>Desde afuera puede parecer lealtad. Los frenos ganan por ' + (stay - move) + '.</p><p class="q">El freno que más pesa es ' + FNAME[brake] + ' (' + v[brake] + '). ¿Qué harías para bajarlo un punto?</p>';
+    $('verdict').innerHTML = html;
+    save('hb01-forces', JSON.stringify(v));
+  }
+  Object.keys(F).forEach(function (k) { F[k].addEventListener('input', renderForces); });
+  renderForces();
+
+  /* ---------- Hoja de trabajo ---------- */
+  var form = $('sheet'), fields = Array.prototype.slice.call(form.querySelectorAll('input, textarea')), wsStatus = $('ws-status');
+  try { var data = JSON.parse(load('hb01-hoja') || '{}'); fields.forEach(function (f) { if (data[f.name]) f.value = data[f.name]; }); } catch (err) {}
+  function saveWs() { var d = {}; fields.forEach(function (f) { d[f.name] = f.value; }); save('hb01-hoja', JSON.stringify(d)); }
+  fields.forEach(function (f) { f.addEventListener('input', saveWs); });
+  form.addEventListener('submit', function (ev) { ev.preventDefault(); });
+  $('map-send').addEventListener('click', function () {
+    $('p-compite').value = map.rivals.join(', '); saveWs();
+    flash(mapStatus, 'Listo: está en «Compite contra», en tu hoja.');
+  });
+  $('ws-copy').addEventListener('click', function () {
+    var lines = ['TARJETA DEL JOB · Handbook 01, Andy Noroña', ''];
+    fields.forEach(function (f) {
+      var lab = form.querySelector('label[for="' + f.id + '"]');
+      lines.push((lab ? lab.childNodes[0].textContent.trim() : f.name).toUpperCase() + ': ' + (f.value.trim() || '—'));
+    });
+    var text = lines.join('\n');
+    function fallback() {
+      var ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select();
+      var ok = false; try { ok = document.execCommand('copy'); } catch (err) {}
+      document.body.removeChild(ta);
+      flash(wsStatus, ok ? 'Copiado.' : 'No se pudo copiar. Selecciona el texto a mano.');
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { flash(wsStatus, 'Copiado.'); }, fallback);
+    else fallback();
+  });
+  var armed = false, clr = $('ws-clear');
+  clr.addEventListener('click', function () {
+    if (!armed) { armed = true; clr.textContent = '¿Borrar todo?'; setTimeout(function () { armed = false; clr.textContent = 'Borrar'; }, 3000); return; }
+    fields.forEach(function (f) { f.value = ''; }); saveWs(); armed = false; clr.textContent = 'Borrar'; flash(wsStatus, 'Hoja en blanco.');
+  });
+
+  /* ---------- Navegación activa ---------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('[data-nav]'));
+  var secs = navLinks.map(function (a) { return $(a.dataset.nav); });
+  function markNav() {
+    var mid = window.innerHeight * .35, cur = null;
+    secs.forEach(function (s) { var r = s.getBoundingClientRect(); if (r.top <= mid && r.bottom > mid) cur = s.id; });
+    navLinks.forEach(function (a) { if (a.dataset.nav === cur) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+  }
+
+  /* ---------- Scroll: barra que se compacta, parallax y lectura ---------- */
+  var C = 62.83, ringVal = $('ring-val'), ringTxt = $('ring-txt'), dock = $('dock');
+  var lastY = window.scrollY, ticking = false;
+  function onScroll() {
+    var y = window.scrollY;
+    root.classList.toggle('scrolled', y > 24);
+    root.classList.toggle('compact', y > 160);
+    if (!reduce) root.style.setProperty('--sy', String(Math.round(y)));
+    var r = docEl.getBoundingClientRect(), total = r.height - window.innerHeight;
+    var p = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 0;
+    ringVal.style.strokeDashoffset = (C * (1 - p)).toFixed(2);
+    ringTxt.textContent = p >= 0.99 ? 'Leído' : Math.max(1, Math.ceil(MIN * (1 - p))) + ' min';
+    if (y > lastY + 4 && y > 200) dock.classList.add('tucked');
+    if (y < lastY - 4) dock.classList.remove('tucked');
+    markNav();
+    lastY = y; ticking = false;
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  onScroll();
+})();
+</script>
+
+</body>
+</html>
