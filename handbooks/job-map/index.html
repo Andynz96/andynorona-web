@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Job map: manual de uso · Andy Noroña</title>
+<meta name="description" content="Cómo aplicar el job map de Bettencourt y Ulwick paso a paso: cuándo usarlo, cuándo no, un ejemplo resuelto, las preguntas para tu cliente y una sesión de 45 minutos.">
+<meta property="og:title" content="Job map: manual de uso">
+<meta property="og:description" content="Cuándo usarlo, cuándo no y cómo aplicarlo paso a paso, con un ejemplo resuelto.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://andynz.com/handbooks/job-map/">
+<meta property="og:image" content="https://andynz.com/fotos/andy-sobre-mi.jpg">
+<meta property="og:locale" content="es_LA">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="canonical" href="https://andynz.com/handbooks/job-map/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0A0A0B;--ink:#F4F1EC;--muted:#8C8780;--dim:#4A4743;--line:#2C2B2E;--panel:#111113;--accent:#F35F1F}
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Geist",system-ui,sans-serif;line-height:1.55;font-size:17px}
+  .wrap{max-width:890px;margin:0 auto;padding:34px 21px 89px}
+  .mono{font-family:"Geist Mono",ui-monospace,monospace;text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:var(--muted)}
+  a{color:var(--ink)}
+  header.top{display:flex;justify-content:space-between;align-items:center;gap:13px;margin-bottom:55px}
+  header.top a{display:flex;align-items:center;gap:13px;text-decoration:none;font-weight:500;white-space:nowrap}
+  header.top svg{width:34px;height:auto;display:block}
+  header.top>.mono{text-align:right}
+  h1{font-size:clamp(34px,7vw,55px);line-height:1.05;font-weight:500;letter-spacing:-.02em;margin:13px 0 21px;text-wrap:balance}
+  h1 .m,h2 .m{color:var(--muted)}
+  .lead{font-size:19px;color:var(--muted);max-width:640px;margin:0 0 34px}
+  .lead b,p b,li b{color:var(--ink);font-weight:500}
+  nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:21px}
+  nav.toc a{font-family:"Geist Mono",monospace;font-size:12px;text-transform:uppercase;letter-spacing:.08em;text-decoration:none;
+    color:var(--muted);border:1px solid var(--line);border-radius:55px;padding:8px 13px}
+  nav.toc a:hover{color:var(--ink);border-color:var(--muted)}
+  section{padding-top:55px;margin-top:55px;border-top:1px solid var(--line)}
+  h2{font-size:clamp(26px,4.6vw,34px);line-height:1.15;font-weight:500;letter-spacing:-.015em;margin:8px 0 21px;text-wrap:balance}
+  h3{font-size:19px;font-weight:500;margin:0 0 8px}
+  p{margin:0 0 13px;max-width:680px;color:var(--muted)}
+  p.ink{color:var(--ink)}
+  ul,ol{margin:0;padding-left:21px;color:var(--muted);max-width:680px}
+  li{margin-bottom:8px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:21px}
+  .card .mono{display:block;margin-bottom:8px}
+  .card p:last-child,.card ul:last-child{margin-bottom:0}
+  .card ul{padding-left:18px}
+  .rule{border-left:2px solid var(--accent);padding:5px 0 5px 21px;margin:34px 0}
+  .rule p{font-size:22px;line-height:1.3;color:var(--ink);margin:0;text-wrap:balance}
+  .formula{font-family:"Geist Mono",monospace;font-size:15px;color:var(--ink);background:var(--panel);border:1px solid var(--line);
+    border-radius:8px;padding:21px;margin:13px 0 21px;overflow-wrap:anywhere}
+  .formula span{color:var(--muted)}
+  /* pasos */
+  .note{font-size:14px;margin-bottom:21px}
+  .step{border:1px solid var(--line);border-radius:8px;padding:21px;margin-bottom:13px;display:grid;grid-template-columns:144px 1fr;gap:21px;break-inside:avoid}
+  .step h3{font-size:21px;margin:8px 0 0}
+  .step dl{margin:0;display:grid;grid-template-columns:140px 1fr;gap:8px 21px}
+  .step dt{font-family:"Geist Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding-top:4px}
+  .step dd{margin:0;color:var(--ink);font-size:16px}
+  .step dd.s{color:var(--muted)}
+  table{width:100%;border-collapse:collapse;font-size:15px}
+  th,td{text-align:left;padding:13px 13px 13px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-family:"Geist Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:400}
+  td{color:var(--muted)} td:first-child{color:var(--ink);white-space:nowrap}
+  .scroll{overflow-x:auto}
+  .btn{background:var(--ink);color:var(--bg);border:0;border-radius:55px;font:inherit;font-weight:500;font-size:15px;padding:13px 21px;cursor:pointer;margin-top:21px}
+  .btn:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+  footer{margin-top:55px;padding-top:34px;border-top:1px solid var(--line)}
+  footer li{font-size:14px}
+  @media (max-width:700px){
+    .grid2,.grid3{grid-template-columns:1fr}
+    .step{grid-template-columns:1fr;gap:13px}
+    .step dl{grid-template-columns:1fr;gap:2px}
+    .step dd{margin-bottom:8px}
+    header.top{margin-bottom:34px}
+    td:first-child{white-space:normal}
+  }
+  @media print{
+    :root{--bg:#fff;--ink:#121212;--muted:#444;--dim:#999;--line:#ccc;--panel:#fff;--accent:#D9501A}
+    body{font-size:12px}
+    .wrap{padding:0;max-width:none}
+    nav.toc,.btn{display:none}
+    section{padding-top:21px;margin-top:21px}
+    h1{font-size:28px} h2{font-size:19px}
+    .card,.step{padding:10px}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <a href="https://andynz.com/" aria-label="Andy Noroña, inicio">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -25.27 91 115.27" role="img" aria-label="Andy Noroña"><path d="M51.803 5.825 L86.795 84.070 A2 2 0 0 1 84.116 86.695 L47.914 69.611 A8 8 0 0 0 41.086 69.611 L4.884 86.695 A2 2 0 0 1 2.205 84.070 L37.197 5.825 A8 8 0 0 1 51.803 5.825 Z M46.326 25.421 L60.597 57.332 A2 2 0 0 1 57.917 59.957 L47.914 55.236 A8 8 0 0 0 41.086 55.236 L31.083 59.957 A2 2 0 0 1 28.403 57.332 L42.674 25.421 A2 2 0 0 1 46.326 25.421 Z" fill="#F35F1F" fill-rule="evenodd"></path><g transform="translate(27.500 -24.273) scale(0.7727)"><path d="M0 15 L18 0 L22 8 L44 0 L26 16 L22 8.5 Z" fill="#F35F1F"></path></g></svg>
+      <span>Andy Noroña</span>
+    </a>
+    <span class="mono">Manual · Jobs to be Done</span>
+  </header>
+
+  <main>
+    <div class="mono">Job map · Manual de uso</div>
+    <h1><span class="m">Antes de dibujar tu producto,</span> dibuja lo que tu cliente quiere lograr.</h1>
+    <p class="lead">Un manual corto para aplicar el job map de Lance Bettencourt y Tony Ulwick: <b>cuándo sirve, cuándo no, y cómo hacerlo paso a paso</b> con un ejemplo resuelto.</p>
+
+    <nav class="toc" aria-label="Contenido">
+      <a href="#que">01 Qué es</a>
+      <a href="#cuando">02 Cuándo sí y cuándo no</a>
+      <a href="#antes">03 Antes de empezar</a>
+      <a href="#pasos">04 Los ocho pasos</a>
+      <a href="#oportunidades">05 Del mapa a las oportunidades</a>
+      <a href="#sesion">06 Sesión de 45 minutos</a>
+      <a href="#errores">07 Errores comunes</a>
+    </nav>
+
+    <section id="que">
+      <div class="mono">01 · Qué es</div>
+      <h2>El mapa de lo que la persona quiere lograr, <span class="m">exista o no tu empresa.</span></h2>
+      <p>Un job map describe los pasos que sigue una persona para lograr algo. No describe lo que hace con tu producto, ni lo que tu empresa hace por dentro. Por eso sigue siendo válido aunque cambie la tecnología o desaparezca el proveedor.</p>
+      <p>La forma más rápida de entenderlo es compararlo con sus vecinos, usando un mismo ejemplo: pedir el almuerzo por una app.</p>
+      <div class="scroll">
+      <table>
+        <thead><tr><th>Mapa</th><th>Qué muestra</th><th>Con el almuerzo</th><th>Si la app desaparece</th></tr></thead>
+        <tbody>
+          <tr><td>Customer journey</td><td>Lo que la persona hace con la empresa.</td><td>Abre la app, elige el plato, paga, sigue al repartidor.</td><td>Deja de existir.</td></tr>
+          <tr><td>Service blueprint</td><td>Lo que la empresa hace para cumplirle.</td><td>El restaurante recibe la orden, la cocina prepara, la app asigna repartidor.</td><td>Deja de existir.</td></tr>
+          <tr><td>Job map</td><td>Lo que la persona quiere lograr.</td><td>Decide qué se le antoja, ve qué hay, consigue la comida, come, recoge.</td><td>Sigue igual: cocina, sale a comer o lleva su comida.</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </section>
+
+    <section id="cuando">
+      <div class="mono">02 · Cuándo sí y cuándo no</div>
+      <h2>No es el mapa para todo. <span class="m">Sirve para una pregunta concreta.</span></h2>
+      <p>La pregunta que responde es: <b>¿en qué partes de lo que mi cliente quiere lograr todavía no lo estoy ayudando?</b> Si tu pregunta es otra, hay una herramienta mejor.</p>
+      <div class="grid2" style="margin-top:21px">
+        <div class="card">
+          <span class="mono">Úsalo cuando</span>
+          <ul>
+            <li><b>Vas a diseñar algo nuevo</b> y quieres partir de la persona, no de tu catálogo.</li>
+            <li><b>Tu producto ya solo mejora por detalles</b> y necesitas ver oportunidades fuera de él.</li>
+            <li><b>El equipo no se pone de acuerdo</b> sobre qué quiere el cliente. El mapa da un lenguaje común.</li>
+            <li><b>Vas a entrevistar clientes</b> y necesitas una estructura para no dejar huecos.</li>
+            <li><b>Quieres comparar soluciones muy distintas</b> que compiten por lo mismo.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="mono">No lo uses cuando</span>
+          <ul>
+            <li><b>Quieres mejorar un flujo que ya existe</b> (una pantalla, un formulario). Eso es un customer journey.</li>
+            <li><b>El problema está en tu operación interna.</b> Eso es un service blueprint.</li>
+            <li><b>Quieres entender por qué alguien cambia de solución</b> o por qué compra. Para eso están las entrevistas de cambio de Bob Moesta.</li>
+            <li><b>Todavía no sabes quién es la persona ni qué quiere lograr.</b> Primero define eso.</li>
+            <li><b>Buscas el lado emocional.</b> El mapa cubre lo que la persona quiere hacer, no cómo quiere sentirse. Eso se trabaja aparte.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="note" style="margin-top:21px">Esta lista es un criterio de uso propio, armado a partir de los textos de los autores. No es una cita.</p>
+    </section>
+
+    <section id="antes">
+      <div class="mono">03 · Antes de empezar</div>
+      <h2>Tres definiciones. <span class="m">Sin ellas el mapa sale torcido.</span></h2>
+      <div class="grid3">
+        <div class="card">
+          <span class="mono">A · Quién</span>
+          <h3>La persona que lo hace</h3>
+          <p>No el que paga ni el que aprueba: quien ejecuta. Si son distintos, haz un mapa para cada uno.</p>
+        </div>
+        <div class="card">
+          <span class="mono">B · Qué</span>
+          <h3>Lo que quiere lograr</h3>
+          <p>Escríbelo como verbo + objeto + contexto. Sin nombrar ningún producto.</p>
+        </div>
+        <div class="card">
+          <span class="mono">C · Hasta dónde</span>
+          <h3>Dónde empieza y dónde termina</h3>
+          <p>Demasiado amplio («vivir mejor») no se puede mapear. Demasiado estrecho («llenar un formulario») ya es tu producto.</p>
+        </div>
+      </div>
+      <div class="formula">Tener <span>(verbo)</span> mi primer carro <span>(objeto)</span> para moverme con mi familia <span>(contexto)</span></div>
+      <div class="rule"><p>La prueba para cada paso: si mañana tu empresa desaparece, ¿la persona igual tendría que hacerlo? Si la respuesta es no, ese paso es de tu journey, no de su job map.</p></div>
+    </section>
+
+    <section id="pasos">
+      <div class="mono">04 · Los ocho pasos</div>
+      <h2>El mapa resuelto: <span class="m">tener mi primer carro.</span></h2>
+      <p>Cada paso trae qué significa, cómo se ve en el ejemplo, dónde suele trabarse la persona y qué preguntarle a un cliente real para llenarlo con evidencia.</p>
+      <p class="note">El ejemplo es ilustrativo, armado para enseñar el método. No es resultado de una investigación. Tu mapa se llena con lo que te digan tus clientes.</p>
+      <div id="steps"></div>
+      <p class="note" style="margin-top:21px">Pregunta siempre por <b>la última vez que lo hizo</b>, no por lo que haría. La gente recuerda mejor de lo que predice.</p>
+    </section>
+
+    <section id="oportunidades">
+      <div class="mono">05 · Del mapa a las oportunidades</div>
+      <h2>El mapa no es el resultado. <span class="m">Es el lugar donde buscas.</span></h2>
+      <ol>
+        <li><b>Escribe lo que la persona necesita en cada paso.</b> Ulwick propone un formato fijo, para que sea medible y no dependa de ninguna solución:</li>
+      </ol>
+      <div class="formula">Minimizar <span>(dirección)</span> el tiempo que toma <span>(medida)</span> saber cuánto carro me alcanza <span>(objeto)</span></div>
+      <ol start="2">
+        <li><b>Pregunta dos cosas por cada necesidad</b> a suficientes clientes: qué tan importante es y qué tan satisfecho está hoy con cómo la resuelve.</li>
+        <li><b>Busca lo importante y mal resuelto.</b> Ahí está la oportunidad. Lo importante y bien resuelto ya es terreno de todos; lo poco importante no vale el esfuerzo.</li>
+        <li><b>Ahora sí, dibuja tu producto.</b> Marca en qué pasos aparece hoy y decide a cuál vas a entrar.</li>
+      </ol>
+      <div class="grid2" style="margin-top:21px">
+        <div class="card"><span class="mono">Si no tienes tiempo para encuestar</span><p>Con 5 a 8 entrevistas ya ves en qué pasos se repiten las quejas. No es una medición, pero ordena la conversación.</p></div>
+        <div class="card"><span class="mono">Lo que el mapa no te dice</span><p>Qué solución construir. Te dice dónde vale la pena construir una.</p></div>
+      </div>
+    </section>
+
+    <section id="sesion">
+      <div class="mono">06 · Sesión de 45 minutos</div>
+      <h2>Una forma de hacerlo con tu equipo.</h2>
+      <p>Invita de 4 a 6 personas, e incluye a alguien que hable con clientes todas las semanas. Una pared o pizarra, notas adhesivas y este manual.</p>
+      <div class="scroll">
+      <table>
+        <thead><tr><th>Minutos</th><th>Qué hacen</th><th>Qué queda</th></tr></thead>
+        <tbody>
+          <tr><td>0 – 5</td><td>Acuerdan quién es la persona y qué quiere lograr.</td><td>Una frase escrita arriba de la pared.</td></tr>
+          <tr><td>5 – 15</td><td>Cada uno, en silencio, escribe lo que la persona hace. Un paso por nota.</td><td>Muchas notas sueltas.</td></tr>
+          <tr><td>15 – 30</td><td>Ordenan las notas bajo los ocho pasos. Quitan las que nombran un producto.</td><td>El mapa en borrador.</td></tr>
+          <tr><td>30 – 40</td><td>Marcan dónde aparece hoy su solución y dónde creen que la persona se traba.</td><td>Los huecos a la vista.</td></tr>
+          <tr><td>40 – 45</td><td>Eligen los dos pasos que van a validar con clientes y quién hace las entrevistas.</td><td>Un siguiente paso con dueño.</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note" style="margin-top:21px">Lo que sale de la sesión es una hipótesis. Se vuelve mapa cuando la contrastas con clientes.</p>
+    </section>
+
+    <section id="errores">
+      <div class="mono">07 · Errores comunes</div>
+      <h2>Cómo saber si te quedó bien.</h2>
+      <div class="grid2">
+        <div class="card">
+          <span class="mono">Errores</span>
+          <ul>
+            <li><b>Dibujar el journey con otros nombres.</b> Si aparecen «la app», «la agencia» o «el asesor», no es un job map.</li>
+            <li><b>Mapear al comprador promedio.</b> El mapa es de una persona que hace algo, no de un segmento demográfico.</li>
+            <li><b>Saltarse los pasos sin producto.</b> Definir, monitorear y modificar suelen quedar vacíos, y ahí suele haber más espacio.</li>
+            <li><b>Llenarlo solo desde la oficina.</b> Sin clientes es una lista de supuestos bien ordenada.</li>
+            <li><b>Forzar los ocho.</b> Si un paso no aplica, se deja corto. No se inventa.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="mono">Un buen mapa</span>
+          <ul>
+            <li>No nombra ninguna marca, canal ni producto.</li>
+            <li>Cada paso empieza con un verbo.</li>
+            <li>Lo entiende alguien fuera de tu industria.</li>
+            <li>Seguiría siendo cierto dentro de diez años.</li>
+            <li>Un cliente lo lee y dice «sí, así es».</li>
+          </ul>
+        </div>
+      </div>
+      <button class="btn" type="button" onclick="window.print()">Imprimir o guardar en PDF</button>
+    </section>
+  </main>
+
+  <footer>
+    <div class="mono" style="margin-bottom:13px">Fuentes</div>
+    <ul>
+      <li>Lance A. Bettencourt y Anthony W. Ulwick, «The Customer-Centered Innovation Map», <i>Harvard Business Review</i>, mayo de 2008. De ahí vienen los ocho pasos.</li>
+      <li>Anthony W. Ulwick, <i>Jobs to be Done: Theory to Practice</i>, 2016. De ahí viene el formato para escribir necesidades y el criterio de importancia y satisfacción.</li>
+      <li>Bob Moesta, <i>Demand-Side Sales 101</i>, 2020. Para las entrevistas de cambio.</li>
+      <li>Las explicaciones, el ejemplo, las preguntas y la sesión de este manual son una adaptación propia. Los errores de interpretación son míos, no de los autores.</li>
+    </ul>
+  </footer>
+</div>
+
+<script>
+const S = [
+ ["Definir","Define","Decide qué quiere y con qué cuenta.","Define qué carro le alcanza y para qué lo va a usar.","Calcula con la cuota y olvida seguro, gasolina y mantenimiento.","La última vez, ¿cómo decidiste qué buscabas y cuánto podías gastar?"],
+ ["Ubicar","Locate","Reúne lo que necesita: información y recursos.","Busca opciones de carros, precios y dónde verlos.","Los precios están dispersos y es difícil compararlos.","¿Dónde buscaste? ¿Qué te costó encontrar?"],
+ ["Preparar","Prepare","Deja todo listo antes de actuar.","Junta la entrada y pide un crédito.","Reunir el dinero y los papeles toma semanas.","¿Qué tuviste que dejar listo antes? ¿Qué te tomó más tiempo?"],
+ ["Confirmar","Confirm","Comprueba que está listo para seguir.","Revisa que la cuota le calce con el mes.","No tiene claro cuánto va a pagar en total.","¿Cómo supiste que podías seguir adelante? ¿Qué duda te quedó?"],
+ ["Ejecutar","Execute","Hace lo que vino a hacer.","Compra el carro.","Muchos trámites en poco tiempo.","Cuéntame ese día, paso a paso. ¿Qué salió distinto a lo esperado?"],
+ ["Monitorear","Monitor","Revisa si va bien.","Paga mes a mes y mira cuánto le falta.","No ve fácilmente cuánto ha avanzado.","¿Cómo sabes hoy si vas bien? ¿Cada cuánto lo revisas?"],
+ ["Modificar","Modify","Ajusta cuando algo se sale del plan.","Reacomoda sus gastos cuando el mes aprieta.","No sabe qué opciones tiene si un mes no le alcanza.","¿Qué hiciste la última vez que algo se salió del plan?"],
+ ["Concluir","Conclude","Termina, o se prepara para repetir.","Paga la última cuota y el carro es suyo.","No sabe qué trámite cierra todo.","¿Cómo supiste que habías terminado? ¿Qué quedó pendiente?"]
+];
+document.getElementById("steps").innerHTML = S.map((s,i)=>`
+ <article class="step">
+  <div><div class="mono">${String(i+1).padStart(2,"0")} / 08</div><h3>${s[0]}</h3><div class="mono" style="font-size:11px">${s[1]}</div></div>
+  <dl>
+   <dt>Qué significa</dt><dd>${s[2]}</dd>
+   <dt>En el ejemplo</dt><dd>${s[3]}</dd>
+   <dt>Dónde se traba</dt><dd class="s">${s[4]}</dd>
+   <dt>Pregúntale a tu cliente</dt><dd class="s">«${s[5]}»</dd>
+  </dl>
+ </article>`).join("");
+</script>
+</body>
+</html>
