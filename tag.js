@@ -3,7 +3,7 @@
    Cada página envía su page_view (el inicio lo hace por ruta, porque usa #secciones).
    Cualquier elemento con data-track="nombre_evento" envía ese evento al hacer clic. */
 (function () {
-  var TAG_ID = '';
+  var TAG_ID = 'GTM-KWXHFNN5';
 
   window.dataLayer = window.dataLayer || [];
   function gtag() { window.dataLayer.push(arguments); }
